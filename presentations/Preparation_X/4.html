@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    
+    
+    <title></title>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/Cirkadin-4.css" rel="stylesheet">
+    <style type="text/css">
+        
+        
+	#slide-Cirkadin-4-background {
+		 left: 0px;
+		 top: 0px;
+		 position: relative;
+		 margin: 0 auto;
+		 overflow: hidden;
+		 z-index: 0;
+		 width:1024px;
+		 height:768px;
+	}
+
+
+    </style>
+<meta name="clm-swipe-next" content="5.html"><meta name="clm-swipe-previous" content="3.html"><meta name="clm" content="3.html,5.html"></head>
+<body>
+    <div id="slide-Cirkadin-4-background">
+        
+
+<div class="footer">
+    <div id="slide-Cirkadin-1-layer-25" class="text">С</div>
+    <div id="slide-Cirkadin-1-layer-19" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-26" class="text">М</div>
+    <div id="slide-Cirkadin-1-layer-23" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-27" class="text">i</div>
+    <div id="slide-Cirkadin-1-layer-24" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-22"></div>
+    <div id="slide-Cirkadin-1-layer-21"></div>
+    <div id="slide-Cirkadin-1-layer-20"></div>
+
+    <div class="popup popup-1">
+        <!--<p>1. Материалы будут опубликован в журнале «Неврология психиатрия и психосоматика» Qualisleep</p>-->
+    </div>
+    <div class="popup popup-2"></div>
+    <div class="popup popup-3">
+        
+    </div>
+</div>
+
+	<div>
+
+		<div id="slide-Cirkadin-4-layer-6"></div>
+
+		<div id="slide-Cirkadin-4-layer-5"></div>
+	</div>
+
+	<div id="slide-Cirkadin-4-layer-3" class="header"><p class="percent">91,8%</p> <br><span>пациентов с инсомнией оценили терапию <br>Препаратом Х как очень эффективную и эффективную<sup>1</sup></span></br></div>
+
+	<div id="slide-Cirkadin-4-layer-2">n = 36</div>
+
+	<div id="slide-Cirkadin-4-layer-1"></div>
+        <audio id="owlcat" src="mediafiles/owlcat.mp3"></audio>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/StoryCLMNavigation.js"></script>
+    <script src="js/storyclm-1.0.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+         $(function () {
+            setTimeout(function () {
+                document.getElementById('owlcat').play();
+            }, 500);
+
+            $('.percent').addClass('pulsate');
+             $('.footer .bg').on(clickEvent, function () {
+            	var prev = $(this).prev();
+            	var index = $('.footer .bg').index(this);
+            	$('.footer .bg').not(this).removeClass('active');
+				$('.footer .text').not(prev).removeClass('active');
+
+            	$(this).toggleClass('active');
+            	$(this).prev().toggleClass('active');
+
+            	var popup = $('.popup').eq(index);
+            	$('.popup').not(popup).removeClass('active');
+            	popup.toggleClass('active');
+            });
+
+            $('.footer .text').on(clickEvent, function () {
+            	var next = $(this).next();
+            	var index = $('.footer .text').index(this);
+            	$('.footer .text').not(this).removeClass('active');
+				$('.footer .bg').not(next).removeClass('active');
+
+            	$(this).toggleClass('active');
+            	$(this).next().toggleClass('active');
+
+            	var popup = $('.popup').eq(index);
+            	$('.popup').not(popup).removeClass('active');
+            	popup.toggleClass('active');
+            });
+
+            $('body').on(clickEvent, function (e) {
+            	if (!$(e.target).closest('.popup').length && !$(e.target).closest('.footer .bg').length && !$(e.target).closest('.footer .text').length) {
+
+            		$('.popup.active').removeClass('active');
+            		$('.bg.active').removeClass('active');
+            		$('.text.active').removeClass('active');
+            	};
+            });
+
+            FastClick.attach(document.body);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+    <title>Tanakan</title>
+
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tanakan_yo1.css">
+
+    <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+    <script type='text/javascript' src='js/functions.js'></script>
+
+    
+    
+    
+<meta name="clm-swipe-next" content="vizit_1.html"><meta name="clm-swipe-previous" content="index.html"><meta name="clm" content="index.html,vizit_1.html"></head>
+<body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+<div id="all-content">
+    <div class="slide">
+        <div class="black-layer"></div>
+        <div class="galaxy-no"></div>
+        <div class="galaxy"></div>
+        <div class="neyron">
+            <div class="neyron-lights"></div>
+            <div class="neyron-no"></div>
+        </div>
+
+
+        <div class="planet-1"></div>
+        <div class="planet-2"></div>
+        <div class="planet-3"></div>
+
+        <div class="slide-title">Звездные системы<br>формируются тысячелетиями</div>
+
+
+        <div class="slide-footer">
+            <div class="footer-but but-c"></div>
+            <div class="footer-but but-m"></div>
+            <div class="footer-but but-i"></div>
+            <div class="logo"></div>
+        </div>
+        <div class="links-i">
+            <div class="middle"></div>
+            <div class="links-text-i">
+                <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                <p data-pdf="ButtonI.pdf">Препарат Х</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+            $(function(){
+                $(".planet-1").addClass("newpos");
+                $(".planet-2").addClass("newpos");
+                $(".planet-3").addClass("newpos");
+                setTimeout(function(){
+                    $(".planet-3").addClass("bottom");
+                    $(".slide-title").addClass("hidden");
+                    setTimeout(function(){
+                        $(".planet-2").addClass("bottom");
+                        setTimeout(function(){
+                            $(".slide-title").html("Нарушение механизмов формирования ведет<br>к длительному восстановлению, на протяжении<br>многих лет");
+                            $(".slide-title").removeClass("hidden");
+                            $(".planet-1").addClass("bottom");
+                            setTimeout(function(){
+                                $(".galaxy-no, .planet-1, .planet-2, .planet-3").addClass("hidden");
+                                $(".galaxy").addClass("hidden1");
+                                //$(".slide-title").addClass("newtr");
+                               $(".slide-title").addClass("newtr");
+                                setTimeout(function () {
+                                    $(".neyron").addClass("active");
+                                    $(".slide-title").addClass("hidden");
+                                    setTimeout(function(){
+                                        $(".neyron-no").addClass("active");
+                                        $(".slide-title").html("Восстановление нарушенных коммуникаций<br> головного мозга — длительный <br>и кропотливый процесс");
+                                        $(".slide-title").removeClass("hidden");
+                                        setTimeout(function(){
+
+                                            setTimeout(function(){
+
+                                            }, 1500);
+                                        },2000);
+                                    },2000)
+                                },3500);
+                            },500);
+
+                        },400);
+                    },400);
+                },5000);
+            });
+    </script>
+
+<script src="js/StoryCLMNavigation.js"></script>
+<script src="js/hammer.js"></script>
+<script src="js/main.js"></script>
+<script>
+    var viznum = localStorage.getItem('num_viz');
+    localStorage.removeItem('prev_sequence_viz');
+    localStorage.setItem('num_yo','bright_1.html');
+    
+</script>
+</body>
+</html>

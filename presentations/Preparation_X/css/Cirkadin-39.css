@@ -1,0 +1,20 @@
+#slide-Cirkadin-39-layer-2 {
+    position: absolute;
+    top: 78.50px;
+    left: 47.00px;
+    z-index: 2;
+    font-family: FuturaPTBook;
+    font-size: 21.50px;
+    color: #EBEEED;
+}
+
+#slide-Cirkadin-39-layer-1 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-39/slide-Cirkadin-39-layer-1.png);
+    position: absolute;
+    top: 0.00px;
+    left: 0.00px;
+    width: 1024.00px;
+    height: 768.00px;
+    z-index: 1;
+}

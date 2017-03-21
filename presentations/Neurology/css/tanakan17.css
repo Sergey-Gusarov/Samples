@@ -1,0 +1,64 @@
+.planets {
+  background: url('../img/img-17-1.png?1452051273') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 557px;
+  height: 497px;
+  position: absolute;
+  left: 92px;
+  top: 173px;
+}
+
+.arrows {
+  background: url('../img/img-17-2.png?1452052610') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 226px;
+  height: 102px;
+  position: absolute;
+  left: 324px;
+  top: 438px;
+  -webkit-animation: pulse 2s .3s 3;
+}
+
+.item {
+  color: #fff;
+  font-family: Geometria;
+  font-size: 22.50px;
+  font-weight: 400;
+  position: absolute;
+}
+.item:after {
+  content: '';
+  background: url('../img/img-17-3.png?1452052775') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 28.5px;
+  height: 28.5px;
+  position: absolute;
+  top: -3px;
+  left: -30px;
+}
+.item:nth-child(1) {
+  left: 669.50px;
+  top: 261.50px;
+}
+.item:nth-child(2) {
+  left: 707.00px;
+  top: 396.00px;
+}
+.item:nth-child(3) {
+  left: 668.50px;
+  top: 542.50px;
+}
+
+.desc {
+  font-size: 18.00px;
+  margin-top: 15px;
+}

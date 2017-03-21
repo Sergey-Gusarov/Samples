@@ -1,0 +1,232 @@
+.graph-title {
+    position: absolute;
+    left: 189px;
+    top: 207px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+}
+sup {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    top: -4px;
+    font-size: 0.6em;
+}
+.graph {
+    position: absolute;
+    left: 57px;
+    top: 302px;
+    width: 715px;
+    height: 337px;
+    background: url(../img/s9_graph.png);
+    background-size: 100% 100%;
+}
+.graph-text1{
+    position: absolute;
+    left: 0px;
+    top: -3px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text2{
+    position: absolute;
+    left: 142px;
+    top: 319px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text3{
+    position: absolute;
+    left: 373px;
+    top: 319px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text4{
+    position: absolute;
+    left: 589px;
+    top: 319px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text5{
+    position: absolute;
+    text-align: right;
+    left: 61px;
+    top: -8px;
+    font-size: 18px;
+    line-height: 38px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.graph-line {
+    position: absolute;
+    bottom: 150px;
+    width: 26px;
+    height: 0;
+    transition: all 1.5s ease-in-out;
+    -webkit-transition: all 1.5s ease-in-out;
+    overflow: hidden;
+}
+.line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+}
+.line.r {
+    height: 244px;
+    background: url(../img/s9_l1.png);
+    background-size: 100% 100%;
+}
+.line.b {
+    height: 315px;
+    background: url(../img/s9_l2.png);
+    background-size: 100% 100%;
+}
+.line.y {
+    height: 189px;
+    background: url(../img/s9_l3.png);
+    background-size: 100% 100%;
+}
+.line.g {
+    height: 225px;
+    background: url(../img/s9_l4.png);
+    background-size: 100% 100%;
+}
+.graph-line.l1 {left: 176px;}
+.graph-line.l2 {left: 219px;}
+.graph-line.l3 {left: 261px;}
+.graph-line.l4 {left: 304px;}
+.graph-line.l5 {left: 386px;}
+.graph-line.l6 {left: 430px;}
+.graph-line.l7 {left: 478px;}
+.graph-line.l8 {left: 521px;}
+.graph-line.l9 {left: 602px;}
+.graph-line.l10 {left: 645px;}
+.graph-line.l11 {left: 692px;}
+.graph-line.l12 {left: 738px;}
+
+.graph-line.l1.active {height: 244px}
+.graph-line.l2.active {height: 315px}
+.graph-line.l3.active {height: 189px}
+.graph-line.l4.active {height: 225px}
+.graph-line.l5.active {height: 207px; transition-delay: 1000ms; -webkit-transition-delay: 1000ms;}
+.graph-line.l6.active {height: 216px; transition-delay: 1000ms; -webkit-transition-delay: 1000ms;}
+.graph-line.l7.active {height: 125px; transition-delay: 1000ms; -webkit-transition-delay: 1000ms;}
+.graph-line.l8.active {height: 163px; transition-delay: 1000ms; -webkit-transition-delay: 1000ms;}
+.graph-line.l9.active {height: 168px; transition-delay: 2000ms; -webkit-transition-delay: 2000ms;}
+.graph-line.l10.active {height: 176px; transition-delay: 2000ms; -webkit-transition-delay: 2000ms;}
+.graph-line.l11.active {height: 110px; transition-delay: 2000ms; -webkit-transition-delay: 2000ms;}
+.graph-line.l12.active {height: 129px; transition-delay: 2000ms; -webkit-transition-delay: 2000ms;}
+.percent {
+    position: absolute;
+    color: #fff;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0;
+}
+.p1 {
+    left: 587px;
+    top: 406px;
+}
+.p2 {
+    left: 635px;
+    top: 398px;
+}
+.p3 {
+    left: 679px;
+    top: 465px;
+}
+.p4 {
+    left: 724px;
+    top: 445px;
+}
+.percent:after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    width: 9px;
+    height: 17px;
+    background: url(../img/s9_arrow.png);
+    background-size: 100% 100%;
+    margin-left: -4px;
+
+}
+.percent.active {
+    opacity: 1;
+    animation: fade 4s linear;
+    -webkit-animation: fade 4s linear;
+}
+@keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}
+@-webkit-keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}
+.dots {
+    position: absolute;
+    left: 768px;
+    top: 304px;
+    width: 26px;
+    height: 114px;
+    background: url(../img/s9_li.png);
+    background-size: 100% 100%;
+}
+.ul {
+    position: absolute;
+    left: 793px;
+    top: 302px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+}
+.star:before {
+    content: '*';
+    position: absolute;
+    top: -7px;
+    left: 16px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.star-2:before {
+    content: '**';
+    position: absolute;
+    top: -7px;
+    left: 16px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+}

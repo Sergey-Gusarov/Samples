@@ -1,0 +1,172 @@
+.slide-title {
+    letter-spacing: -1px;
+}
+.graph-names {
+    position: absolute;
+    left: 32px;
+    top: 278px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+}
+.graph-name {
+    position: relative;
+    margin-bottom: 28px;
+}
+.graph-top-title {
+    position: absolute;
+    left: 232px;
+    top: 202px;
+    color: #fff;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.graph-bottom-title {
+    position: absolute;
+    left: 232px;
+    top: 664px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.graph-x {
+    position: absolute;
+    left: 783px;
+    top: 605px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+.graph {
+    position: absolute;
+    left: 229px;
+    top: 265px;
+    width: 561px;
+    height: 369px;
+    background: url(../img/s4_graph.png);
+    background-size: 100% 100%;
+}
+.graph-l1 {
+    position: absolute;
+    left: 800px;
+    top: 276px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+.graph-l1:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -28px;
+    width: 26px;
+    height: 25px;
+    background: url(../img/s4_l1.png);
+    background-size: 100% 100%;
+}
+.graph-l2 {
+    position: absolute;
+    left: 800px;
+    top: 311px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+.graph-l2:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -28px;
+    width: 26px;
+    height: 25px;
+    background: url(../img/s4_l2.png);
+    background-size: 100% 100%;
+}
+.graph-p {
+    position: absolute;
+    left: 671px;
+    top: 494px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+.line {
+    position: absolute;
+    left: 233px;
+    height: 25px;
+    overflow: hidden;
+    transition: width 1.5s ease-in-out;
+    -webkit-transition: width 1.5s ease-in-out;
+    width: 18px;
+}
+.line-bg {
+    position: absolute;
+    right: 0;
+    width: 498px;
+    height: 25px;
+    background: url(../img/s4_line1.png) right center;
+    background-size: 100% 100%;
+}
+.line.blue .line-bg {
+    background: url(../img/s4_line2.png) right center;
+    background-size: 100% 100%;
+}
+.line.l1 {top: 271px;}
+.line.l2 {top: 288px;}
+.line.l3 {top: 344px;}
+.line.l4 {top: 361px;}
+.line.l5 {top: 415px;}
+.line.l6 {top: 432px;}
+.line.l7 {top: 488px;}
+.line.l8 {top: 505px;}
+.line.l9 {top: 561px;}
+.line.l10 {top: 578px;}
+
+.line.l1.active {width: 498px}
+.line.l2.active {width: 475px}
+.line.l3.active {width: 235px}
+.line.l4.active {width: 96px}
+.line.l5.active {width: 189px}
+.line.l6.active {width: 134px}
+.line.l7.active {width: 88px}
+.line.l8.active {width: 66px}
+.line.l9.active {width: 18px}
+.line.l10.active {width: 30px}
+.percent {
+    position: absolute;
+    left: 470px;
+    top: 348px;
+    width: 71px;
+    height: 87px;
+    background: url(../img/s4_percent.png);
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.percent.active {
+     opacity: 1;
+     animation: fade 5s linear;
+     -webkit-animation: fade 5s linear;
+ }
+@keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}
+@-webkit-keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}

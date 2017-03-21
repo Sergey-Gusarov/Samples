@@ -1,0 +1,135 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+        <title>Tanakan</title>
+
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/tanakan_yo2.css">
+
+        <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='js/functions.js'></script>
+
+        
+        
+        
+    <meta name="clm-swipe-next" content=""><meta name="clm-swipe-previous" content="index.html"><meta name="clm" content=""></head>
+    <body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+        <div id="all-content">
+            <div class="slide">
+
+                <div class="brain">
+                    <div class="brain-lights"></div>
+                </div>
+
+                <div class="slide-title">Стыковка космических кораблей</div>
+
+
+                <div class="planet"></div>
+
+                <div id="sputnik">
+                    <div class="sputnik-part1"></div>
+                    <div class="sputnik-part2"></div>
+                </div>
+
+                <div class="sputnik-text1 sputnik-text">
+                    Научно-доказанный<br>
+                    математический<br>
+                    подход
+                </div>
+                <div class="sputnik-text2 sputnik-text">
+                    Комплексные работы:<br>
+                    проектировщиков,<br>
+                    космонавтов,<br>
+                    диспетчеров
+                </div>
+                <div class="sputnik-text3 sputnik-text">
+                    Длительный<br>
+                    процесс подготовки
+                </div>
+
+                <div class="brain-text1 brain-text">
+                    Научно-доказанный<br>
+                    медицинский<br>
+                    подход
+                </div>
+                <div class="brain-text2 brain-text">
+                    Длительный<br>
+                    процесс<br>
+                    восстановления
+                </div>
+                <div class="brain-text3 brain-text">
+                    Комплексное<br>
+                    действие на проблему
+                </div>
+
+
+
+                <div class="slide-footer">
+                    <div class="footer-but but-c"></div>
+                    <div class="footer-but but-m"></div>
+                    <div class="footer-but but-i"></div>
+                    <div class="logo"></div>
+                </div>
+                <div class="links-i">
+                    <div class="middle"></div>
+                    <div class="links-text-i">
+                        <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                        <p data-pdf="ButtonI.pdf">Препарат Х</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                setTimeout(function(){
+                    $("#sputnik").addClass("full");
+                    setTimeout(function(){
+                        $("#sputnik").addClass("fly");
+                        $(".sputnik-text").addClass("show");
+                    },3000);
+                });
+                $("#sputnik").on(mup, function(){
+                    if ($("#sputnik").hasClass("fly")){
+                        $(".sputnik-text").removeClass("show");
+                        setTimeout(function(){
+                            $(".planet").addClass("move");
+                            $("#sputnik").addClass("move");
+                            $(".slide-title").addClass("hidden");
+                        },700);
+                        setTimeout(function(){
+                            $(".slide-title").html("Лечение когнитивных нарушений");
+                            $(".slide-title").removeClass("hidden");
+                            $(".brain").addClass("show");
+                            setTimeout(function(){
+                                $(".brain-text").addClass("show");
+                            },800);
+                        },2500)
+                    }
+                });
+
+            });
+        </script>
+
+        <script src="js/StoryCLMNavigation.js"></script>
+        <script src="js/hammer.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            var viznum = localStorage.getItem('num_viz');
+            localStorage.removeItem('prev_sequence_viz');
+            localStorage.setItem('num_yo','bright_2.html');
+            
+            window.storyCLMNavigation.onSwipeNext = function (direction) {
+                // if (direction && !drag_flag) {
+                    window.location = 'vizit_1.html';
+                // } else {
+                    // return false;
+                // }
+            }
+        </script>
+    </body>
+</html>

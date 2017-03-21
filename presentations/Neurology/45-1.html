@@ -1,0 +1,135 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+        <title>Tanakan</title>
+
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/tanakan_8-1.css">
+
+        <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='js/functions.js'></script>
+
+        
+        
+        
+    <meta name="clm-swipe-next" content="41-4.html"><meta name="clm-swipe-previous" content="tanakan_11-4.html"><meta name="clm" content="tanakan_11-4.html,41-4.html"></head>
+    <body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+        <div id="all-content">
+            <div class="slide s8">
+                <div class="slide-title">
+                    Эффект 3-х месячного курса Препарат Ха в суточной<br>
+                    дозе 120 мг сохраняется до года, что может<br>
+                    снизить затраты на лечение*
+                </div>
+
+                <div class="graph-title">
+                    Препарат Х<sup>®</sup> в лечении пациентов с начальными проявлениями<br>
+                    недостаточности кровоснабжения мозга
+                </div>
+
+                <div id="graphs">
+                    <div id="graph1" class="graph">
+                        <div class="graph-name">Оценка функции внимания по пробе Бурдона</div>
+                        <div class="graph-p">*р&lt;0,05</div>
+                        <div class="graph-text1">ошибки</div>
+                        <div class="graph-text2">до лечения</div>
+                        <div class="graph-text3">после курса<br>лечения</div>
+                        <div class="graph-text4">6–11 месяцев<br>после лечения</div>
+                        <div class="graph-text5">
+                            25<br>
+                            20<br>
+                            15<br>
+                            10<br>
+                            5<br>
+                            0
+                        </div>
+                        <div class="graph-lines">
+                            <div class="graph-line"></div>
+                            <div class="graph-line"><span>*</span></div>
+                            <div class="graph-line"><span>*</span></div>
+                        </div>
+                    </div>
+
+                    <div id="graph2" class="graph">
+                        <div class="graph-name">Оценка функции внимания по таблицам Шульте</div>
+                        <div class="graph-p">*р&lt;0,05</div>
+                        <div class="graph-text1">секунды</div>
+                        <div class="graph-text2">до лечения</div>
+                        <div class="graph-text3">после курса<br>лечения</div>
+                        <div class="graph-text4">6–11 месяцев<br>после лечения</div>
+                        <div class="graph-text5">
+                            44<br>
+                            43<br>
+                            42<br>
+                            41<br>
+                            40<br>
+                            39<br>
+                            38<br>
+                            37<br>
+                            36<br>
+                            35
+                        </div>
+                        <div class="graph-lines">
+                            <div class="graph-line"></div>
+                            <div class="graph-line"><span>*</span></div>
+                            <div class="graph-line"><span>*</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="planets">
+                    <div class="planet planet1"><span>Таблицы<br>Шульте</span></div>
+                    <div class="planet planet2 active"><span>Проба<br>Бурдона</span></div>
+                </div>
+
+                <div class="slide-footer">
+                    <div class="footer-but but-c"></div>
+                    <div class="footer-but but-m"></div>
+                    <div class="footer-but but-i"></div>
+                    <div class="logo"></div>
+                </div>
+
+                <div class="links-i">
+                    <div class="middle"></div>
+                    <div class="links-text-i">
+                        <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                        <p data-pdf="ButtonI.pdf">Препарат Х</p>
+                    </div>
+                </div>
+                <div class="links">
+                    <div class="middle"></div>
+                    <div class="links-text">
+                        *Суслина З.И., Тимербаева С.Л. Журнал неврологии психиатрии им. С.С.Корсакова. 1999.10.С37-42
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                setTimeout(function(){
+                    $("#graph1").addClass("active");
+                });
+
+                $(".planet").on(mup, function(){
+                    $(".planet").removeClass("active");
+                    $(this).addClass("active");
+                    $(".graph").removeClass("active");
+                    if ($(this).index() == 1) {
+                        $("#graph1").addClass("active");
+                    } else if ($(this).index() == 0) {
+                        $("#graph2").addClass("active");
+                    }
+                });
+            })
+        </script>
+        <script src="js/StoryCLMNavigation.js"></script>
+        <script src="js/hammer.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+.galaxy {
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo3_galaxy.png);
+    background-size: 100% 100%;
+    opacity: 1;
+    visibility: visible;
+}
+.galaxy-star{
+    position: absolute;
+    left: 218px;
+    top: 356px;
+    width: 250px;
+    height: 250px;
+    background: url(../img/yo3_star.png);
+    background-size: 100% 100%;
+    opacity: 1;
+    animation: pulse 1.5s linear infinite;
+    -webkit-animation: pulse 1.5s linear infinite;
+}
+.brain{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo3_brain.png);
+    background-size: 100% 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.5s linear;
+    -webkit-transition: all 1.5s linear;
+}
+.brain.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes pulse {
+    0%   {opacity: 1}
+    80%  {opacity: 0.3; transform: scale(0.8);}
+    100% {opacity: 1}
+}
+@-webkit-keyframes pulse {
+    0%   {opacity: 1}
+    80%  {opacity: 0.3; transform: scale(0.8);}
+    100% {opacity: 1}
+}
+
+@keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+@-webkit-keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+
+.hidden{
+    transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+
+

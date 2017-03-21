@@ -1,0 +1,26 @@
+.table {
+  background: url('../img/img-22-2.png?1452055336') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1004.5px;
+  height: 587px;
+  position: absolute;
+  left: 9.50px;
+  top: 116.50px;
+}
+
+.green {
+  background: url('../img/img-22-1.png?1452055073') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1004.5px;
+  height: 17px;
+  position: absolute;
+  left: 9.50px;
+  top: 401.00px;
+  -webkit-animation: pulse 2s .3s 3;
+}

@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="clm-swipe-next" content="13.html">
+    <meta name="clm-swipe-previous" content="11.html">
+    <meta name="clm" content="11.html,13.html">
+    <title></title>
+    <link href="css/main.css?v=1" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/magic.min.css" rel="stylesheet">
+    <style type="text/css">
+        #Layer1 {
+            background-image: url(images/12/Layer1.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 1024px;
+            height: 769px;
+            z-index: 1;
+        }
+        #Layer2 {
+            background-image: url(images/12/Layer2.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 115px;
+            left: 0px;
+            width: 1024px;
+            height: 654px;
+            z-index: 2;
+        }
+        #Layer3 {
+            font-size: 46.058px;
+            font-family: "MyriadPro";
+            color: rgb(16, 133, 157);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 41px;
+            left: 246px;
+            z-index: 3;
+        }
+        #Layer4 {
+            font-size: 102.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 229px;
+            left: 107px;
+            z-index: 4;
+        }
+        #proc {
+            font-size: 102.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 229px;
+            left: 187px;
+            z-index: 4;
+        }
+        #Layer5 {
+            font-size: 102.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 460px;
+            left: 360px;
+            z-index: 5;
+        }
+        #Layer6 {
+            font-size: 102.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 542px;
+            left: 104px;
+            z-index: 6;
+        }
+        #Layer7 {
+            font-size: 23px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1;
+            text-align: left;
+            position: absolute;
+            top: 329px;
+            left: 102px;
+            z-index: 7;
+        }
+        #Layer8 {
+            font-size: 23px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1;
+            text-align: left;
+            position: absolute;
+            top: 509px;
+            left: 103px;
+            z-index: 8;
+        }
+        #Layer9 {
+            font-size: 23px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1;
+            text-align: left;
+            position: absolute;
+            top: 654px;
+            left: 102px;
+            z-index: 9;
+        }
+        #Layer10 {
+            font-size: 23px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1;
+            text-align: left;
+            position: absolute;
+            top: 328px;
+            left: 360px;
+            z-index: 10;
+        }
+        #Layer11 {
+            background-image: url(images/12/Layer11.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 480px;
+            left: 505px;
+            width: 18px;
+            height: 10px;
+            z-index: 11;
+        }
+        #Layer12 {
+            background-image: url(images/12/Layer12.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 219px;
+            left: 594px;
+            width: 430px;
+            height: 453px;
+            z-index: 12;
+        }
+        #background {
+            left: 0px;
+            top: 0px;
+            position: relative;
+            margin: 0 auto;
+            width: 1024px;
+            height: 769px;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .breffied {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-delay: .6s;
+        }
+        .stomp {
+            -webkit-animation-name: stomp;
+            animation-name: stomp;
+        }
+        @-webkit-keyframes stomp {
+            0% {
+                -webkit-transform: scale3d(1.7, 1.7, 1.7);
+                transform: scale3d(1.7, 1.7, 1.7);
+            }
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <div id="Layer1"></div>
+        <div id="Layer2"></div>
+        <div id="Layer3" class="forAllT">НЕСКОЛЬКО ФАКТОВ О BREFFI CLM</div>
+        <div id="Layer4" class="forAllT">0</div>
+        <div id="proc" class="forAllT">%</div>
+        <div id="Layer5" class="forAllT">30%</div>
+        <div id="Layer6" class="forAllT">+8%</div>
+        <div id="Layer7" class="forAllT">представителей считают,
+            <br>что SMART планшет
+            <br>увеличивает качество
+            <br>их визита и влияет на
+            <br>позитивный результат*</div>
+        <div id="Layer8" class="forAllT">Индекс выписки может
+            <br>быть изменен до</div>
+        <div id="Layer9" class="forAllT">за цикл**</div>
+        <div id="Layer10" class="forAllT">Благодаря сбору
+            <br>качественных метрик и
+            <br>алгоритмизации визита –
+            <br>длительность визита
+            <br>может быть сокращена
+            <br>более чем на</div>
+        <div id="Layer11" class="forAllT"></div>
+        <div id="Layer12"></div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/StoryCLMNavigation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/number.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+            $('.forAllT').css('opacity', '0');
+            $('#Layer2').css('top', '0');
+            $('#Layer2').css('height', '768px');
+            $('#Layer12').css('left', '1024px');
+            setTimeout(function () {
+                $('.forAllT').addClass('fonTransit');
+                $('#Layer2').addClass('fonTransit');
+                $('#Layer2').css('height', '654px');
+                $('#Layer2').css('top', '115px');
+                setTimeout(function () {
+                    $('#Layer3').addClass('breffied stomp');
+                    setTimeout(function () {
+                        $('#Layer11').css('opacity', '1');
+                        $('#proc').css('opacity', '1');
+                        $('#Layer4').css('opacity', '1');
+                        $('#Layer7').css('opacity', '1');
+                        $('#Layer8').css('opacity', '1');
+                        $('#Layer9').css('opacity', '1');
+                        $('#Layer10').css('opacity', '1');
+                        $('#Layer12').addClass('breffied slideLeft');
+                        setTimeout(function () {
+                            NumberUp();
+                            setTimeout(function () {
+                                $('#Layer6').addClass('breffied tinLeftIn');
+                                setTimeout(function () {
+                                    $('#Layer5').addClass('breffied spaceInDown');
+                                }, 1300);
+                            }, 1800);
+                        }, 1300);
+                    }, 1200);
+                }, 500);
+            }, 300);
+        });
+        function NumberUp() {
+            $('#Layer4').animateNumber({
+                    number: 90,
+                    easing: 'easeInQuad',
+                    numberStep: function (now, tween) {
+                        var floored_number = Math.floor(now),
+                            target = $(tween.elem);
+                        target.text(floored_number);
+                    }
+                },
+                1800
+            );
+        };
+    </script>
+</body>
+</html>

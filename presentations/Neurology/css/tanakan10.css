@@ -1,0 +1,112 @@
+.table {
+  background: url('../img/img-10-1.png?1452132898') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 844px;
+  height: 465px;
+  position: absolute;
+  left: 97px;
+  top: 194px;
+}
+
+.months {
+  position: absolute;
+  left: 636.00px;
+  top: 624.50px;
+  color: #fff;
+  font-family: Geometria;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  -webkit-animation: pulse 1.0s 5.5s 3 forwards;
+}
+
+.table-inner {
+  width: 0;
+  height: 233.5px;
+  position: absolute;
+  left: 154.5px;
+  bottom: 59px;
+  overflow: hidden;
+  -webkit-animation: open 4.5s .3s 1 forwards;
+}
+
+@-webkit-keyframes open {
+  35% {
+    width: 231px;
+  }
+  65% {
+    width: 231px;
+  }
+  100% {
+    width: 463px;
+  }
+}
+.lines {
+  background: url('../img/img-10-2.png?1452134014') no-repeat center;
+  background-size: 100% 100%;
+  width: 463px;
+  height: 233.5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.arrow1 {
+  position: absolute;
+  left: 476.0px;
+  top: 378.5px;
+  background: url('../img/img-10-3.png?1452134202') no-repeat;
+  background-size: auto 100%;
+    width: 20px;
+  height: 136px;
+  opacity: 0;
+  /*-webkit-animation: visible .3s 1.3s 1 forwards;*/
+}
+.arrow2 {
+  position: absolute;
+    left: 697px;
+    top: 378.5px;
+  background: url('../img/img-10-3.png?1452134202') no-repeat;
+  background-size: auto 100%;
+  width: 20px;
+  height: 136px;
+  opacity: 0;
+  /*-webkit-animation: visible .3s 1.3s 1 forwards;*/
+}
+
+@-webkit-keyframes visible {
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.arrow1.active, .arrow2.active {
+    opacity: 1;
+    animation: fade 3.5s linear;
+    -webkit-animation: fade 3.5s linear;
+}
+@keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}
+@-webkit-keyframes fade {
+    0%   {opacity: 0}
+    14% {opacity: 1}
+    28%   {opacity: 0}
+    42% {opacity: 1}
+    56%   {opacity: 0}
+    70% {opacity: 1}
+    84%   {opacity: 0}
+    100%   {opacity: 1}
+}

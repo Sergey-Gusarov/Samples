@@ -1,0 +1,36 @@
+.text {
+  background: url('../img/img-14-1-1.png?1452079604') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 980px;
+  height: 706.5px;
+  position: absolute;
+  left: 24px;
+  top: 10px;
+}
+
+.percent, .description {
+  color: #fff;
+  font-family: Geometria;
+  font-weight: 500;
+  position: absolute;
+}
+
+.percent {
+  font-size: 122.50px;
+  top: 183px;
+  left: 395px;
+  -webkit-animation: pulse 2s .3s 3;
+}
+
+.description {
+  font-size: 41.00px;
+  left: 164.50px;
+  top: 310.00px;
+  text-align: center;
+}
+.description sup{
+  top: 0px;
+}

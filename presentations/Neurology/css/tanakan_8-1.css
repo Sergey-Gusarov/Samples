@@ -1,0 +1,286 @@
+.graph-title{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 195px;
+    font-weight: 300;
+    color: #fff;
+    font-size: 21px;
+    line-height: 24px;
+}
+.graph{
+    position: absolute;
+    display: block;
+    top: 303px;
+    left: 226px;
+    width: 516px;
+    height: 308px;
+    background: url(../img/s8_graph_bg.png);
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.graph.active{
+    opacity: 1;
+}
+
+.graph-name{
+    position: absolute;
+    width: 100%;
+    left: 63px;
+    color: #fed373;
+    text-shadow: 0 0 5px rgba(254, 211, 115, 0.59);
+    font-size: 19px;
+    line-height: 20px;
+    top: -35px;
+    font-weight: 300;
+}
+.graph-p{
+    position: absolute;
+    left: 435px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    top: 21px;
+    font-weight: 300;
+}
+.graph-text1{
+    position: absolute;
+    left: -110px;
+    top: -3px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text2{
+    position: absolute;
+    left: 15px;
+    top: 312px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.graph-text3{
+    position: absolute;
+    left: 203px;
+    top: 312px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    white-space: nowrap;
+}
+.graph-text4{
+    position: absolute;
+    left: 382px;
+    top: 312px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    white-space: nowrap;
+}
+.graph-text5{
+    position: absolute;
+    text-align: right;
+    left: -31px;
+    top: -23px;
+    font-size: 18px;
+    line-height: 60px;
+    color: #fff;
+    font-weight: 300;
+}
+#graph2 .graph-text5{
+    position: absolute;
+    text-align: right;
+    left: -31px;
+    top: -9px;
+    font-size: 18px;
+    line-height: 33px;
+    color: #fff;
+    font-weight: 300;
+}
+#graph2 .graph-text1{
+    left: -116px;
+}
+
+.graph-lines{
+    position: absolute;
+    width: 100%;
+    height: 307px;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+.graph-line{
+    position: absolute;
+    width: 25px;
+    height: 285px;
+    left: 50px;
+    top: 320px;
+    background: url(../img/s8-1-arrow.png);
+    background-size: 100% 100%;
+}
+.graph-line span{
+    position: absolute;
+    left: 19px;
+    top: 1px;
+    color: #fff;
+    font-size: 11px;
+    line-height: 11px;
+}
+.graph-line:nth-child(2){
+    left: 244px;
+}
+.graph-line:nth-child(3){
+    left: 435px;
+}
+
+#graph1.active .graph-line{
+    transition: all 800ms ease-in-out;
+    -webkit-transition: all 800ms ease-in-out;
+}
+#graph1.active .graph-line:nth-child(1){
+    top: 52px;
+    transition-delay: 0ms;
+    -webkit-transition-delay: 0ms;
+}
+#graph1.active .graph-line:nth-child(2){
+    top: 195px;
+    transition-delay: 1000ms;
+    -webkit-transition-delay: 1000ms;
+}
+#graph1.active .graph-line:nth-child(3){
+    top: 209px;
+    transition-delay: 2000ms;
+    -webkit-transition-delay: 2000ms;
+}
+
+
+
+#graph1.active .graph-text4{
+    animation: fade 4s linear;
+    -webkit-animation: fade 4s linear;
+    animation-delay: 1000ms;
+    -webkit-animation-delay: 1000ms;
+}
+
+#graph2.active .graph-line{
+    transition: all 800ms ease-in-out;
+    -webkit-transition: all 800ms ease-in-out;
+}
+#graph2.active .graph-line:nth-child(1){
+    top: 26px;
+    transition-delay: 0ms;
+    -webkit-transition-delay: 0ms;
+}
+#graph2.active .graph-line:nth-child(2){
+    top: 195px;
+    transition-delay: 1000ms;
+    -webkit-transition-delay: 1000ms;
+}
+#graph2.active .graph-line:nth-child(3){
+    top: 209px;
+    transition-delay: 2000ms;
+    -webkit-transition-delay: 2000ms;
+}
+
+
+#graph2.active .graph-text4{
+    animation: fade 4s linear;
+    -webkit-animation: fade 4s linear;
+    animation-delay: 1200ms;
+    -webkit-animation-delay: 1200ms;
+}
+
+
+@keyframes fade {
+    0%   {opacity: 1}
+    14% {opacity: 1}
+    28%   {opacity: 0.3}
+    42% {opacity: 1}
+    56%   {opacity: 0.3}
+    70% {opacity: 1}
+    84%   {opacity: 0.3}
+    100%   {opacity: 1}
+}
+@-webkit-keyframes fade {
+    0%   {opacity: 1}
+    14% {opacity: 1}
+    28%   {opacity: 0.3}
+    42% {opacity: 1}
+    56%   {opacity: 0.3}
+    70% {opacity: 1}
+    84%   {opacity: 0.3}
+    100%   {opacity: 1}
+}
+
+
+.planet{
+    position: absolute;
+    width: 124px;
+    height: 124px;
+    left: 808px;
+    top: 272px;
+    border-radius: 100%;
+    border: rgba(255, 255, 255, 0) solid 1px;
+    cursor: pointer;
+}
+.planet span{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0px;
+    top: 136px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.planet.active{
+    border: rgba(255, 255, 255, 0.7) solid 1px;
+}
+.planet2{
+    top: 477px;
+}
+.planet:after{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 130px;
+    height: 130px;
+    left: -3px;
+    top: -3px;
+    animation: fly 1.5s linear infinite;
+    -webkit-animation: fly 1.5s linear infinite;
+}
+.planet1:after{
+    background: url(../img/s8-1-planet1.png);
+    background-size: 100% 100%;
+}
+.planet2:after{
+    background: url(../img/s8-1-planet2.png);
+    background-size: 100% 100%;
+}
+.planet.active:after{
+    animation: none;
+    -webkit-animation: none;
+}
+
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}

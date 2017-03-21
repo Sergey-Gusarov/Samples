@@ -1,0 +1,147 @@
+.slide{
+    background: url(../img/tanakan_11_bg.png);
+    background-size: 100% 100%;
+}
+
+#timer{
+    position: absolute;
+    display: block;
+    left: 50%;
+    margin-left: -162px;
+    top: 221px;
+    width: 324px;
+    height: 324px;
+    background: url(../img/sl11_time.png);
+    background-size: 100% 100%;
+}
+#timer-arrow{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    left: 50%;
+    top: 50.2%;
+    transition: all 2000ms ease-in-out;
+    -webkit-transition: all 2000ms ease-in-out;
+}
+#timer-arrow:after{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 23px;
+    height: 170px;
+    background: url(../img/sl11_arrow.png);
+    background-size: 100% 100%;
+    left: 50%;
+    margin-left: -12px;
+    bottom: 0px;
+}
+#timer-arrow.active{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+.ship{
+    position: absolute;
+    animation: fly 2.5s linear infinite;
+    -webkit-animation: fly 2.5s linear infinite;
+}
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}
+@-webkit-keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}
+.ship:nth-child(1){
+    left: 113px;
+    top: 135;
+    width: 305px;
+    height: 182px;
+    background: url(../img/sl11_ship1.png);
+    background-size: 100% 100%;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.ship:nth-child(2){
+    left: 111px;
+    top: 347px;
+    width: 144px;
+    height: 87px;
+    background: url(../img/sl11_ship2.png);
+    background-size: 100% 100%;
+}
+.ship:nth-child(3){
+    left:150px;
+    top: 480px;
+    width: 179px;
+    height: 86px;
+    background: url(../img/sl11_ship3.png);
+    background-size: 100% 100%;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.ship:nth-child(4){
+    left: 292px;
+    top: 572px;
+    width: 189px;
+    height: 107px;
+    background: url(../img/sl11_ship4.png);
+    background-size: 100% 100%;
+}
+.ship:nth-child(5){
+    left: 529px;
+    top: 562px;
+    width: 225px;
+    height: 117px;
+    background: url(../img/sl11_ship5.png);
+    background-size: 100% 100%;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.ship:nth-child(6){
+    left: 727px;
+    top: 462px;
+    width: 240px;
+    height: 138px;
+    background: url(../img/sl11_ship6.png);
+    background-size: 100% 100%;
+}
+.ship:nth-child(7){
+    left: 721px;
+    top: 365px;
+    width: 231px;
+    height: 105px;
+    background: url(../img/sl11_ship7.png);
+    background-size: 100% 100%;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.ship:nth-child(8){
+    left: 680px;
+    top: 172px;
+    width: 264px;
+    height: 138px;
+    background: url(../img/sl11_ship8.png);
+    background-size: 100% 100%;
+}

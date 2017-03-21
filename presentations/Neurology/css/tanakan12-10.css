@@ -1,0 +1,223 @@
+.planet-1 .planet-img {
+  background: url('../img/img-12-1.png?1452045347') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 202px;
+  height: 138.5px;
+  position: absolute;
+  left: 126.5px;
+  top: 299.5px;
+    animation: fly 2.5s linear infinite;
+    -webkit-animation: fly 2.5s linear infinite;
+}
+.planet-1 .planet-title {
+  left: 144.50px;
+  top: 240.00px;
+}
+
+.planet-2 .planet-img {
+  background: url('../img/img-12-2.png?1452045352') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 139.5px;
+  height: 139px;
+  position: absolute;
+  left: 441.5px;
+  top: 234.0px;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.planet-2 .planet-title {
+  left: 425.00px;
+  top: 177.00px;
+}
+
+.planet-3 .planet-img {
+  background: url('../img/img-12-3.png?1452045359') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 248.5px;
+  height: 191.5px;
+  position: absolute;
+  left: 656.0px;
+  top: 279.5px;
+    animation: fly 2.5s linear infinite;
+    -webkit-animation: fly 2.5s linear infinite;
+}
+.planet-3 .planet-title {
+  left: 716.00px;
+  top: 240.00px;
+}
+
+.planet-4 .planet-img {
+  background: url('../img/img-12-4.png?1452045371') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 395.5px;
+  height: 234px;
+  position: absolute;
+  left: 310.5px;
+  top: 432.5px;
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+.planet-4 .planet-title {
+  left: 358.00px;
+  top: 427.50px;
+  z-index: 2;
+}
+
+.planet-title, .star-title {
+  font-family: Geometria;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  position: absolute;
+  text-align: center;
+}
+
+.planet-title.active {
+  z-index: 3;
+}
+
+.star-title {
+  pointer-events: none;
+}
+.star-title:nth-child(1) {
+  left: 429.50px;
+  top: 519.50px;
+}
+.star-title:nth-child(2) {
+  left: 621.00px;
+  top: 563.00px;
+}
+.star-title:nth-child(3) {
+  left: 425.50px;
+  top: 601.50px;
+}
+.star-title:nth-child(4) {
+  left: 256.00px;
+  top: 563.00px;
+}
+
+.popup {
+  position: absolute;
+  z-index: 2;
+  visibility: hidden;
+  opacity: 0;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.popup:nth-child(1) {
+  background: url('../img/img-12-5.png?1452046262') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1024px;
+  height: 768px;
+}
+.popup:nth-child(1) .text {
+  left: 86.5px;
+  top: 280px;
+}
+.popup:nth-child(2) {
+  background: url('../img/img-12-6.png?1452047968') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1024px;
+  height: 768px;
+}
+.popup:nth-child(2) .text {
+  left: 317.0px;
+  top: 230px;
+}
+.popup:nth-child(3) {
+  background: url('../img/img-12-7.png?1452048224') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1024px;
+  height: 768px;
+}
+.popup:nth-child(3) .text {
+  left: 605px;
+  top: 290px;
+}
+.popup:nth-child(4) {
+  background: url('../img/img-12-8.png?1452048409') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1024px;
+  height: 768px;
+}
+.popup:nth-child(4) .text {
+  left: 256.5px;
+  top: 480px;
+}
+.popup .text {
+  position: absolute;
+}
+.popup p {
+  color: #fff;
+  font-family: Geometria;
+  font-size: 22.5px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 25px;
+}
+.popup.active {
+  visibility: visible;
+  opacity: 1;
+  -moz-transition: opacity 0.5s, visibility 0s;
+  -o-transition: opacity 0.5s, visibility 0s;
+  -webkit-transition: opacity 0.5s, visibility 0s;
+  transition: opacity 0.5s, visibility 0s;
+}
+
+
+
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}
+@-webkit-keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}

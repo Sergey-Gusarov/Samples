@@ -1,0 +1,59 @@
+.table {
+  background: url('../img/img-18-1.png?1452055839') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 960px;
+  height: 545px;
+  position: absolute;
+  left: 32.00px;
+  top: 145.00px;
+}
+
+.red-wrapper, .blue-wrapper {
+  left: 246.50px;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.red-wrapper {
+  -webkit-animation: lines 2s .3s 1 forwards;
+}
+
+.blue-wrapper {
+  -webkit-animation: lines 1.8s 1.5s 1 forwards;
+}
+
+@-webkit-keyframes lines {
+  100% {
+    width: 600px;
+  }
+}
+.red-lines {
+  background: url('../img/img-18-2.png?1452056499') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 415.5px;
+  height: 430.5px;
+  position: absolute;
+  left: 0;
+  top: 182.00px;
+}
+
+.blue-lines {
+  background: url('../img/img-18-3.png?1452056525') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 565.5px;
+  height: 458.5px;
+  position: absolute;
+  left: 0;
+  top: 199.00px;
+}

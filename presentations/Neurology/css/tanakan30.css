@@ -1,0 +1,476 @@
+﻿
+
+	#slide_tanakan30_layer_1 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_1.png);
+		 position: absolute;
+		 top:0.00px;
+		 left:0.00px;
+		 width:1024.00px;
+		 height:768.00px;
+	}
+
+
+	#slide_tanakan30_layer_2 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_2.png);
+		 position: absolute;
+		 top:0.00px;
+		 left:0.00px;
+		 width:1024.00px;
+		 height:768.00px;
+	}
+
+
+	#slide_tanakan30_layer_3 {
+		 position: absolute;
+		 top:23.50px;
+		 left:45.50px;
+		 font-style:normal;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:36.00px;
+		 line-height: 1.2;
+		 color:#FFFFFF;
+		 letter-spacing: -0.6px;
+    	 word-spacing: 1px;
+	}
+
+	#slide_tanakan30_layer_3 div {
+		font-weight: 500;
+	}
+
+
+	#slide_tanakan30_layer_4 {
+		 position: absolute;
+		 top: 220px;
+		 left:218.50px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+		 letter-spacing: 0.1px;
+	}
+
+
+	#slide_tanakan30_layer_6 {
+		 position: absolute;
+		 top: 282.5px;
+		 left:196.00px;
+		 font-style:regular;
+		 text-align:right;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:4.78;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_7 {
+		 position: absolute;
+		 top:570.00px;
+		 left:224.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:3.44;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_8 {
+		 position: absolute;
+		 top: 312px;
+		 left:67.00px;
+		 font-style:regular;
+		 text-align:right;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height: 1.35;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_9 {
+		 position: absolute;
+		 top:338.50px;
+		 left: 786.5px;
+		 font-style:regular;
+		 text-align:left;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.67;
+		 color:#FFFFFF;
+	}
+
+	#slide_tanakan30_layer_9 span {
+	    display: block;
+	    text-indent: 13px;
+	    margin-top: -8px;
+	}
+
+
+	#slide_tanakan30_layer_10 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_10.png);
+		 position: absolute;
+		 top:341.50px;
+		 left:773.50px;
+		 width:25.50px;
+		 height:54.50px;
+	}
+
+
+	#slide_tanakan30_layer_11 {
+		 position: absolute;
+		 top:586.50px;
+		 left:360.50px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height: 1.2;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_12 {
+		 position: absolute;
+		 top:586.50px;
+		 left:524.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height: 1.2;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_13 {
+		 position: absolute;
+		 top:586.50px;
+		 left:672.50px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height: 1.2;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_14 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_14.png);
+		 position: absolute;
+		 top:324.00px;
+		 left:369.50px;
+		 width:109.50px;
+		 height:260.50px;
+	}
+
+
+	#slide_tanakan30_layer_15 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_15.png);
+		 position: absolute;
+		 top:324.00px;
+		 left:219.50px;
+		 width:109.50px;
+		 height:260.50px;
+	}
+
+
+	#slide_tanakan30_layer_16 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_16.png);
+		 position: absolute;
+		 top:324.00px;
+		 left:519.00px;
+		 width:109.50px;
+		 height:260.50px;
+	}
+
+
+	#slide_tanakan30_layer_17 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_17.png);
+		 position: absolute;
+		 top:324.00px;
+		 left:669.00px;
+		 width:109.50px;
+		 height:260.50px;
+	}
+
+
+	#slide_tanakan30_layer_18 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_18.png);
+		 position: absolute;
+		 top:325.00px;
+		 left:217.50px;
+		 width:561.00px;
+		 height:261.00px;
+		 overflow:hidden;
+	}
+
+
+	#slide_tanakan30_layer_29 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_29.png);
+		 position: absolute;
+		 bottom: -166px;
+		 left:25.50px;
+		 width:25.50px;
+		 height:165px;
+		 -webkit-transition: bottom 0.5s ease-in 0.5s;
+		 	transition: bottom 0.5s ease-in 0.5s;
+	}
+
+	#slide_tanakan30_layer_29.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_30 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_30.png);
+		 position: absolute;
+		 bottom: -211px;
+		 left:62.50px;
+		 width:25.50px;
+		 height:211px;
+		 -webkit-transition: bottom 0.5s ease-in 1s;
+		 	transition: bottom 0.5s ease-in 1s;
+	}
+
+	#slide_tanakan30_layer_30.active {
+		bottom: 0;
+	}
+
+	#slide_tanakan30_layer_33 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_33.png);
+		 position: absolute;
+		 bottom: -157px;
+		 left:174.50px;
+		 width:25.50px;
+		 height:157.00px;
+		 -webkit-transition: bottom 0.5s ease-in 0.5s;
+		 	transition: bottom 0.5s ease-in 0.5s;
+	}
+
+	#slide_tanakan30_layer_33.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_34 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_34.png);
+		 position: absolute;
+		 bottom: -210px;
+		 left:212.50px;
+		 width:25.50px;
+		 height:210px;
+		 -webkit-transition: bottom 0.5s ease-in 1s;
+		 	transition: bottom 0.5s ease-in 1s;
+	}
+
+	#slide_tanakan30_layer_34.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_37 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_37.png);
+		 position: absolute;
+		 bottom: -161px;
+		 left:324.50px;
+		 width:25.50px;
+		 height:161.00px;
+		 -webkit-transition: bottom 0.5s ease-in 0.5s;
+		 	transition: bottom 0.5s ease-in 0.5s;
+	}
+
+	#slide_tanakan30_layer_37.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_38 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_38.png);
+		 position: absolute;
+		 bottom: -200px;
+		 left:365.00px;
+		 width:25.50px;
+		 height:200px;
+		 -webkit-transition: bottom 0.5s ease-in 1s;
+		 	transition: bottom 0.5s ease-in 1s;
+	}
+
+	#slide_tanakan30_layer_38.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_41 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_41.png);
+		 position: absolute;
+		 bottom: -200px;
+		 left:476.00px;
+		 width:25.50px;
+		 height:200px;
+		 -webkit-transition: bottom 0.5s ease-in 0.5s;
+		 	transition: bottom 0.5s ease-in 0.5s;
+	}
+
+	#slide_tanakan30_layer_41.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_42 {
+		 background-size:100% 100%;
+		 background-image:url(../images/tanakan30/slide_tanakan30_layer_42.png);
+		 position: absolute;
+		 bottom: -233px;
+		 left:514.00px;
+		 width:25.50px;
+		 height:233px;
+		 -webkit-transition: bottom 0.5s ease-in 1s;
+		 	transition: bottom 0.5s ease-in 1s;
+	}
+
+	#slide_tanakan30_layer_42.active {
+		bottom: 0;
+	}
+
+
+	#slide_tanakan30_layer_44 {
+		 position: absolute;
+		 top:352.50px;
+		 left:272.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_45 {
+		 position: absolute;
+		 top:395.50px;
+		 left:235.64px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_46 {
+		 position: absolute;
+		 top:405.00px;
+		 left:385.64px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_47 {
+		 position: absolute;
+		 top:404.50px;
+		 left:536.64px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_48 {
+		 position: absolute;
+		 top:366.00px;
+		 left:687.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_49 {
+		 position: absolute;
+		 top:355.50px;
+		 left:424.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_50 {
+		 position: absolute;
+		 top:364.00px;
+		 left:576.00px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+
+	#slide_tanakan30_layer_51 {
+		 position: absolute;
+		 top:334.00px;
+		 left:727.63px;
+		 font-style:regular;
+		 text-align:center;
+		 font-family:geometria;
+		 font-size:18.00px;
+		 line-height:1.33;
+		 color:#FFFFFF;
+	}
+
+	.tch {
+		opacity: 0;
+		-webkit-transition: opacity 0.5s ease-in 0.5s;
+			transition: opacity 0.5s ease-in 0.5s;
+	}
+
+	.tch-2 {
+		opacity: 0;
+		-webkit-transition: opacity 0.5s ease-in 1s;
+			transition: opacity 0.5s ease-in 1s;
+	}
+
+
+	.tch.active,
+	.tch-2.active {
+		opacity: 1;
+	}

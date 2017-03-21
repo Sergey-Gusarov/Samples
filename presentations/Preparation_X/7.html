@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    
+    
+    <title></title>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/Cirkadin-7.css" rel="stylesheet">
+    <style type="text/css">
+        
+        
+	#slide-Cirkadin-7-background {
+		 left: 0px;
+		 top: 0px;
+		 position: relative;
+		 margin: 0 auto;
+		 overflow: hidden;
+		 z-index: 0;
+		 width:1024px;
+		 height:768px;
+	}
+
+
+    </style>
+<meta name="clm-swipe-next" content=""><meta name="clm-swipe-previous" content="6.html"><meta name="clm" content="6.html,37.html,35.html,33.html,34.html,36.html"></head>
+<body>
+    <div id="slide-Cirkadin-7-background">
+        
+<div class="footer">
+    <div id="slide-Cirkadin-1-layer-25" class="text">С</div>
+    <div id="slide-Cirkadin-1-layer-19" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-26" class="text">М</div>
+    <div id="slide-Cirkadin-1-layer-23" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-27" class="text">i</div>
+    <div id="slide-Cirkadin-1-layer-24" class="bg"></div>
+
+    <div id="slide-Cirkadin-1-layer-22"></div>
+    <div id="slide-Cirkadin-1-layer-21"></div>
+    <div id="slide-Cirkadin-1-layer-20"></div>
+
+    <div class="popup popup-1"></div>
+    <div class="popup popup-2"></div>
+    <div class="popup popup-3">
+        
+    </div>
+</div>
+
+
+	<div class="state-2">
+
+        <div id="slide-Cirkadin-7-layer-19" class="button" data-route="35.html">Препарат 4<br></div>
+
+        <div id="slide-Cirkadin-7-layer-18" class="button" data-route="35.html"></div>
+
+        <div id="slide-Cirkadin-7-layer-17" class="button" data-route="36.html">Препарат 3<br></div>
+
+        <div id="slide-Cirkadin-7-layer-16" class="button" data-route="36.html"></div>
+
+        <div id="slide-Cirkadin-7-layer-15" class="button" data-route="34.html">Препарат 2<br></div>
+
+        <div id="slide-Cirkadin-7-layer-14" class="button" data-route="34.html"></div>
+
+        <div id="slide-Cirkadin-7-layer-13" class="button" data-route="33.html">Препарат 1<br></div>
+
+        <div id="slide-Cirkadin-7-layer-12" class="button" data-route="33.html"></div>
+
+		<div id="slide-Cirkadin-7-layer-11_1" class="sunshine"></div>
+		<div id="slide-Cirkadin-7-layer-11_2" class="sunshine"></div>
+		<div id="slide-Cirkadin-7-layer-11_3" class="sunshine"></div>
+		<div id="slide-Cirkadin-7-layer-11_4" class="sunshine"></div>
+
+		<div id="slide-Cirkadin-7-layer-10"></div>
+	</div>
+
+	<div id="slide-Cirkadin-7-layer-8" class="header">Препарат Х — физиологичный снотворный <br>препарат с доказанной эффективностью</br></div>
+	<div class="button-1"></div>
+	<div class="button button-2" data-route="37.html"></div>
+	<div id="slide-Cirkadin-7-layer-7">Другая терапия</div>
+	<div id="slide-Cirkadin-7-layer-7_1" data-route="37.html">Препарат Х</div>
+
+
+	<div>
+
+		<div id="slide-Cirkadin-7-layer-5"></div>
+
+		<div id="slide-Cirkadin-7-layer-4"></div>
+
+		<div id="slide-Cirkadin-7-layer-3"></div>
+
+		<div id="slide-Cirkadin-7-layer-2"></div>
+	</div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/StoryCLMNavigation.js"></script>
+    <script src="js/storyclm-1.0.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(function () {
+        	var clickEvent = ('ontouchstart' in window ? 'touchend' : 'click');
+
+        	$('#slide-Cirkadin-7-layer-4').addClass('pulsate');
+        	setTimeout(function () {
+        		$('#slide-Cirkadin-7-layer-3').addClass('pulsate');
+        	}, 1000);
+
+        	$('.button-1').on(clickEvent, function () {
+        		$('.state-2 *').fadeIn(600, function () {
+    				$('.sunshine').eq(0).addClass('pulsate')
+
+        			setTimeout(function (){
+        				$('.sunshine').eq(1).addClass('pulsate')
+        			}, 2000);
+
+        			setTimeout(function (){
+        				$('.sunshine').eq(2).addClass('pulsate')
+        			}, 4000);
+
+        			setTimeout(function (){
+        				$('.sunshine').eq(3).addClass('pulsate')
+        			}, 6000);
+        		});
+        	});
+
+
+             $('.footer .bg').on(clickEvent, function () {
+            	var prev = $(this).prev();
+            	var index = $('.footer .bg').index(this);
+            	$('.footer .bg').not(this).removeClass('active');
+				$('.footer .text').not(prev).removeClass('active');
+
+            	$(this).toggleClass('active');
+            	$(this).prev().toggleClass('active');
+
+            	var popup = $('.popup').eq(index);
+            	$('.popup').not(popup).removeClass('active');
+            	popup.toggleClass('active');
+            });
+
+            $('.footer .text').on(clickEvent, function () {
+            	var next = $(this).next();
+            	var index = $('.footer .text').index(this);
+            	$('.footer .text').not(this).removeClass('active');
+				$('.footer .bg').not(next).removeClass('active');
+
+            	$(this).toggleClass('active');
+            	$(this).next().toggleClass('active');
+
+            	var popup = $('.popup').eq(index);
+            	$('.popup').not(popup).removeClass('active');
+            	popup.toggleClass('active');
+            });
+
+            $('body').on(clickEvent, function (e) {
+            	if (!$(e.target).closest('.popup').length && !$(e.target).closest('.footer .bg').length && !$(e.target).closest('.footer .text').length) {
+
+            		$('.popup.active').removeClass('active');
+            		$('.bg.active').removeClass('active');
+            		$('.text.active').removeClass('active');
+            	};
+            });
+
+            FastClick.attach(document.body);
+        });
+    </script>
+</body>
+</html>

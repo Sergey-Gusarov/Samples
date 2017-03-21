@@ -1,0 +1,99 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+        <title>Tanakan</title>
+
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/tanakan_yo4.css">
+
+        <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='js/functions.js'></script>
+
+        
+        
+        
+    <meta name="clm-swipe-next" content=""><meta name="clm-swipe-previous" content="index.html"><meta name="clm" content=""></head>
+    <body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+        <div id="all-content">
+            <div class="slide">
+
+                <div id="lights">
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                </div>
+
+                <div class="neyron">
+                    <div class="neyron-lights"></div>
+                    <div class="neyron-no"></div>
+                </div>
+
+                <div class="slide-title">Каждый месяц во вселенной<br>рождаются 40 новых звезд</div>
+
+
+                <div class="slide-footer">
+                    <div class="footer-but but-c"></div>
+                    <div class="footer-but but-m"></div>
+                    <div class="footer-but but-i"></div>
+                    <div class="logo"></div>
+                </div>
+                <div class="links-i">
+                    <div class="middle"></div>
+                    <div class="links-text-i">
+                        <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                        <p data-pdf="ButtonI.pdf">Препарат Х</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                setTimeout(function(){
+                    $(".light").addClass("active");
+                }, 100);
+                $("#lights").on(mup, function(){
+                    $(".light").removeClass("active");
+                    setTimeout(function(){
+                        $(".neyron").addClass("active");
+                        $(".slide-title").addClass("hidden");
+                        setTimeout(function(){
+                            $(".slide-title").html("Примерно 85 000 нейронов ежедневно<br>угасают в коре головного мозга");
+                            $(".slide-title").removeClass("hidden");
+                            setTimeout(function(){
+                                $(".neyron-no").addClass("active");
+                            },2000);
+                        },500)
+                    },2500)
+                });
+            });
+        </script>
+
+        <script src="js/StoryCLMNavigation.js"></script>
+        <script src="js/hammer.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            var viznum = localStorage.getItem('num_viz');
+            localStorage.removeItem('prev_sequence_viz');
+            localStorage.setItem('num_yo','bright_4.html');
+
+            window.storyCLMNavigation.onSwipeNext = function (direction) {
+                // if (direction && !drag_flag) {
+                    window.location = 'vizit_1.html';
+                // } else {
+                    // return false;
+                // }
+            }
+            
+        </script>
+    </body>
+</html>

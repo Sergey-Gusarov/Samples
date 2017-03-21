@@ -1,0 +1,185 @@
+.planet-1 {
+    position: absolute;
+    left: 211px;
+    top: 330px;
+    width: 36px;
+    height: 36px;
+    background: url(../img/s1_planet1.png);
+    background-size: 100% 100%;
+    transition: all 4s linear;
+    -webkit-transition: all 4s linear;
+    opacity: 1;
+    visibility: visible;
+}
+.planet-2 {
+    position: absolute;
+    left: 538px;
+    top: 537px;
+    width: 61px;
+    height: 60px;
+    background: url(../img/s1_planet2.png);
+    background-size: 100% 100%;
+    transition: all 4s linear;
+    -webkit-transition: all 4s linear;
+    opacity: 1;
+    visibility: visible;
+}
+.planet-3 {
+    position: absolute;
+    left: 818px;
+    top: 258px;
+    width: 126px;
+    height: 126px;
+    background: url(../img/s1_planet3.png);
+    background-size: 100% 100%;
+    transition: all 4s linear;
+    -webkit-transition: all 4s linear;
+    opacity: 1;
+    visibility: visible;
+}
+.planet-1.newpos{
+    left: 430px;
+    top: 200px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+.planet-2.newpos{
+    left: 200px;
+    top: 587px;
+    transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
+}
+.planet-3.newpos{
+    left: 500px;
+    top: 500px;
+    transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
+    margin-top: -5px;
+}
+.planet-1.bottom, .planet-2.bottom, .planet-3.bottom{
+    -webkit-transition: all 0.5s ease-in;
+    margin-top: 100px;
+    opacity: 0;
+}
+.galaxy {
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo_galaxy.png);
+    background-size: 100% 100%;
+    opacity: 1;
+    visibility: visible;
+}
+.galaxy-no {
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo_galaxy_no.png);
+    background-size: 100% 100%;
+    opacity: 1;
+    visibility: visible;
+}
+.galaxy.pulse{
+    animation: pulse 1.5s linear infinite;
+    -webkit-animation: pulse 1.5s linear infinite;
+}
+
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes pulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0.7}
+    100% {opacity: 1}
+}
+@-webkit-keyframes pulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0.7}
+    100% {opacity: 1}
+}
+
+@keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+@-webkit-keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+
+.hidden{
+    transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+.hidden1{
+    transition: all 1.5s linear;
+    -webkit-transition: all 1.5s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.neyron{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo_neiron.png);
+    background-size: 100% 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+}
+.neyron.active{
+    opacity: 1;
+    visibility: visible;
+}
+.neyron-lights{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo_neiron_lights.png);
+    background-size: 100% 100%;
+    animation: fullpulse 1.5s linear infinite;
+    -webkit-animation: fullpulse 1.5s linear infinite;
+}
+.neyron-no{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo_neiron_hide.png);
+    background-size: 100% 100%;
+    transition: all 3s linear;
+    -webkit-transition: all 3s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+.neyron-no.active{
+    opacity: 1;
+    visibility: visible;
+}
+

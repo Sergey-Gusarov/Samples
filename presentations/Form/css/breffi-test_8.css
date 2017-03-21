@@ -1,0 +1,722 @@
+#slide_breffi-test_8_background {
+    left: 0px;
+    top: 0px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: 0;
+    width: 1024px;
+    height: 768px;
+}
+
+#slide_breffi-test_8_layer_1 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_1.png?v=624184749206);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1024px;
+    height: 768px;
+}
+
+#slide_breffi-test_8_layer_2 {
+    position: absolute;
+    top: 697.5px;
+    left: 73.45px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #26B4D7;
+}
+
+#slide_breffi-test_8_layer_3 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_3.png?v=624184749206);
+    position: absolute;
+    top: 696.50px;
+    left: 51.50px;
+    width: 16.50px;
+    height: 16.50px;
+}
+
+#slide_breffi-test_8_layer_4 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_4.png?v=624184749207);
+    position: absolute;
+    top: 165.50px;
+    left: 64px;
+    width: 385px;
+    height: 504.50px;
+}
+
+#slide_breffi-test_8_layer_6 {
+    position: absolute;
+    top: 579.5px;
+    left: 525.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_8 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_8.png?v=624184749207);
+    position: absolute;
+    top: 569px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_9 {
+    position: absolute;
+    top: 568.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_10 {
+    position: absolute;
+    top: 571.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_12 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_12.png?v=624184749207);
+    position: absolute;
+    top: 569px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_13 {
+    position: absolute;
+    top: 571.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_27 {
+    position: absolute;
+    top: 503.5px;
+    left: 524.97px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_29 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_29.png?v=624184749207);
+    position: absolute;
+    top: 494px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_30 {
+    position: absolute;
+    top: 493.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_31 {
+    position: absolute;
+    top: 496.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_33 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_33.png?v=624184749207);
+    position: absolute;
+    top: 494px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_34 {
+    position: absolute;
+    top: 496.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_48 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_48.png?v=624184749207);
+    position: absolute;
+    top: 341px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_49 {
+    position: absolute;
+    top: 340.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_50 {
+    position: absolute;
+    top: 343.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_52 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_52.png?v=624184749207);
+    position: absolute;
+    top: 341px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_53 {
+    position: absolute;
+    top: 343.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_59 {
+    position: absolute;
+    top: 353px;
+    left: 525.51px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_67 {
+    position: absolute;
+    top: 423.5px;
+    left: 525.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_69 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_69.png?v=624184749207);
+    position: absolute;
+    top: 417px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_70 {
+    position: absolute;
+    top: 416.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_71 {
+    position: absolute;
+    top: 416.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_73 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_73.png?v=624184749207);
+    position: absolute;
+    top: 417px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_74 {
+    position: absolute;
+    top: 418.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_77 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_77.png?v=624184749207);
+    position: absolute;
+    top: 417px;
+    left: 785.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_78 {
+    position: absolute;
+    top: 419.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_88 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_88.png?v=624184749207);
+    position: absolute;
+    top: 264px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_89 {
+    position: absolute;
+    top: 263.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_90 {
+    position: absolute;
+    top: 263.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_92 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_92.png?v=624184749207);
+    position: absolute;
+    top: 264px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_93 {
+    position: absolute;
+    top: 263.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_99 {
+    position: absolute;
+    top: 266px;
+    left: 525.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_107 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_107.png?v=624184749207);
+    position: absolute;
+    top: 188px;
+    left: 785.50px;
+    width: 127.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_108 {
+    position: absolute;
+    top: 187.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_109 {
+    position: absolute;
+    top: 190.25px;
+    left: 794.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #929291;
+}
+
+#slide_breffi-test_8_layer_111 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_111.png?v=624184749207);
+    position: absolute;
+    top: 188px;
+    left: 850.50px;
+    width: 62.50px;
+    height: 44px;
+}
+
+#slide_breffi-test_8_layer_112 {
+    position: absolute;
+    top: 189.25px;
+    left: 866.53px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_118 {
+    position: absolute;
+    top: 197px;
+    left: 525.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_120 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_120.png?v=624184749207);
+    position: absolute;
+    top: 208.50px;
+    left: 481.50px;
+    width: 470.50px;
+    height: 170px;
+}
+
+#slide_breffi-test_8_layer_121 {
+    position: absolute;
+    top: 264.5px;
+    left: 531.47px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 19px;
+    line-height: 1.2;
+    color: #868685;
+}
+
+#slide_breffi-test_8_layer_122 {
+    position: absolute;
+    top: 244px;
+    left: 529.42px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #939392;
+}
+
+#slide_breffi-test_8_layer_127 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_127.png?v=624184749207);
+    position: absolute;
+    top: 0px;
+    left: 634px;
+    width: 351.50px;
+    height: 80px;
+}
+
+#slide_breffi-test_8_layer_128 {
+    position: absolute;
+    top: 24px;
+    left: 742.95px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #939392;
+}
+
+#slide_breffi-test_8_layer_131 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_131.png?v=624184749207);
+    position: absolute;
+    top: 0px;
+    left: 339px;
+    width: 355px;
+    height: 80px;
+}
+
+#slide_breffi-test_8_layer_132 {
+    position: absolute;
+    top: 28px;
+    left: 492.98px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #939392;
+}
+
+#slide_breffi-test_8_layer_135 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_135.png?v=624184749207);
+    position: absolute;
+    top: 24px;
+    left: 661.50px;
+    width: 296px;
+    height: 27px;
+}
+
+#slide_breffi-test_8_layer_136 {
+    position: absolute;
+    top: 28px;
+    left: 742.95px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+#slide_breffi-test_8_layer_139 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_139.png?v=624184749207);
+    position: absolute;
+    top: 0px;
+    left: 43.50px;
+    width: 355px;
+    height: 80px;
+}
+
+#slide_breffi-test_8_layer_140 {
+    position: absolute;
+    top: 28px;
+    left: 138.94px;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #939392;
+}
+
+#slide_breffi-test_8_layer_151 {
+    position: absolute;
+    top: 56.75px;
+    left: 71.97px;
+    font-style: normal;
+    font-family: GloberBook;
+    font-size: 35.50px;
+    line-height: 1.2;
+    color: #26B4D7;
+}
+
+.select-yes {
+    position: absolute;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_111.png?v=624184749207);
+    width: 62px;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    -webkit-transition: opacity 200ms linear;
+    transition: opacity 200ms linear;
+}
+
+.select-yes-1 {
+    top: 188px;
+    left: 850px;
+}
+
+.select-yes-2 {
+    top: 264px;
+    left: 850px;
+}
+
+.select-yes-3 {
+    top: 341px;
+    left: 850px;
+}
+
+.select-yes-4 {
+    top: 417px;
+    left: 850px;
+}
+
+.select-yes-5 {
+    top: 494px;
+    left: 850px;
+}
+
+.select-yes-6 {
+    top: 569px;
+    left: 850px;
+}
+
+.select-no {
+    position: absolute;
+    font-style: normal;
+    font-family: GloberRegular;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_8/slide_breffi-test_8_layer_77.png?v=624184749207);
+    position: absolute;
+    top: 417px;
+    left: 785.50px;
+    width: 63px;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 0 8px;
+    z-index: 30;
+    opacity: 0;
+    -webkit-transition: opacity 200ms linear;
+    transition: opacity 200ms linear;
+}
+
+.select-no-1 {
+    top: 188px;
+    left: 785px;
+}
+
+.select-no-2 {
+    top: 264px;
+    left: 785px;
+}
+
+.select-no-3 {
+    top: 341px;
+    left: 785px;
+}
+
+.select-no-4 {
+    top: 417px;
+    left: 785px;
+}
+
+.select-no-5 {
+    top: 494px;
+    left: 785px;
+}
+
+.select-no-6 {
+    top: 569px;
+    left: 785px;
+}
+
+.feedback-popup {
+    display: none;
+    position: absolute;
+    top: 175px;
+    left: 504px;
+    height: 451px;
+    width: 418px;
+    box-shadow: 0 0 46px 1px #DC5F0F;
+    ;
+	background-color: #fff;
+    border-radius: 15px;
+    z-index: 50;
+}
+
+.feedback-message {
+    margin: 10px;
+}
+
+.btn-close {
+    color: #fff;
+    font-size: 20px;
+    font-family: GloberRegular;
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: #dc5f13;
+    float: right;
+    margin: 0 21px;
+}
+
+.feedback-message {
+    border: none;
+    margin: 20px 20px 30px 20px;
+    font-size: 18px;
+    font-family: GloberRegular;
+    width: 374px;
+    height: 331px;
+    resize: none;
+    outline: none;
+}

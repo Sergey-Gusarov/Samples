@@ -1,0 +1,181 @@
+.brain{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo2_brain1.png);
+    background-size: 100% 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s linear;
+    -webkit-transition: all 1s linear;
+}
+.brain.show{
+    opacity: 1;
+    visibility: visible;
+}
+.brain-lights{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 1024px;
+    height: 768px;
+    background: url(../img/yo2_brain.png);
+    background-size: 100% 100%;
+    animation: fullpulse 1.5s linear infinite;
+    -webkit-animation: fullpulse 1.5s linear infinite;
+}
+
+.planet{
+    position: absolute;
+    width: 658px;
+    height: 398px;
+    left: 0px;
+    bottom: 0px;
+    background: url(../img/yo2_planet.png) no-repeat;
+    background-size: 100% 100%;
+    transition: all 1.5s ease-in-out;
+    -webkit-transition: all 1.5s ease-in-out;
+}
+.planet.move{
+    left: -100px;
+    bottom: -100px;
+}
+#sputnik{
+    position: absolute;
+    width: 748px;
+    height: 414px;
+    left: 172px;
+    top: 130px;
+    margin-top: -5px;
+    transition: all 1.5s ease-in-out;
+    -webkit-transition: all 1.5s ease-in-out;
+}
+#sputnik.move{
+    top: 800px;
+    left: 0px;
+}
+.sputnik-part1{
+    position: absolute;
+    width: 748px;
+    height: 414px;
+    left: 100px;
+    top: -50px;
+    background: url(../img/yo2_sp1.png) no-repeat;
+    background-size: 100% 100%;
+    transition: all 2.5s ease-in-out;
+    -webkit-transition: all 2.5s ease-in-out;
+}
+.sputnik-part2{
+    position: absolute;
+    width: 748px;
+    height: 414px;
+    left: -85px;
+    top: 80px;
+    background: url(../img/yo2_sp2.png) no-repeat;
+    background-size: 100% 100%;
+    transition: all 2.5s ease-in-out;
+    -webkit-transition: all 2.5s ease-in-out;
+}
+#sputnik.full .sputnik-part1, #sputnik.full .sputnik-part2{
+    left: 0px;
+    top: 0px;
+}
+#sputnik.fly{
+    animation: fly 2.5s linear infinite;
+    -webkit-animation: fly 2.5s linear infinite;
+}
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes pulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0.7}
+    100% {opacity: 1}
+}
+@-webkit-keyframes pulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0.7}
+    100% {opacity: 1}
+}
+
+@keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+@-webkit-keyframes fullpulse {
+    0%   {opacity: 1}
+    50%  {opacity: 0}
+    100% {opacity: 1}
+}
+
+.hidden{
+    transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.sputnik-text, .brain-text{
+    position: absolute;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 300;
+    opacity: 0;
+    transition: all 1s linear;
+    -webkit-transition: all 1s linear;
+}
+.sputnik-text1{
+    left: 400px;
+    top: 150px;
+    transition-delay: 0ms;
+    -webkit-transition-delay: 0ms;
+}
+.sputnik-text2{
+    left: 776px;
+    top: 275px;
+    transition-delay: 200ms;
+    -webkit-transition-delay: 200ms;
+}
+.sputnik-text3{
+    left: 530px;
+    top: 462px;
+    transition-delay: 400ms;
+    -webkit-transition-delay: 400ms;
+}
+.sputnik-text.show, .brain-text.show{
+    opacity: 1;
+}
+.brain-text1{
+    left: 123px;
+    top: 190px;
+    transition-delay: 0ms;
+    -webkit-transition-delay: 0ms;
+}
+.brain-text2{
+    left: 170px;
+    top: 493px;
+    transition-delay: 200ms;
+    -webkit-transition-delay: 200ms;
+}
+.brain-text3{
+    left: 722px;
+    top: 215px;
+    transition-delay: 400ms;
+    -webkit-transition-delay: 400ms;
+}

@@ -1,0 +1,111 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+    <title>Tanakan</title>
+
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tanakan41.css">
+
+    <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+    <script type='text/javascript' src='js/functions.js'></script>
+
+
+    
+    
+    
+<meta name="clm-swipe-next" content="therapy_76_3-2.html"><meta name="clm-swipe-previous" content="tanakan_13-3.html"><meta name="clm" content="tanakan_13-3.html,therapy_76_3-2.html"></head>
+<body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+<div id="all-content">
+    <div class="slide">
+        <div class="slide-title">Лечение когнитивных и нейросенсорных<br> нарушений требует подтверждения серьезной доказательной базой*
+        </div>
+
+        <div class="slide-text">Количество публикаций на <span>Pubmed.com</span></div>
+        <div id="book">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+
+        <div id="satelites">
+            <div class="satelite" data-kpi="Препарат Х">
+                <span data-kpi="Препарат Х">Препарат Х®<br>(EGB 761®)</span>
+                <img src="img/s41_s1.png" class="sat" alt="" data-kpi="Препарат Х">
+                <img src="img/s41_t1.png" class="txt" alt="" data-kpi="Препарат Х">
+            </div>
+            <div class="satelite" data-kpi="Препарат 1">
+                <span data-kpi="Препарат 1">Препарат 1<br>(Vinpocetine)</span>
+                <img src="img/s41_s2.png" class="sat" alt="" data-kpi="Препарат 1">
+                <img src="img/s41_t2.png" class="txt" alt="" data-kpi="Препарат 1">
+            </div>
+            <div class="satelite" data-kpi="Препарат 7">
+                <span data-kpi="Препарат 7">Препарат 7<br>(Actovegin)</span>
+                <img src="img/s41_s3.png" class="sat" alt="" data-kpi="Препарат 7">
+                <img src="img/s41_t3.png" class="txt" alt="" data-kpi="Препарат 7">
+            </div>
+            <div class="satelite" data-kpi="Препарат 5">
+                <span data-kpi="Препарат 5">Препарат 5<br>(Ethylmethylhydro-<br>xypyridine succinate)</span>
+                <img src="img/s41_s4.png" class="sat" alt="" data-kpi="Препарат 5">
+                <img src="img/s41_t4.png" class="txt" alt="" data-kpi="Препарат 5">
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <div class="footer-but but-c"></div>
+            <div class="footer-but but-m"></div>
+            <div class="footer-but but-i"></div>
+            <div class="logo"></div>
+        </div>
+        <div class="links-i">
+            <div class="middle"></div>
+            <div class="links-text-i">
+                <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                <p data-pdf="ButtonI.pdf">Препарат Х</p>
+            </div>
+        </div>
+        <div class="links">
+            <div class="middle"></div>
+            <div class="links-text">
+                *По данным сайта US National Library of Medicine National Institutes of Health pubmed.com
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var kpi_here;
+        $(".satelite").on(mup, function(){
+            kpi_here = $(this).data('kpi');
+            addToKPI('dokazatelnaya_baza',kpi_here);
+            $("img.sat").css({"opacity":0});
+            setTimeout(function(){
+                $("img.sat").eq(0).hide();
+                $("img.txt").eq(0).css({"opacity":1});
+            },300);
+            setTimeout(function(){
+                $("img.sat").eq(1).hide();
+                $("img.txt").eq(1).css({"opacity":1});
+            },600);
+            setTimeout(function(){
+                $("img.sat").eq(2).hide();
+                $("img.txt").eq(2).css({"opacity":1});
+            },900);
+            setTimeout(function(){
+                $("img.sat").eq(3).hide();
+                $("img.txt").eq(3).css({"opacity":1});
+            },1200);
+        });
+    })
+</script>
+<script src="js/StoryCLMNavigation.js"></script>
+<script src="js/hammer.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

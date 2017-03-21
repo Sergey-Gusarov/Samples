@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="clm-swipe-next" content="6.html">
+    <meta name="clm-swipe-previous" content="4.html">
+    <meta name="clm" content="4.html,6.html">
+    <title></title>
+    <link href="css/main.css?v=1" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/magic.min.css" rel="stylesheet">
+    <style type="text/css">
+        #Layer1 {
+            background-image: url(images/5/Layer1.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 1024px;
+            height: 769px;
+            z-index: 3;
+        }
+        #Layer2 {
+            background-color: #1891aa;
+            position: absolute;
+            top: 0px;
+            left: -5px;
+            width: 515px;
+            height: 769px;
+            z-index: 5;
+        }
+        #Layer3 {
+            background-color: #1891aa;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 510px;
+            height: 769px;
+            z-index: 4;
+        }
+        #Layer4 {
+            background-image: url(images/5/Layer4.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 86px;
+            left: 197px;
+            width: 113px;
+            height: 32px;
+            z-index: 6;
+        }
+        #Layer5 {
+            background-image: url(images/5/Layer5.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 86px;
+            left: 736px;
+            width: 67px;
+            height: 22px;
+            z-index: 7;
+        }
+        #Layer6 {
+            font-size: 25.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 465px;
+            left: 112px;
+            z-index: 8;
+        }
+        #Layer7 {
+            font-size: 25.058px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 465px;
+            left: 627px;
+            z-index: 9;
+        }
+        #Layer8 {
+            background-image: url(images/5/Layer8.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 142px;
+            left: 621px;
+            width: 299px;
+            height: 301px;
+            z-index: 10;
+        }
+        #Layer9 {
+            background-image: url(images/5/Layer9.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 142px;
+            left: 108px;
+            width: 300px;
+            height: 301px;
+            z-index: 11;
+        }
+        #Layer10 {
+            background-image: url(images/5/Layer10.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 768px;
+            left: 428px;
+            width: 208px;
+            height: 295px;
+            z-index: 12;
+        }
+        #Layer11 {
+            background-image: url(images/5/Layer11.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 273px;
+            left: 28px;
+            width: 69px;
+            height: 43px;
+            z-index: 13;
+        }
+        #Layer12 {
+            background-image: url(images/5/Layer12.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 253px;
+            left: 416px;
+            width: 70px;
+            height: 84px;
+            z-index: 14;
+        }
+        #background {
+            background-color: #1891aa;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            margin: 0 auto;
+            width: 1024px;
+            height: 769px;
+            overflow: hidden;
+            z-index: 0;
+        }
+        #back {
+            background-color: #1891aa;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            width: 1024px;
+            height: 769px;
+            z-index: 2;
+        }
+        .customMagic {
+            -webkit-animation-duration: 3s;
+            -moz-animation-duration: 3s;
+            -ms-animation-duration: 3s;
+            -o-animation-duration: 3s;
+            animation-duration: 3s;
+            -webkit-animation-fill-mode: both;
+            -moz-animation-fill-mode: both;
+            -ms-animation-fill-mode: both;
+            -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .colorAnim {
+            -webkit-animation: changeColor 2.2s;
+        }
+        @-webkit-keyframes changeColor {
+            from {
+                background-color: #1891aa;
+            }
+            to {
+                background-color: #18798c;
+            }
+        }
+        .breffied {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-delay: .45s;
+        }
+        .stomp {
+            -webkit-animation-name: stomp;
+            animation-name: stomp;
+        }
+        @-webkit-keyframes stomp {
+            0% {
+                -webkit-transform: scale3d(1.7, 1.7, 1.7);
+                transform: scale3d(1.7, 1.7, 1.7);
+            }
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        .customRotateIn {
+            -webkit-animation-name: rotateIn;
+            animation-name: rotateIn;
+        }
+        @-webkit-keyframes rotateIn {
+            0% {
+                -webkit-transform-origin: center;
+                transform-origin: center;
+                -webkit-transform: rotate3d(0, 0, 1, -600deg);
+                transform: rotate3d(0, 0, 1, -600deg);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform-origin: center;
+                transform-origin: center;
+                -webkit-transform: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+        .customZoomIn {
+            -webkit-animation-name: zoomIn;
+            animation-name: zoomIn;
+        }
+        @-webkit-keyframes zoomIn {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale3d(.3, .3, .3);
+                transform: scale3d(.3, .3, .3);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="background"> </div>
+        <div id="back"></div>
+        <div id="Layer1"></div>
+        <div id="Layer2" class="fAll"></div>
+        <div id="Layer3" class="fAll"></div>
+        <div id="Layer4" class="fAll"></div>
+        <div id="Layer5" class="fAll"></div>
+        <div id="Layer6" class="oAll">Вы узнаете насколько эффективна
+            <br>Ваша стратегия через 6 – 9 месяцев</div>
+        <div id="Layer7" class="oAll">Вы узнаете насколько эффективна
+            <br>Ваша стратегия через 1 день и
+            <br>сможете ее оптимизировать</div>
+        <div id="Layer8" class="oAll"></div>
+        <div id="Layer9" class="oAll"></div>
+        <div id="Layer10"></div>
+        <div id="Layer11" class="fAll"></div>
+        <div id="Layer12" class="fAll"></div>
+   
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/StoryCLMNavigation.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+            $('.fAll').css('opacity', '0');
+            $('.oAll').css('opacity', '0');
+            setTimeout(function () {
+                $('.fAll').addClass('fonTransit');
+                $('#Layer2').css('opacity', '1');
+                setTimeout(function () {
+                    $('#Layer3').css('opacity', '1');
+                    $('#Layer2').addClass('colorAnim');
+                    setTimeout(function () {
+                        $('#Layer2').css('background-color', '#18798c');
+                        $('#Layer2').removeClass('colorAnim');
+                        $('#Layer2').addClass('customMagic perspectiveRight');
+                        setTimeout(function () {
+                            $('#Layer4').css('opacity', '1');
+                            $('#Layer5').css('opacity', '1');
+                            setTimeout(function () {
+                                $('#Layer11').css('opacity', '1');
+                                $('#Layer9').addClass('breffied customRotateIn');
+                                setTimeout(function () {
+                                    $('#Layer12').css('opacity', '1');
+                                    $('#Layer6').addClass('breffied zoomIn');
+                                    setTimeout(function () {
+                                        $('#Layer8').addClass('breffied customRotateIn');
+                                        $('#Layer7').addClass('breffied zoomIn');
+                                        setTimeout(function () {
+                                            $('#Layer10').addClass('breffied slideUp');
+                                        }, 800);
+                                    }, 1000);
+                                }, 1000);
+                            }, 800);
+                        }, 1000);
+                    }, 800);
+                }, 810);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

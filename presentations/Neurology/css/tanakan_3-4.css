@@ -1,0 +1,143 @@
+.slide {
+    background: url(../img/s3-4_bg.png);
+    background-size: 100% 100%;
+}
+.slide-title {
+    top: 15px;
+}
+sup {
+    position: relative;
+    top: -4px;
+    font-size: 0.6em;
+}
+.moon {
+    position: absolute;
+    left: 493px;
+    top: 170px;
+    width: 110px;
+    height: 110px;
+    background: url(../img/s3_moon.png);
+    background-size: 100% 100%;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 110px;
+    text-align: center;
+}
+.moon-title {
+    position: absolute;
+    left: 223px;
+    top: 224px;
+    color: #fff;
+    font-size: 23px;
+    font-weight: 400;
+}
+.earth-title {
+    position: absolute;
+    left: 476px;
+    top: 324px;
+    color: #fff;
+    font-size: 23px;
+    font-weight: 400;
+}
+.earth {
+    position: absolute;
+    left: 854px;
+    top: 329px;
+    width: 145px;
+    height: 144px;
+    background: url(../img/s3_earth.png);
+    background-size: 100% 100%;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 155px;
+    text-align: center;
+}
+.packs {
+    position: absolute;
+    left: 706px;
+    top: 556px;
+    width: 288px;
+    height: 155px;
+    background: url(../img/s3_packs.png);
+    background-size: 100% 100%;
+}
+.path-hor {
+    position: absolute;
+    left: 420px;
+    top: 366px;
+    width: 50px;
+    height: 68px;
+    overflow: hidden;
+}
+.path-hor-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 442px;
+    height: 68px;
+    background: url(../img/s3_path.png);
+    background-size: 100% 100%;
+}
+.spaceship {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 160px;
+    height: 67px;
+    background: url(../img/s3_spaceship.png);
+    background-size: 100% 100%;
+}
+.spaceship-path {
+    position: absolute;
+    top: 356px;
+    left: 450px;
+    height: 67px;
+    width: 430px;
+}
+.spaceship.start {
+    animation: start 4s linear;
+    -webkit-animation: start 4s linear;
+}
+.path-hor.start {
+    animation: startpath 4s linear;
+    -webkit-animation: startpath 4s linear;
+}
+.spaceship.cycled {
+    -webkit-animation: fade .9s infinite;
+}
+@keyframes fade {
+    0%   {opacity: 0.2}
+    50%  {opacity: 1}
+    100% {opacity: 0.2}
+}
+@-webkit-keyframes fade {
+    0%   {opacity: 0.2}
+    50%  {opacity: 1}
+    100% {opacity: 0.2}
+}
+@keyframes start {
+    0%   {left: 0}
+    25% {left: 80px}
+    50% {left: 0px;}
+}
+@-webkit-keyframes start {
+    0%   {left: 0}
+    25% {left: 80px}
+    50% {left: 0px;}
+}
+@keyframes startpath {
+    0%   {width: 50px}
+    25% {width: 130px}
+    50% {width: 50px}
+    /*75% {width: 130px}*/
+    /*100% {width: 50px}*/
+}
+@-webkit-keyframes startpath {
+    0%   {width: 50px}
+    25% {width: 130px}
+    50% {width: 50px}
+    /*75% {width: 130px}*/
+    /*100% {width: 50px}*/
+}

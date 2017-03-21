@@ -1,0 +1,114 @@
+.description {
+  color: #fff;
+  font-family: Geometria;
+  font-size: 24px;
+  font-weight: 500;
+  left: 62px;
+  top: 613px;
+  position: absolute;
+}
+
+.morning {
+  background: url('../img/img-13-1.png?1452049572') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 224.5px;
+  height: 224.5px;
+  position: absolute;
+  left: 122.0px;
+  top: 210.0px;
+  /*-webkit-animation: pulse 2s .3s 3 ease-in-out;*/
+}
+
+.day {
+  background: url('../img/img-13-2.png?1452049580') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 221.5px;
+  height: 221.5px;
+  position: absolute;
+  left: 680.0px;
+  top: 211.5px;
+  /*-webkit-animation: pulse 2s .3s 3 ease-in-out;*/
+}
+
+.night {
+  background: url('../img/img-13-3.png?1452049588') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 221.5px;
+  height: 221.5px;
+  position: absolute;
+  left: 401.5px;
+  top: 478.0px;
+  /*-webkit-animation: pulse 2s .3s 3 ease-in-out;*/
+}
+
+@-webkit-keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+.text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: -30px;
+  color: #fff;
+  font-family: Geometria;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  /*-webkit-animation: pulse 2s .3s 3 ease-in-out;*/
+}
+
+.needle {
+  background: url('../img/img-13-4.png?1452049878') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 205.5px;
+  height: 204.5px;
+  position: absolute;
+  left: 355px;
+  top: 208px;
+}
+
+.pill {
+  background: url('../img/img-13-5.png?1452049886') no-repeat center;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 95px;
+  height: 114.5px;
+  position: absolute;
+  left: 552px;
+  top: 220px;
+}
+
+.mg, .or {
+  color: #fff;
+  font-family: Geometria;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  position: absolute;
+}
+
+.mg {
+  left: 484px;
+  top: 191px;
+}
+
+.or {
+  left: 497px;
+  top: 272px;
+}

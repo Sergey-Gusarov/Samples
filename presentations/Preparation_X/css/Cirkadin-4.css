@@ -1,0 +1,208 @@
+#slide-Cirkadin-4-layer-18 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-18.png);
+    position: absolute;
+    top: 706.00px;
+    left: 890.00px;
+    width: 112.50px;
+    height: 34.50px;
+    z-index: 18;
+}
+
+#slide-Cirkadin-4-layer-17 {
+    position: absolute;
+    top: 720.00px;
+    left: 162.50px;
+    z-index: 17;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 33.50px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-4-layer-16 {
+    position: absolute;
+    top: 719.50px;
+    left: 97.50px;
+    z-index: 16;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 30.24px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-4-layer-15 {
+    position: absolute;
+    top: 720.50px;
+    left: 44.00px;
+    z-index: 15;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 30.24px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-4-layer-14 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-14.png);
+    position: absolute;
+    top: 709.50px;
+    left: 143.00px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 14;
+}
+
+#slide-Cirkadin-4-layer-13 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-13.png);
+    position: absolute;
+    top: 709.50px;
+    left: 87.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 13;
+}
+
+#slide-Cirkadin-4-layer-12 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-12.png);
+    position: absolute;
+    top: 709.50px;
+    left: 31.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 12;
+}
+
+#slide-Cirkadin-4-layer-11 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-11.png);
+    position: absolute;
+    top: 709.50px;
+    left: 31.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 11;
+}
+
+#slide-Cirkadin-4-layer-10 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-10.png);
+    position: absolute;
+    top: 709.50px;
+    left: 143.00px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 10;
+}
+
+#slide-Cirkadin-4-layer-9 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-9.png);
+    position: absolute;
+    top: 709.50px;
+    left: 87.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 9;
+}
+
+#slide-Cirkadin-4-layer-6 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-6.png);
+    position: absolute;
+    top: 484.50px;
+    left: 419.00px;
+    width: 266.50px;
+    height: 126.50px;
+    z-index: 6;
+}
+
+#slide-Cirkadin-4-layer-5 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-5.png);
+    position: absolute;
+    top: 411.50px;
+    left: 376.50px;
+    width: 254.00px;
+    height: 253.50px;
+    z-index: 5;
+}
+
+#slide-Cirkadin-4-layer-3 {
+    position: absolute;
+    top: 174.50px;
+    left: 27.00px;
+    z-index: 3;
+    text-align: left;
+    font-family: FuturaPTMedium;
+    font-size: 110.39px;
+    color: #FFAE4E;
+    line-height: 36px;
+}
+
+#slide-Cirkadin-4-layer-3 span {
+    font-size: 28px;
+    line-height: 12px;
+}
+
+#slide-Cirkadin-4-layer-2 {
+    position: absolute;
+    top: 352.03px;
+    left: 36.50px;
+    z-index: 2;
+    font-family: FuturaPTBook;
+    font-size: 20.88px;
+    line-height: 9.97px;
+    color: #E3CFB2;
+}
+
+#slide-Cirkadin-4-layer-1 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-4/slide-Cirkadin-4-layer-1.png);
+    position: absolute;
+    top: 0.00px;
+    left: 0.00px;
+    width: 1024.00px;
+    height: 768.00px;
+    z-index: 1;
+}
+
+.percent {
+    margin-bottom: -30px;
+}
+
+.percent.pulsate {
+    -webkit-animation: pulsating 3s linear;
+    -webkit-animation-iteration-count: 3;
+    opacity: 1;
+}
+
+@-webkit-keyframes pulsating {
+    40% {
+        opacity: 0.0;
+    }
+
+    60% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-keyframes pulsating {
+    40% {
+        opacity: 0.0;
+    }
+
+    60% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

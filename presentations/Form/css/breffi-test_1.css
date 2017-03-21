@@ -1,0 +1,51 @@
+#slide_breffi-test_1_background {
+    left: 0px;
+    top: 0px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: 0;
+    width: 1024px;
+    height: 768px;
+}
+
+#slide_breffi-test_1_layer_1 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_1/slide_breffi-test_1_layer_1.png?v=62418474924);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1024px;
+    height: 768px;
+}
+
+#slide_breffi-test_1_layer_2 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_1/slide_breffi-test_1_layer_2.png?v=62418474925);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1024px;
+    height: 768px;
+}
+
+#slide_breffi-test_1_layer_3 {
+    background-size: 100% 100%;
+    background-image: url(../images/breffi-test_1/slide_breffi-test_1_layer_3.png?v=62418474925);
+    position: absolute;
+    top: 87.50px;
+    left: 0px;
+    width: 920px;
+    height: 584px;
+}
+
+#slide_breffi-test_1_layer_4 {
+    position: absolute;
+    top: 552.75px;
+    left: 626.42px;
+    font-style: normal;
+    font-family: GloberBook;
+    font-size: 29.50px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}

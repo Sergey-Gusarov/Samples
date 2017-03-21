@@ -1,0 +1,144 @@
+#slide-Cirkadin-1-layer-28 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-28.png);
+    position: absolute;
+    top: 706.00px;
+    left: 890.00px;
+    width: 112.50px;
+    height: 34.50px;
+    z-index: 128;
+}
+
+#slide-Cirkadin-1-layer-27 {
+    position: absolute;
+    top: 710px;
+    left: 160.5px;
+    z-index: 27;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 33.50px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-1-layer-26 {
+    position: absolute;
+    top: 713px;
+    left: 95.50px;
+    z-index: 26;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 30.24px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-1-layer-25 {
+    position: absolute;
+    top: 713px;
+    left: 42.00px;
+    z-index: 25;
+    text-align: right;
+    font-family: FuturaPTBook;
+    font-size: 30.24px;
+    color: #A48DCB;
+}
+
+#slide-Cirkadin-1-layer-24 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-19.png);
+    position: absolute;
+    top: 709.50px;
+    left: 143.00px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 24;
+    opacity: 0.2;
+}
+
+#slide-Cirkadin-1-layer-23 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-19.png);
+    position: absolute;
+    top: 709.50px;
+    left: 87.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 23;
+    opacity: 0.2;
+}
+
+#slide-Cirkadin-1-layer-22 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-22.png);
+    position: absolute;
+    top: 709.50px;
+    left: 31.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 22;
+}
+
+#slide-Cirkadin-1-layer-21 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-22.png);
+    position: absolute;
+    top: 709.50px;
+    left: 143.00px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 21;
+}
+
+#slide-Cirkadin-1-layer-20 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-22.png);
+    position: absolute;
+    top: 709.50px;
+    left: 87.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 20;
+}
+
+#slide-Cirkadin-1-layer-19 {
+    background-size: 100% 100%;
+    background-image: url(../images/footer/slide-Cirkadin-1-layer-19.png);
+    position: absolute;
+    top: 709.50px;
+    left: 31.50px;
+    width: 43.00px;
+    height: 43.00px;
+    z-index: 19;
+    opacity: 0.2;
+}
+
+.active.text {
+    color: #fff !important;
+}
+
+.active.bg {
+    opacity: 1 !important;
+}
+
+.popup {
+    background: #A48DCB;
+    position: absolute;
+    top: 50px;
+    left: 75px;
+    right: 75px;
+    bottom: 112px;
+    z-index: 800;
+    display: none;
+    overflow: auto;
+    padding: 40px;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup p {
+    font-size: 22px;
+    color: #424242;
+    line-height: 1.2;
+    font-family: FuturaPTBook;
+}

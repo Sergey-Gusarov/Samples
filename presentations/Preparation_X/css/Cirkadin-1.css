@@ -1,0 +1,207 @@
+#slide-Cirkadin-1-layer-15 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-15.png);
+    position: absolute;
+    top: 445.50px;
+    left: 773.50px;
+    width: 169.50px;
+    height: 87.00px;
+    z-index: 15;
+}
+
+#slide-Cirkadin-1-layer-14 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-14.png);
+    position: absolute;
+    top: 591.00px;
+    left: 374.50px;
+    width: 148.50px;
+    height: 87.00px;
+    z-index: 14;
+}
+
+#slide-Cirkadin-1-layer-13 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-13.png);
+    position: absolute;
+    top: 369.50px;
+    left: 211.00px;
+    width: 88.50px;
+    height: 59.50px;
+    z-index: 13;
+}
+
+#slide-Cirkadin-1-layer-12 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-12.png);
+    position: absolute;
+    top: 258.00px;
+    left: 737.50px;
+    width: 71.50px;
+    height: 76.50px;
+    z-index: 12;
+}
+
+#slide-Cirkadin-1-layer-10 {
+    position: absolute;
+    top: 25.00px;
+    left: 34.00px;
+    z-index: 10;
+    text-align: left;
+    font-family: FuturaPTBook;
+    font-size: 42.00px;
+    color: #FFAE4E;
+    text-shadow: 0 0 10px #000;
+    letter-spacing: 1px;
+}
+
+#slide-Cirkadin-1-layer-9 {
+    position: absolute;
+    top: 220.00px;
+    left: 710.50px;
+    z-index: 9;
+    text-align: left;
+    font-family: FuturaPTDemi;
+    font-size: 16.19px;
+    color: #EFE9E5;
+    letter-spacing: 1px;
+}
+
+#slide-Cirkadin-1-layer-8 {
+    position: absolute;
+    top: 432.00px;
+    left: 183.00px;
+    z-index: 8;
+    text-align: left;
+    font-family: FuturaPTDemi;
+    font-size: 16.19px;
+    color: #EFE9E5;
+    letter-spacing: 1px;
+}
+
+#slide-Cirkadin-1-layer-7 {
+    position: absolute;
+    top: 550.00px;
+    left: 597.00px;
+    z-index: 7;
+    text-align: left;
+    font-family: FuturaPTDemi;
+    font-size: 16.19px;
+    color: #EFE9E5;
+    letter-spacing: 1px;
+}
+
+#slide-Cirkadin-1-layer-6 {
+    position: absolute;
+    top: 546.50px;
+    left: 256.00px;
+    z-index: 6;
+    text-align: left;
+    font-family: FuturaPTDemi;
+    font-size: 16.19px;
+    color: #EFE9E5;
+    letter-spacing: 1px;
+}
+
+#slide-Cirkadin-1-layer-5 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-5.png);
+    position: absolute;
+    top: 251.50px;
+    left: 109.00px;
+    width: 915.00px;
+    height: 432.00px;
+    z-index: 5;
+}
+
+.pulsate {
+    -webkit-animation: pulsating 2s ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+@-webkit-keyframes pulsating {
+    0% {
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.0;
+    }
+}
+
+@-keyframes pulsating {
+    0% {
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.0;
+    }
+}
+
+#slide-Cirkadin-1-layer-4 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-4.png);
+    position: absolute;
+    top: 251.50px;
+    left: 109.00px;
+    width: 915.00px;
+    height: 432.00px;
+    z-index: 4;
+}
+
+#slide-Cirkadin-1-layer-3 {
+    background-size: 100% 100%;
+    background-image: url(../images/Cirkadin-1/slide-Cirkadin-1-layer-3.png);
+    position: absolute;
+    top: 0.00px;
+    left: 0.00px;
+    width: 1024.00px;
+    height: 768.00px;
+    z-index: 3;
+}
+
+#window-1 {
+    position: absolute;
+    top: 566px;
+    left: 491px;
+    width: 50px;
+    height: 80px;
+    z-index: 100;
+}
+
+#window-2 {
+    position: absolute;
+    top: 500px;
+    left: 925px;
+    width: 50px;
+    height: 80px;
+    z-index: 100;
+}
+
+#window-3 {
+    position: absolute;
+    top: 297px;
+    left: 692px;
+    width: 50px;
+    height: 80px;
+    z-index: 100;
+}
+
+#window-4 {
+    position: absolute;
+    top: 340px;
+    left: 168px;
+    width: 50px;
+    height: 80px;
+    z-index: 100;
+}

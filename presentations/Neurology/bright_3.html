@@ -1,0 +1,81 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=1024,maximum-scale=1,user-scalable=0">
+        <title>Tanakan</title>
+
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/tanakan_yo3.css">
+
+        <script type='text/javascript' src='js/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='js/functions.js'></script>
+
+        
+        
+        
+    <meta name="clm-swipe-next" content=""><meta name="clm-swipe-previous" content="index.html"><meta name="clm" content=""></head>
+    <body data-prevent-left-swipe="true" data-prevent-right-swipe="true">
+        <div id="all-content">
+            <div class="slide">
+
+                <div class="galaxy">
+                    <div class="galaxy-star"></div>
+                </div>
+
+                <div class="brain"></div>
+
+                <div class="slide-title">Млечный путь включает около<br>200 000 000 000 звезд</div>
+
+                <div class="slide-footer">
+                    <div class="footer-but but-c"></div>
+                    <div class="footer-but but-m"></div>
+                    <div class="footer-but but-i"></div>
+                    <div class="logo"></div>
+                </div>
+                <div class="links-i">
+                    <div class="middle"></div>
+                    <div class="links-text-i">
+                        <p data-pdf="Disclaimer.pdf">Disclaimer 23.04.29</p>
+                        <p data-pdf="ButtonI.pdf">Препарат Х</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                $(".galaxy-star").on(mup, function(){
+                    if (!$(".brain").hasClass("show")){
+                        $(".brain").addClass("show");
+                        $(".slide-title").addClass("hidden");
+                        setTimeout(function(){
+                            $(".slide-title").html("Мозг человека содержит около<br>90 000 000 000 нейронов");
+                            $(".slide-title").removeClass("hidden");
+                        },500)
+                    }
+                });
+
+            });
+        </script>
+
+        <script src="js/StoryCLMNavigation.js"></script>
+        <script src="js/hammer.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            var viznum = localStorage.getItem('num_viz');
+            localStorage.removeItem('prev_sequence_viz');
+            localStorage.setItem('num_yo','bright_3.html');
+            
+            window.storyCLMNavigation.onSwipeNext = function (direction) {
+                // if (direction && !drag_flag) {
+                    window.location = 'vizit_1.html';
+                // } else {
+                    // return false;
+                // }
+            }
+        </script>
+    </body>
+</html>

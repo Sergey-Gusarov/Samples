@@ -1,0 +1,142 @@
+#book{
+    position: absolute;
+    width: 490px;
+    height: 262px;
+    background: url(../img/s41_book.png);
+    background-size: 100% 100%;
+    left: 292px;
+    top: 280px;
+}
+.star{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 169px;
+    top: 128px;
+    background: url(../img/s41_white.png);
+    background-size: 100% 100%;
+    animation: pulse0 1.5s linear infinite;
+    -webkit-animation: pulse0 1.5s linear infinite;
+    opacity: 0;
+}
+.star:nth-child(2){
+    left: 333px;
+    top: -24px;
+    animation-delay: 300ms;
+    -webkit-animation-delay: 300ms;
+}
+.star:nth-child(3){
+    width: 120px;
+    height: 120px;
+    left: 181px;
+    top: -27px;
+    animation-delay: 600ms;
+    -webkit-animation-delay: 600ms;
+}
+.star:nth-child(4){
+    width: 120px;
+    height: 120px;
+    left: -19px;
+    top: 156px;
+    animation-delay: 900ms;
+    -webkit-animation-delay: 900ms;
+}
+
+.slide-text{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    color: #fff;
+    top: 625px;
+    left: 0px;
+    font-weight: 300;
+}
+.slide-text span{
+    border-bottom: #fff solid 1px;
+}
+
+.satelite{
+    position: absolute;
+    width: 299px;
+    left: 49px;
+    top: 180px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 300;
+}
+.satelite img{
+    position: relative;
+    display: block;
+    width: 299px;
+    height: auto;
+    opacity: 1;
+    transition: opacity 300ms linear;
+    -webkit-transition: opacity 300ms linear;
+}
+.satelite img.txt{
+    opacity: 0;
+}
+.satelite img.sat{
+    animation: fly 2.5s linear infinite;
+    -webkit-animation: fly 2.5s linear infinite;
+}
+.satelite:nth-child(2){
+    top: 456px;
+}
+.satelite:nth-child(3){
+    left: 711px;
+}
+.satelite:nth-child(4){
+    left: 711px;
+    top: 445px;
+}
+.satelite:nth-child(2) img.sat, .satelite:nth-child(3) img.sat{
+    animation: flyout 2.5s linear infinite;
+    -webkit-animation: flyout 2.5s linear infinite;
+}
+
+.satelite:nth-child(2) img.sat{
+    transition-delay: 300ms;
+    -webkit-transition-delay: 300ms;
+}
+.satelite:nth-child(3) img.sat{
+    transition-delay: 600ms;
+    -webkit-transition-delay: 600ms;
+}
+.satelite:nth-child(4) img.sat{
+    transition-delay: 900ms;
+    -webkit-transition-delay: 900ms;
+}
+
+@keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@-webkit-keyframes fly {
+    0%   {margin-top: -5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: -5px}
+    50%  {margin-top: 5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: 5px}
+    100% {margin-top: -5px; margin-left: 0px}
+}
+@keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}
+@-webkit-keyframes flyout {
+    0%   {margin-top: 5px; margin-left: 0}
+    25%  {margin-top: 0px; margin-left: 5px}
+    50%  {margin-top: -5px; margin-left: 0}
+    75%  {margin-top: 0px; margin-left: -5px}
+    100% {margin-top: 5px; margin-left: 0px}
+}

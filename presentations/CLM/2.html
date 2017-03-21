@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="clm-swipe-next" content="3.html">
+    <meta name="clm-swipe-previous" content="index.html">
+    <meta name="clm" content="index.html,3.html">
+    <title></title>
+    <link href="css/main.css?v=1" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/magic.min.css" rel="stylesheet">
+    <style type="text/css">
+        #Layer1 {
+            background-image: url(images/2/Layer1.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 1024px;
+            height: 768px;
+            z-index: 1;
+        }
+        #Layer2 {
+            background-color: #db7c00;
+            position: absolute;
+            top: 115px;
+            left: 0px;
+            width: 1024px;
+            height: 654px;
+            z-index: 2;
+        }
+        #Layer3 {
+            background-image: url(images/2/Layer3.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 219px;
+            left: -432px;
+            width: 432px;
+            height: 454px;
+            z-index: 3;
+        }
+        #Layer4 {
+            background-image: url(images/2/Layer4.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 219px;
+            left: 1024px;
+            width: 430px;
+            height: 454px;
+            z-index: 4;
+        }
+        #Layer5 {
+            font-size: 46.058px;
+            font-family: "MyriadPro";
+            color: rgb(196, 128, 34);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: -14px;
+            left: 240px;
+            z-index: 5;
+        }
+        #Layer6 {
+            font-size: 24px;
+            font-family: "NautilusPompilius";
+            color: rgb(196, 128, 34);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 103px;
+            left: 318px;
+            z-index: 6;
+        }
+        #Layer7 {
+            font-size: 46px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 161px;
+            left: 378px;
+            z-index: 7;
+        }
+        #Layer8 {
+            font-size: 46px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 700px;
+            left: 414px;
+            z-index: 8;
+        }
+        #Layer9 {
+            background-image: url(images/2/Layer9.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 701px;
+            left: 777px;
+            width: 70px;
+            height: 37px;
+            z-index: 9;
+        }
+        #Layer10 {
+            background-image: url(images/2/Layer10.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 701px;
+            left: 181px;
+            width: 71px;
+            height: 37px;
+            z-index: 10;
+        }
+        #Layer11 {
+            font-size: 25px;
+            font-family: "MyriadPro";
+            color: rgb(255, 255, 255);
+            text-decoration: underline;
+            line-height: 1.125;
+            text-align: left;
+            position: absolute;
+            top: 122px;
+            left: 410px;
+            z-index: 11;
+        }
+        #Layer12 {
+            background-image: url(images/2/Layer12.png);
+            background-size: 100% 100%;
+            position: absolute;
+            top: 345px;
+            left: 480px;
+            width: 69px;
+            height: 200px;
+            z-index: 120;
+        }
+        #background {
+            left: 0px;
+            top: 0px;
+            position: relative;
+            margin: 0 auto;
+            width: 1024px;
+            height: 769px;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .colorAnim {
+            -webkit-animation: changeColor 3s;
+        }
+        @-webkit-keyframes changeColor {
+            from {
+                background-color: #db7c00;
+            }
+            to {
+                background-color: #1591ab;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <div id="Layer1"></div>
+        <div id="Layer2"></div>
+        <div id="Layer3"></div>
+        <div id="Layer4"></div>
+        <div id="Layer5">ЭВОЛЮЦИЯ БЕЗЖАЛОСТНАЯ ШТУКА,</div>
+        <div id="Layer6">меняйся или останешься в прошлом</div>
+        <div id="Layer7">ЧТО ИЗМЕНИЛОСЬ</div>
+        <div id="Layer8">ТЕХНОЛОГИИ</div>
+        <div id="Layer9"></div>
+        <div id="Layer10"></div>
+        <div id="Layer11">Выборы Папы Римского</div>
+        <div id="Layer12"></div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/StoryCLMNavigation.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+            $('#Layer5').css('opacity', '0');
+            $('#Layer6').css('opacity', '0');
+            $('#Layer12').css('opacity', '0');
+            $('#Layer7').css('opacity', '0');
+            $('#Layer11').css('opacity', '0');
+            $('#Layer9').css('top', '400px');
+            $('#Layer8').css('opacity', '0');
+            $('#Layer10').css('top', '400px');
+            setTimeout(function () {
+                $('#Layer5').css('opacity', '1');
+                $('#Layer6').css('opacity', '1');
+                $('#Layer5').addClass('magictime slideDown');
+                $('#Layer6').addClass('magictime slideUp');
+                $('#Layer7').addClass('fonTransit');
+                $('#Layer11').addClass('fonTransit');
+                $('#Layer7').css('opacity', '1');
+                $('#Layer11').css('opacity', '1');
+                setTimeout(function () {
+                    $('#Layer12').addClass('breffied stomp');
+                    $('#Layer12').css('opacity', '1');
+                }, 500);
+                setTimeout(function () {
+                    $('#Layer9').addClass('magictime puffOut');
+                    $('#Layer10').addClass('magictime puffOut');
+                    setTimeout(function () {
+                        $('#Layer3').addClass('magictime slideRight');
+                        $('#Layer4').addClass('magictime slideLeft');
+                        $('#Layer9').css('top', '701px');
+                        $('#Layer10').css('top', '701px');
+                        $('#Layer9').removeClass('puffOut');
+                        $('#Layer10').removeClass('puffOut');
+                        $('#Layer9').addClass('magictime tinDownIn');
+                        $('#Layer10').addClass('magictime tinDownIn');
+                        setTimeout(function () {
+                            $('#Layer8').css('opacity', '1');
+                            $('#Layer8').addClass('magictime puffIn');
+                        }, 1500);
+                    }, 500);
+                }, 1300);
+            }, 800);
+        });
+    </script>
+</body>
+</html>

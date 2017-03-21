@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, del, dfn, em, font, img, ins, q, small, strike, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, footer, header, article, aside, canvas, nav, section, table, caption, tbody, tfoot, thead, tr, th, td {
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+}
+
+article, footer, header, menu, nav, section, aside, canvas {
+    display: block;
+}
+
+body {
+    line-height: 1.2;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+blockquote {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after {
+    content: '';
+    content: none;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+@font-face {
+    font-family: FuturaPTLight;
+    src: url(../fonts/FuturaPTLight.otf);
+}
+
+@font-face {
+    font-family: FuturaPTBook;
+    src: url(../fonts/FuturaPTBook.otf);
+}
+
+@font-face {
+    font-family: FuturaPTBold;
+    src: url(../fonts/FuturaPTBold.otf);
+}
+
+@font-face {
+    font-family: FuturaPTDemi;
+    src: url(../fonts/FuturaPTDemi.otf);
+}
+
+@font-face {
+    font-family: 'FuturaPTMedium-Reg';
+    src: url(../fonts/FuturaPTMedium.otf);
+}
+
+@font-face {
+    font-family: FuturaPTHeavy;
+    src: url(../fonts/FuturaPTHeavy.otf);
+}
+
+@font-face {
+    font-family: FuturaPTMedium;
+    src: url(../fonts/FuturaPTMedium.otf);
+}
+
+.header {
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #000;
+}
+
+.text {
+    letter-spacing: 1px;
+}
+
+sup {
+    font-size: 0.6em;
+    vertical-align: super;
+}
