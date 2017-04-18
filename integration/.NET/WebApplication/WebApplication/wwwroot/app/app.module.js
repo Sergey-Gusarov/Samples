@@ -6,14 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const app_routes_1 = require("./app.routes");
 const platform_browser_1 = require("@angular/platform-browser");
 const app_component_1 = require("./app.component");
+const index_1 = require("./contacts/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
+        imports: [
+            platform_browser_1.BrowserModule,
+            router_1.RouterModule.forRoot(app_routes_1.rootRouterConfig, { useHash: false }),
+            index_1.ContactsModule
+        ],
+        declarations: [
+            app_component_1.AppComponent
+        ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

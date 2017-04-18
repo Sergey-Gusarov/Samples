@@ -11,11 +11,18 @@
 
   <ItemGroup>
     <Content Include="wwwroot\app\app.component.html" />
-    <Content Include="wwwroot\app\app.component.js" />
     <Content Include="wwwroot\app\app.component.ts" />
     <Content Include="wwwroot\app\app.module.js" />
     <Content Include="wwwroot\app\app.module.js.map" />
     <Content Include="wwwroot\app\app.module.ts" />
+    <Content Include="wwwroot\app\app.routes.ts" />
+    <Content Include="wwwroot\app\contacts\contact-table.component.html" />
+    <Content Include="wwwroot\app\contacts\contact.ts" />
+    <Content Include="wwwroot\app\contacts\contacts-table.component.html" />
+    <Content Include="wwwroot\app\contacts\contacts-table.component.ts" />
+    <Content Include="wwwroot\app\contacts\contacts.module.ts" />
+    <Content Include="wwwroot\app\contacts\index.ts" />
+    <Content Include="wwwroot\app\contacts\table.module.ts" />
     <Content Include="wwwroot\app\main.js" />
     <Content Include="wwwroot\app\main.js.map" />
     <Content Include="wwwroot\app\main.ts" />
