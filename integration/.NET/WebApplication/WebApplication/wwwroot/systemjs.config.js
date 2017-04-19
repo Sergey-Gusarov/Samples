@@ -25,8 +25,8 @@
                 defaultExtension: 'js'
             },
             'angular-in-memory-web-api': {
-                main: './index.js',
-                defaultExtension: 'js'
+                main: './index.ts',
+                defaultExtension: 'ts'
             }
         }
     });
