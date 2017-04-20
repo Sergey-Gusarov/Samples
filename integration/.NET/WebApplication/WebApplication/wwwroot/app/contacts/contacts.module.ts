@@ -1,9 +1,13 @@
 ﻿import { NgModule } from "@angular/core";
-import { ContactTableComponent } from "./index";
+import { RouterModule, Routes } from '@angular/router';
+import { ContactsTableComponent, ContactsComponent } from "./index";
 
 @NgModule({
-    declarations: [ContactTableComponent],
-    exports: [ContactTableComponent],
-    imports: [],
+    declarations: [ContactsTableComponent, ContactsComponent],
+    imports: [
+        RouterModule.forChild([
+            { path: "", component: ContactsComponent }
+        ])
+    ],
 })
 export class ContactsModule { }

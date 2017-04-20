@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require("@angular/core");
 const index_1 = require("./index");
-let ContactTableComponent = class ContactTableComponent {
+let ContactsTableComponent = class ContactsTableComponent {
     constructor() {
         this.contacts = [
             new index_1.Contact("Stepan", "Biocad", "admin@biocad.com", "+7800553535", "StoryCLM"),
@@ -22,11 +22,12 @@ let ContactTableComponent = class ContactTableComponent {
         ];
     }
 };
-ContactTableComponent = __decorate([
+ContactsTableComponent = __decorate([
     core_1.Component({
+        selector: "contacts-table",
         templateUrl: "./app/contacts/contacts-table.component.html"
     }),
     __metadata("design:paramtypes", [])
-], ContactTableComponent);
-exports.ContactTableComponent = ContactTableComponent;
+], ContactsTableComponent);
+exports.ContactsTableComponent = ContactsTableComponent;
 //# sourceMappingURL=contacts-table.component.js.map

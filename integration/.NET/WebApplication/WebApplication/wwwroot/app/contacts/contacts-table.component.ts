@@ -2,9 +2,10 @@
 import { Contact } from "./index";
 
 @Component({
+    selector: "contacts-table",
     templateUrl: "./app/contacts/contacts-table.component.html"
 })
-export class ContactTableComponent {
+export class ContactsTableComponent {
 
     contacts: Array<Contact>;
 
