@@ -208,12 +208,13 @@
     </div>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=25B7BCB86B5340C8BD423FD7BAB24AF8"></script>
     <script src="js/storyclm-1.6.0.js"></script>
     <script>
 
         function utf8_to_b64(str) {
-            return window.btoa(encodeURIComponent(escape(str)));
+            //return window.btoa(encodeURIComponent(escape(str)));
+            return window.btoa(str);
         }
 
         $(function () {
@@ -236,7 +237,8 @@
                 var headers = {
                     "Accept": "application/json",
                     "Accept-Language": "en-us,en;q=0.5",
-                    "Accept-Charset": "utf-8"
+                    "Accept-Charset": "utf-8",
+                    "Content-Type": "application/json"
                 };
 
                 $("#response").text("");
