@@ -12,10 +12,10 @@ let ContactsModule = class ContactsModule {
 };
 ContactsModule = __decorate([
     core_1.NgModule({
-        declarations: [index_1.ContactTableComponent],
+        declarations: [index_1.ContactsTableComponent, index_1.ContactsComponent],
         imports: [
             router_1.RouterModule.forChild([
-                { path: "", component: index_1.ContactTableComponent }
+                { path: "", component: index_1.ContactsComponent }
             ])
         ],
     })

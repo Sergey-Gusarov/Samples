@@ -4,6 +4,6 @@ function __export(m) {
 }
 __export(require("./contact"));
 __export(require("./contacts-table.component"));
+__export(require("./contacts.component"));
 __export(require("./contacts.module"));
-__export(require("./contacts-routing.module"));
 //# sourceMappingURL=index.js.map
