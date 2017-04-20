@@ -1,7 +1,13 @@
 var clickEvent = ('ontouchstart' in window ? 'touchend' : 'click');
 
+function b64_to_utf8(str) {
+    //return decodeURIComponent(escape(window.atob(str)));
+    return window.atob(str);
+}
+
 function setJson(id, json) {
     $("#" + id).html("<pre>" + JSON.stringify(json, null, 4) + "</pre>");
+    $("#responsebody").html("<pre>" + b64_to_utf8(json.data.body) + "</pre>");
 }
 
 function loadDocData(id)

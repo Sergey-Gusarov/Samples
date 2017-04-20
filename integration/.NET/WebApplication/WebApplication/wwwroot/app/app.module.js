@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
-const app_routes_1 = require("./app.routes");
 const platform_browser_1 = require("@angular/platform-browser");
 const app_component_1 = require("./app.component");
 const index_1 = require("./contacts/index");
@@ -17,7 +16,10 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            router_1.RouterModule.forRoot(app_routes_1.rootRouterConfig, { useHash: false }),
+            router_1.RouterModule.forRoot([
+                { path: "", redirectTo: "/contacts", pathMatch: "full" },
+                { path: "contacts", loadChildren: 'app/contacts/contacts.module#ContactsModule' }
+            ]),
             index_1.ContactsModule
         ],
         declarations: [

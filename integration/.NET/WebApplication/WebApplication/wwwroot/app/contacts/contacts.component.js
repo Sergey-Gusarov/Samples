@@ -6,19 +6,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
-const router_1 = require("@angular/router");
-const index_1 = require("./index");
-let ContactsModule = class ContactsModule {
+let ContactsComponent = class ContactsComponent {
 };
-ContactsModule = __decorate([
-    core_1.NgModule({
-        declarations: [index_1.ContactsTableComponent, index_1.ContactsComponent],
-        imports: [
-            router_1.RouterModule.forChild([
-                { path: "", component: index_1.ContactsComponent }
-            ])
-        ],
+ContactsComponent = __decorate([
+    core_1.Component({
+        templateUrl: "./app/contacts/contacts.component.html"
     })
-], ContactsModule);
-exports.ContactsModule = ContactsModule;
-//# sourceMappingURL=contacts.module.js.map
+], ContactsComponent);
+exports.ContactsComponent = ContactsComponent;
+//# sourceMappingURL=contacts.component.js.map
