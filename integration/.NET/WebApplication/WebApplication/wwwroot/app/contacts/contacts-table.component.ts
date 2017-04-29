@@ -1,27 +1,41 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, ViewEncapsulation, Input, OnInit, Inject, forwardRef } from "@angular/core";
+import { Router } from '@angular/router';
 import { Contact } from "./index";
+import { ContactService } from "./contact.service";
 
 @Component({
     selector: "contacts-table",
-    templateUrl: "./app/contacts/contacts-table.component.html"
+    templateUrl: "./app/contacts/contacts-table.component.html",
+    encapsulation: ViewEncapsulation.None
 })
-export class ContactsTableComponent {
+export class ContactsTableComponent implements OnInit {
 
-    contacts: Array<Contact>;
+    @Input("tableName")
+    name: string = "";
 
-    constructor() {
+    public contacts: Array<Contact>;
 
-        this.contacts = [
+    constructor(public router: Router, private contactsService: ContactService) {
+    }
 
-            new Contact("Stepan", "Biocad", "admin@biocad.com", "+7800553535", "StoryCLM"),
-            new Contact("Vovan", "Cats and Dogs", "admin@biocad.com", "+7800553535", "StoryCLM"),
-            new Contact("Voltran", "Voltrans", "admin@voltrans.com", "+7800553535", "StoryCLM"),
-            new Contact("Vadim", "Geo", "admin@geo.com", "+7800553535", "StoryCLM"),
-            new Contact("Anna", "J&J", "admin@j&j.com", "+7800553535", "StoryCLM"),
-            new Contact("Milla", "Obor", "admin@biocad.com", "+7800553535", "StoryCLM"),
+    ngOnInit() {
+        this.contactsService.getAll().then(t => this.contacts = t);
+    }
 
-        ];
+    onCreate() {
+        this.router.navigate(["contacts", "create"]);
+    }
 
+    onDetails(selected: Contact) {
+        this.router.navigate(["contacts", selected.Id, "details"]);
+    }
+
+    onEdit(selected: Contact) {
+        this.router.navigate(["contacts", selected.Id, "edit"]);
+    }
+
+    onDelete(selected: Contact) {
+        this.router.navigate(["contacts", selected.Id, "delete"]);
     }
 
 }

@@ -11,7 +11,8 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: "app",
-        templateUrl: "app/app.component.html"
+        templateUrl: "app/app.component.html",
+        encapsulation: core_1.ViewEncapsulation.None
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

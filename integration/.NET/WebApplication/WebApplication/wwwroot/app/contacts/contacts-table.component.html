@@ -1,1 +1,38 @@
-﻿<div>Test</div>
+﻿<div class="row">
+    <div class="col-md-12"><h2>{{name}}</h2></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <button (click)="onCreate()" class="btn btn-default">Create new</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Interest</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contacts">
+                    <td>{{contact.Name}}</td>
+                    <td>{{contact.Company}}</td>
+                    <td>{{contact.Email}}</td>
+                    <td>{{contact.Phone}}</td>
+                    <td>{{contact.Interest}}</td>
+                    <td style="width:50px;"><button (click)="onDetails(contact)" class="btn btn-default">details</button></td>
+                    <td style="width:40px;"><button (click)="onEdit(contact)" class="btn btn-default">edit</button></td>
+                    <td style="width:50px;"><button (click)="onDelete(contact)" class="btn btn-default">delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

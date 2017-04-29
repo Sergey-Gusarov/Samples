@@ -1,6 +1,8 @@
 "use strict";
 class Contact {
-    constructor(name, company, email, phone, interest) {
+    constructor(id, externalId, name, company, email, phone, interest) {
+        this.Id = id;
+        this.ExternalId = externalId;
         this.Name = name;
         this.Company = company;
         this.Email = email;

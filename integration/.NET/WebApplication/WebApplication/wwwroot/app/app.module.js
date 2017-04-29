@@ -17,14 +17,12 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             router_1.RouterModule.forRoot([
-                { path: "", redirectTo: "/contacts", pathMatch: "full" },
+                { path: "", redirectTo: "contacts", pathMatch: "full" },
                 { path: "contacts", loadChildren: 'app/contacts/contacts.module#ContactsModule' }
             ]),
             index_1.ContactsModule
         ],
-        declarations: [
-            app_component_1.AppComponent
-        ],
+        declarations: [app_component_1.AppComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

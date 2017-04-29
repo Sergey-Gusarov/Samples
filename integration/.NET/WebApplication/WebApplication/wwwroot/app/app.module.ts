@@ -8,15 +8,12 @@ import { ContactsModule } from "./contacts/index";
     imports: [
         BrowserModule,
         RouterModule.forRoot([
-            { path: "", redirectTo: "/contacts", pathMatch: "full" },
+            { path: "", redirectTo: "contacts", pathMatch: "full" },
             { path: "contacts", loadChildren: 'app/contacts/contacts.module#ContactsModule' }
         ]),
         ContactsModule
     ],
-    declarations:
-    [
-        AppComponent
-    ],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

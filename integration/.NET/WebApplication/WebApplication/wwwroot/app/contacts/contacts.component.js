@@ -10,7 +10,8 @@ let ContactsComponent = class ContactsComponent {
 };
 ContactsComponent = __decorate([
     core_1.Component({
-        templateUrl: "./app/contacts/contacts.component.html"
+        templateUrl: "./app/contacts/contacts.component.html",
+        encapsulation: core_1.ViewEncapsulation.None
     })
 ], ContactsComponent);
 exports.ContactsComponent = ContactsComponent;

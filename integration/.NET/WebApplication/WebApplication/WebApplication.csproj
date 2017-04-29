@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,26 +18,55 @@
     <Content Include="wwwroot\app\app.module.js" />
     <Content Include="wwwroot\app\app.module.js.map" />
     <Content Include="wwwroot\app\app.module.ts" />
+    <Content Include="wwwroot\app\contacts\contact.service.ts" />
     <Content Include="wwwroot\app\contacts\contact.ts" />
+    <Content Include="wwwroot\app\contacts\contacts-create.component.html" />
+    <Content Include="wwwroot\app\contacts\contacts-create.component.ts" />
+    <Content Include="wwwroot\app\contacts\contacts-delete.component.html" />
+    <Content Include="wwwroot\app\contacts\contacts-delete.component.ts" />
+    <Content Include="wwwroot\app\contacts\contacts-details.component.html" />
+    <Content Include="wwwroot\app\contacts\contacts-details.component.ts" />
+    <Content Include="wwwroot\app\contacts\contacts-edit.component.html" />
+    <Content Include="wwwroot\app\contacts\contacts-edit.component.ts" />
     <Content Include="wwwroot\app\contacts\contacts-table.component.html" />
     <Content Include="wwwroot\app\contacts\contacts-table.component.ts" />
     <Content Include="wwwroot\app\contacts\contacts.component.html" />
     <Content Include="wwwroot\app\contacts\contacts.component.ts" />
     <Content Include="wwwroot\app\contacts\contacts.module.ts" />
+    <Content Include="wwwroot\app\contacts\custom-validators.js" />
+    <Content Include="wwwroot\app\contacts\custom-validators.js.map" />
+    <Content Include="wwwroot\app\contacts\custom-validators.ts" />
     <Content Include="wwwroot\app\contacts\index.ts" />
     <Content Include="wwwroot\app\main.js" />
     <Content Include="wwwroot\app\main.js.map" />
     <Content Include="wwwroot\app\main.ts" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\fonts\MyriadPro-Cond.otf" />
+    <Content Include="wwwroot\fonts\Nautilus.otf" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\styles.css" />
     <Content Include="wwwroot\systemjs.config.js" />
+    <Content Include="wwwroot\template.css" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

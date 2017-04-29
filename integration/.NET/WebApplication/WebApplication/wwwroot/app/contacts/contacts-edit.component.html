@@ -1,0 +1,52 @@
+﻿<br />
+Edit Contact
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form novalidate [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" id="Name" formControlName="Name">
+                <div *ngIf="formErrors.Name" class="alert alert-danger">
+                    {{ formErrors.Name }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Company">Company</label>
+                <input type="text" class="form-control" id="Company" formControlName="Company">
+                <div *ngIf="formErrors.Company" class="alert alert-danger">
+                    {{ formErrors.Company }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" id="Email" formControlName="Email">
+                <div *ngIf="formErrors.Email" class="alert alert-danger">
+                    {{ formErrors.Email }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Phone">Phone</label>
+                <input type="text" class="form-control" id="Phone" formControlName="Phone">
+                <div *ngIf="formErrors.Phone" class="alert alert-danger">
+                    {{ formErrors.Phone }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Interest">Interest</label>
+                <input type="text" class="form-control" id="Interest" formControlName="Interest">
+                <div *ngIf="formErrors.Interest" class="alert alert-danger">
+                    {{ formErrors.Interest }}
+                </div>
+            </div>
+
+            <button class="btn btn-default" (click)="onCancel()">Сancel</button>
+            <input type="submit" class="btn btn-default" [disabled]="!contactForm.valid" value="Save">
+        </form>
+    </div>
+</div>

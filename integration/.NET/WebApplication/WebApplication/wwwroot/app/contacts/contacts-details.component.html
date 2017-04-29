@@ -1,0 +1,22 @@
+﻿<br />
+Запись
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ul *ngIf="contact">
+            <li>Id: {{contact.Id}}</li>
+            <li>ExternalId: {{contact.ExternalId}}</li>
+            <li>Name: {{contact.Name}}</li>
+            <li>Company: {{contact.Company}}</li>
+            <li>Email: {{contact.Email}}</li>
+            <li>Phone: {{contact.Phone}}</li>
+            <li>Interest: {{contact.Interest}}</li>
+        </ul>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-default" (click)="onCancel()">Сancel</button>
+    </div>
+</div>

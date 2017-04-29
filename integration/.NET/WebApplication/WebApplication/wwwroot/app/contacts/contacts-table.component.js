@@ -9,25 +9,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-const index_1 = require("./index");
+const router_1 = require("@angular/router");
+const contact_service_1 = require("./contact.service");
 let ContactsTableComponent = class ContactsTableComponent {
-    constructor() {
-        this.contacts = [
-            new index_1.Contact("Stepan", "Biocad", "admin@biocad.com", "+7800553535", "StoryCLM"),
-            new index_1.Contact("Vovan", "Cats and Dogs", "admin@biocad.com", "+7800553535", "StoryCLM"),
-            new index_1.Contact("Voltran", "Voltrans", "admin@voltrans.com", "+7800553535", "StoryCLM"),
-            new index_1.Contact("Vadim", "Geo", "admin@geo.com", "+7800553535", "StoryCLM"),
-            new index_1.Contact("Anna", "J&J", "admin@j&j.com", "+7800553535", "StoryCLM"),
-            new index_1.Contact("Milla", "Obor", "admin@biocad.com", "+7800553535", "StoryCLM"),
-        ];
+    constructor(router, contactsService) {
+        this.router = router;
+        this.contactsService = contactsService;
+        this.name = "";
+    }
+    ngOnInit() {
+        this.contactsService.getAll().then(t => this.contacts = t);
+    }
+    onCreate() {
+        this.router.navigate(["contacts", "create"]);
+    }
+    onDetails(selected) {
+        this.router.navigate(["contacts", selected.Id, "details"]);
+    }
+    onEdit(selected) {
+        this.router.navigate(["contacts", selected.Id, "edit"]);
+    }
+    onDelete(selected) {
+        this.router.navigate(["contacts", selected.Id, "delete"]);
     }
 };
+__decorate([
+    core_1.Input("tableName"),
+    __metadata("design:type", String)
+], ContactsTableComponent.prototype, "name", void 0);
 ContactsTableComponent = __decorate([
     core_1.Component({
         selector: "contacts-table",
-        templateUrl: "./app/contacts/contacts-table.component.html"
+        templateUrl: "./app/contacts/contacts-table.component.html",
+        encapsulation: core_1.ViewEncapsulation.None
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.Router, contact_service_1.ContactService])
 ], ContactsTableComponent);
 exports.ContactsTableComponent = ContactsTableComponent;
 //# sourceMappingURL=contacts-table.component.js.map
