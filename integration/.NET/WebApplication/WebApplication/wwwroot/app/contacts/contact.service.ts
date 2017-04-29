@@ -1,41 +1,80 @@
 ﻿import { Injectable } from "@angular/core";
 import { Contact } from "./index";
+import { Http, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
-
-let contacts = [
-    new Contact(1, "", "Stepan", "Biocad", "admin@biocad.com", "7800553535", "StoryCLM"),
-    new Contact(2, "", "Vovan", "Cats and Dogs", "admin@biocad.com", "7800553535", "StoryCLM"),
-    new Contact(3, "", "Voltran", "Voltrans", "admin@voltrans.com", "7800553535", "StoryCLM"),
-    new Contact(4, "", "Vadim", "Geo", "admin@geo.com", "7800553535", "StoryCLM"),
-    new Contact(5, "", "Anna", "J&J", "admin@j&j.com", "7800553535", "StoryCLM"),
-    new Contact(6, "", "Milla", "Obor", "admin@biocad.com", "7800553535", "StoryCLM"),
-];
-
-let contactPromise = Promise.resolve(contacts);
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ContactService {
 
+    private url = "api/contacts";
+
+    constructor(private http: Http) { }
+
     getAll(): Promise<Contact[]> {
-        return contactPromise;
+        let products = this.http.get(this.url)
+            .toPromise()
+            .then(this.extractContacts)
+            .catch(this.handleError);
+
+        return products;
     }
 
     get(id: number): Promise<Contact> {
-        return contactPromise.then(contacts => contacts.find(t => t.Id == id));
+        let product = this.http.get(this.url + "/" + id)
+            .toPromise()
+            .then(this.extractContact)
+            .catch(this.handleError);
+
+        return product;
     }
 
     add(contact: Contact) {
-        contacts.push(contact);
+        return this.http.post(this.url, contact)
+            .toPromise()
+            .catch(this.handleError);
     }
 
     update(contact: Contact) {
-        let index = contacts.findIndex(t => t.Id == contact.Id);
-        contacts[index] = contact;
+        console.log(contact);
+        return this.http.put(this.url + "/" + contact.Id, contact)
+            .toPromise()
+            .catch(this.handleError);
     }
 
     delete(id: number) {
-        let con = contacts.find(t => t.Id == id);
-        contacts.splice(contacts.indexOf(con), 1);
+        return this.http.delete(this.url + "/" + id)
+            .toPromise()
+            .catch(this.handleError);
+    }
+
+    private extractContacts(response: Response) {
+        let res = response.json();
+        let contacts: Contact[] = [];
+        for (let i = 0; i < res.length; i++) {
+            contacts.push(new Contact(res[i].id, res[i].externalId, res[i].name, res[i].company, res[i].email, res[i].phone, res[i].interest));
+        }
+        return contacts;
+    }
+
+    private extractContact(response: Response) {
+        let res = response.json();
+        let contact = new Contact(res.id, res.externalId, res.name, res.company, res.email, res.phone, res.interest);
+        return contact;
+    }
+
+    private handleError(error: any): any {
+        let message = "";
+
+        if (error instanceof Response) {
+            let errorData = error.json().error || JSON.stringify(error.json());
+            message = `${error.status} - ${error.statusText || ''} ${errorData}`
+        } else {
+            message = error.message ? error.message : error.toString();
+        }
+
+        console.error(message);
+        return Observable.throw(message);
     }
 
 }

@@ -102,8 +102,10 @@ let ContactsCreateComponent = class ContactsCreateComponent {
     }
     onSubmit() {
         let con = new contact_1.Contact(Math.floor(Math.random() * 600) + 1, "", this.contactForm.value["name"], this.contactForm.value["company"], this.contactForm.value["email"], this.contactForm.value["phone"], this.contactForm.value["interest"]);
-        this.contactService.add(con);
-        this.router.navigate(["contacts"]);
+        this.contactService.add(con).then(t => {
+            this.contact = t;
+            this.router.navigate(["contacts"]);
+        });
     }
     onCancel() {
         this.router.navigate(["contacts"]);

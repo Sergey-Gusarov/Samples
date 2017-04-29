@@ -29,8 +29,9 @@ let ContactsDeleteComponent = class ContactsDeleteComponent {
         this.router.navigate(["contacts"]);
     }
     onDelete(id) {
-        this.contactService.delete(id);
-        this.router.navigate(["contacts"]);
+        this.contactService.delete(id).then(t => {
+            this.router.navigate(["contacts"]);
+        });
     }
 };
 ContactsDeleteComponent = __decorate([

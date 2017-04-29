@@ -121,8 +121,10 @@ export class ContactsCreateComponent implements OnInit {
             this.contactForm.value["email"],
             this.contactForm.value["phone"],
             this.contactForm.value["interest"]);
-        this.contactService.add(con);
-        this.router.navigate(["contacts"]);
+        this.contactService.add(con).then(t => {
+            this.contact = t;
+            this.router.navigate(["contacts"]);
+        });
     }
 
     onCancel() {

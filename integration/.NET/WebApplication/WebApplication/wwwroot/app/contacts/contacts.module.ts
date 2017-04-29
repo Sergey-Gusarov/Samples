@@ -8,6 +8,7 @@ import { ContactsCreateComponent } from "./contacts-create.component";
 import { ContactsEditComponent } from "./contacts-edit.component";
 import { ContactsDeleteComponent } from "./contacts-delete.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         BrowserModule,
         ReactiveFormsModule,
         FormsModule,
+        HttpModule,
         RouterModule.forChild([
             { path: "contacts", component: ContactsComponent },
             { path: "contacts/:id/details", component: ContactsDetailsComponent },

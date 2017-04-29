@@ -141,8 +141,11 @@ export class ContactsEditComponent implements OnInit {
             this.contactForm.value["Email"],
             this.contactForm.value["Phone"],
             this.contactForm.value["Interest"]);
-        this.contactService.update(con);
-        this.router.navigate(["contacts"]);
+
+        this.contactService.update(con).then(t => {
+            this.contact = t;
+            this.router.navigate(["contacts"]);
+        });
     }
 
     onCancel() {

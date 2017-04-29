@@ -21,7 +21,6 @@ export class ContactsDeleteComponent implements OnInit {
                 .get(id) 
                 .then(t => this.contact = t); 
         });
-
     }
 
     onCancel() {
@@ -29,8 +28,9 @@ export class ContactsDeleteComponent implements OnInit {
     }
 
     onDelete(id: number) {
-        this.contactService.delete(id);
-        this.router.navigate(["contacts"]);
+        this.contactService.delete(id).then(t => {
+            this.router.navigate(["contacts"]);
+        });
     }
 
 }

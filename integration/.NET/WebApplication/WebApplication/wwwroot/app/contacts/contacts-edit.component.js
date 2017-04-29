@@ -120,8 +120,10 @@ let ContactsEditComponent = class ContactsEditComponent {
     }
     onSubmit() {
         let con = new contact_1.Contact(this.contact.Id, this.contact.ExternalId, this.contactForm.value["Name"], this.contactForm.value["Company"], this.contactForm.value["Email"], this.contactForm.value["Phone"], this.contactForm.value["Interest"]);
-        this.contactService.update(con);
-        this.router.navigate(["contacts"]);
+        this.contactService.update(con).then(t => {
+            this.contact = t;
+            this.router.navigate(["contacts"]);
+        });
     }
     onCancel() {
         this.router.navigate(["contacts"]);

@@ -15,6 +15,7 @@ const contacts_create_component_1 = require("./contacts-create.component");
 const contacts_edit_component_1 = require("./contacts-edit.component");
 const contacts_delete_component_1 = require("./contacts-delete.component");
 const forms_1 = require("@angular/forms");
+const http_1 = require("@angular/http");
 let ContactsModule = class ContactsModule {
 };
 ContactsModule = __decorate([
@@ -31,6 +32,7 @@ ContactsModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.ReactiveFormsModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
             router_1.RouterModule.forChild([
                 { path: "contacts", component: index_1.ContactsComponent },
                 { path: "contacts/:id/details", component: contacts_details_component_1.ContactsDetailsComponent },
