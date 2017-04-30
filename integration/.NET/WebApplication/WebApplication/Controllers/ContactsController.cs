@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication.DB;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
@@ -10,52 +11,53 @@ namespace WebApplication.Controllers
     [Route("api/[controller]")]
     public class ContactsController : Controller
     {
-        public static List<Contact> ContactsStore = new List<Contact>() {
+        private readonly DBContext _context;
 
-            new Contact() { Id = 1, ExternalId = "", Name = "Vladimir", Company = "Breffi", Email = "vladimir@breffi.ru", Phone = "9102349045", Interest = "StoryCLM" },
-            new Contact() { Id = 2, ExternalId = "", Name = "Vladilen", Company = "J&J", Email = "v@J&J.ru", Phone = "9102349045", Interest = "StoryCLM" },
-            new Contact() { Id = 3, ExternalId = "", Name = "Vlad", Company = "VladSystems", Email = "vladimir@vsystems.ru", Phone = "9102679045", Interest = "StoryCLM" },
-            new Contact() { Id = 4, ExternalId = "", Name = "Kolma", Company = "Kolma INC", Email = "kolma@kolma.ru", Phone = "6142349045", Interest = "StoryCLM" },
-            new Contact() { Id = 5, ExternalId = "", Name = "Arin", Company = "acorp", Email = "a@acorp.ru", Phone = "9102349045", Interest = "StoryCLM" }
-        };
+        public ContactsController(DBContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public async Task<IEnumerable<Contact>> Get()
         {
-            return ContactsStore;
+            return _context.Contacts;
         }
 
         [HttpGet("{id}")]
         public async Task<Contact> Get(int id)
         {
-            return ContactsStore.FirstOrDefault(t=> t.Id == id);
+            return await _context.Contacts.FindAsync(id);
         }
 
         [HttpPost]
         public async Task<Contact> Post([FromBody] Contact contact)
         {
-            contact.Id = new Random().Next(100, 10000);
-            ContactsStore.Add(contact);
+            await _context.Contacts.AddAsync(contact);
+            await _context.SaveChangesAsync();
             return contact;
         }
 
         [HttpPut("{id}")]
         public async Task<Contact> Put([FromBody] Contact contact)
         {
-            var contactResult = ContactsStore.FirstOrDefault(t => t.Id == contact.Id);
+            var contactResult = await _context.Contacts.FindAsync(contact.Id);
             contactResult.Company = contact.Company;
             contactResult.Email = contact.Email;
             contactResult.Interest = contact.Interest;
             contactResult.Name= contact.Name;
             contactResult.Phone= contact.Phone;
+            _context.Entry(contactResult).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            await _context.SaveChangesAsync();
             return contactResult;
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var contactResult = ContactsStore.FirstOrDefault(t => t.Id == id);
-            ContactsStore.Remove(contactResult);
+            var contactResult = await _context.Contacts.FindAsync(id);
+            _context.Remove(contactResult);
+            await _context.SaveChangesAsync();
         }
     }
 }

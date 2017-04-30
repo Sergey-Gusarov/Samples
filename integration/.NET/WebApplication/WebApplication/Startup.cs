@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using WebApplication.DB;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication
 {
@@ -23,6 +25,7 @@ namespace WebApplication
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DBContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
@@ -53,8 +56,5 @@ namespace WebApplication
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-      
-
     }
 }
