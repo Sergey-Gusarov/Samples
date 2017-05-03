@@ -1,0 +1,51 @@
+package ru.breffi.EntityTypeConverterService.Impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.camel.Converter;
+import org.apache.camel.Exchange;
+//import org.apache.camel.TypeConverter;
+//import org.apache.camel.TypeConverters;
+
+import ru.breffi.sf_integration.storydto.Territory;
+
+
+public class SF2SCLM_TerritoryConverter //implements TypeConverters
+{
+
+	
+	@Converter
+	public List<Territory> Convert(QueryRecordsBF_Territory__c sfTerritoryQuery, Exchange exchange){
+		List<Territory> resultLIst = new ArrayList<Territory>();
+		//TypeConverter converter = exchange.getContext().getTypeConverter();
+		for(BF_Territory__c terr:sfTerritoryQuery.getRecords()){
+			//Territory clmTer=  converter.convertTo(Territory.class, terr);
+			Territory clmTer=  Convert(terr);
+			resultLIst.add(clmTer);
+		}
+		return resultLIst;//.toArray(new Territory[0]);
+	}
+	@Converter
+	public Territory Convert(BF_Territory__c sfTerritory){
+		
+		Territory result = new Territory();
+		result.Name = sfTerritory.getName();
+		result.Parent_SFId = sfTerritory.getBF_Territory_Parent__c();
+		result.Type = sfTerritory.getRecordTypeId();
+		result.SalesForce_Id = sfTerritory.getId();
+		return result;
+	}
+	
+	@Converter
+	public String[] Convert(Territory[] terrs){
+		List<String> resultList = new ArrayList<String>();
+		
+		for(Territory terr:terrs){
+			resultList.add(terr._id);
+		}
+		return resultList.toArray(new String[0]);
+	}
+	//*/
+	
+}

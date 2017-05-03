@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+       xsi:schemaLocation="
+         http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+         http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+         http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+   <cm:property-placeholder persistent-id="ru.breffi.biocadstoryclmintegration" update-strategy="reload"/>
+
+ 
+ <bean id="salesforce" class="org.apache.camel.component.salesforce.SalesforceComponent">
+   <property name="loginConfig">
+      <bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+       <property name="loginUrl" value="${loginUrl}"></property>
+        <property name="clientId" value="${clientId}"/>
+        <property name="clientSecret" value="${clientSecret}"/>
+        <property name="userName" value="${userName}"/>
+        <property name="password" value="${password}"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="quartz" class="org.apache.camel.component.quartz.QuartzComponent">
+    
+</bean>
+    <bean id="storyCLM" class="ru.breffi.storyclm_camel_component.StoryCLMComponent">
+    <argument>
+      <bean class=" ru.breffi.storyclm_camel_component.AccountSettings">
+       <property name="clientId" value="${StoryClientId}"></property>
+        <property name="clientSecret" value="${StoryClientSecret}"/>
+      </bean>
+    </argument>
+  </bean>
+  
+  
+<bean id="printBodyProcess" class="ru.breffi.sf_integration.utils.TestBodyProcess"/>
+<bean id="DateTimeUtils" class="ru.breffi.sf_integration.utils.DateTimeUtilsBean"/>
+<bean id="CheckExisting" class="ru.breffi.sf_integration.utils.CheckExistingAgregationStrategy"/>
+<bean id="ConverterByHeaderConverter" class="ru.breffi.sf_integration.converters.ConverterByHeaderConverter"/>
+<bean id="t2id" class="ru.breffi.sf_integration.converters.Story2IdsBean"/>
+<bean id="file2date" class="ru.breffi.sf_integration.converters.GenericFileToDateConverter"/>
+<bean id="AllInOneAgregationStrategy" class="ru.breffi.sf_integration.utils.AllInOneAgregationStrategy"/>
+<bean id="CommaJoinArrayProcessor" class="ru.breffi.sf_integration.utils.CommaJoinArrayProcessor"/>
+<bean id="processStoryLog" class="ru.breffi.sf_integration.utils.CreateStoryLogProcessor"/>
+<bean id="incBean" class="ru.breffi.sf_integration.utils.IncrementBean"/>
+<bean id="totalCountLimiter" class="ru.breffi.sf_integration.utils.TotalCountLimiter"/>
+<bean id="checkDateProcessor" class="ru.breffi.sf_integration.utils.CheckDateProcessor"/>
+<bean id="listIteratorProcessor" class="ru.breffi.sf_integration.utils.ListIteratorProcessor"/>
+
+
+<reference-list id="typeServices" availability="optional" interface="ru.breffi.EntityTypeConverterServicePackage.EntityTypeConverterService" />
+
+
+
+
+  <camelContext id="blueprint-bean-context" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="timerToLog">
+   
+       <from uri="timer:foo?period=15000"/>
+     <!-- <from uri="quartz://breffiTimer?cron={{cron}}"/>-->
+     
+      <onException>
+   		<exception>ru.breffi.storyclmsdk.Exceptions.AuthFaliException</exception>
+   		<redeliveryPolicy maximumRedeliveries="5"/>
+	</onException>
+	
+     <setBody>
+   		  <simple>${ref:typeServices}</simple>
+          <!-- <method ref="serviceList" method="getServices"/>-->
+  	 </setBody>
+  	 <log message="Зарегистрированные сервисы репликации: ${body}"/>
+  	 <process ref="printBodyProcess" />  
+  	  <split>
+  	  
+	  	  <simple>${body}</simple>
+	  		<!-- <process ref="printBodyProcess" />--> 
+	  	  <setHeader  headerName="sObjectClass">
+	  	  	<simple>${body.getSFType}</simple>
+	  	  </setHeader>
+	  	   <setHeader  headerName="EntityTypeService">
+	  	  	<simple>${body}</simple>
+	  	  </setHeader>
+	  	  <setHeader  headerName="SFQueryFields">
+	  	  	<simple>${body.getSFQueryFields}</simple>
+	  	  </setHeader>
+	  	    <setHeader  headerName="SFTable">
+	  	  	<simple>${body.getSFTable}</simple>
+	  	  </setHeader>
+	  	  <process ref="CommaJoinArrayProcessor"/> <!-- update SFQueryFields header by joining by comma for soql query -->
+	  	  <to uri="storyCLM:Find?tableId=${header.EntityTypeService.getLogTableId}&amp;entityType=ru.breffi.sf_integration.dto.StoryLog&amp;maxByField=Date"/>
+	  	  <process ref="checkDateProcessor"></process>
+	  	   <setHeader  headerName="StoryEntityType">
+	  	  	<simple>${header.EntityTypeService.getStoryType}</simple>
+	  	  </setHeader>
+	  	  <setHeader headerName="LastReplicDate">
+	  	  	 <simple>${body.getDateForSF}</simple>
+	  	  <!-- 	<simple>${body.getDate}</simple>-->
+	  	  </setHeader>
+	  	  <setHeader headerName="LastReplicDateNew">
+	  	 		<method ref="DateTimeUtils" method="GetNow" ></method>
+	  	  </setHeader>
+	  	 
+  	  	  <setHeader  headerName="sObjectQuery">
+	  	    	<simple>SELECT ${header.SFQueryFields} from ${header.SFTable} where	LastModifiedDate > ${header.LastReplicDate} </simple>
+	  	   </setHeader>
+	  	   
+	  	   <log message="${header.sObjectQuery}"/>
+	  	   <to uri = "salesforce:query?sObjectQuery=InHeader&amp;sObjectClass=InHeader"/>
+  	  	   <log message="Count soql query: ${body.totalSize}"/>
+  	  	   <setHeader headerName="queryRecords"><simple>${body}</simple></setHeader>
+  	  	   <setHeader headerName="TotalCount">
+  	  	   		<simple>${body.getTotalSize}</simple>
+  	  	   	</setHeader>
+  	  	   	 <setHeader headerName="SOQLLimit"><simple>${body.getRecords.size}</simple></setHeader>
+										  	 <!--<setHeader headerName="TotalCount">
+										  	  		<simple>${bean:totalCountLimiter?method=Limit(${body.totalSize})}</simple>
+										  	 </setHeader>-->
+	  	  	<!--<log message="Count soql records = ${body}"/>-->
+	  	  	 
+	  	  	 <setHeader headerName="SOQLLoopCount">
+	  	  	 	<simple>${bean:incBean?method=LoopCount(${header.TotalCount},${header.SOQLLimit})}</simple>
+	  	  	 </setHeader>
+		  	  	 
+		  	  <log message="SOQLLoopCount = ${header.SOQLLoopCount}"/>
+		  	  <process ref="processStoryLog"/>
+		  	  <loop>
+		  	  	 	<simple> ${header.SOQLLoopCount}</simple>
+		  	  	 	<!-- Сначала тело цикла, а потом очередной запрос т.к. первый запрос к SF был сделан до начала цикла -->
+		  	  	 	 
+		  	  	 	 
+		  	  	 	<setBody>
+						<simple>${body.getRecords}</simple>
+					</setBody>
+					<process ref="ConverterByHeaderConverter"/>
+					<setHeader headerName="SFRecords">
+						<simple>${body}</simple>
+					</setHeader>	
+					
+		  	  	    <log message="SF records ${header.SFRecords.size}"/>
+					
+		  	  	 		<!-- Для записи в StoryCLM выборку нужно разбить на мелкие дольки (ограничение на размер запроса TablesQuery )-->
+		  	  	 	 <setHeader headerName="storyLimit"><constant>20</constant></setHeader>
+		  	  	 	 <setHeader headerName="storyStart"><constant>0</constant></setHeader>
+	  	  	 		 <setHeader headerName="StoryLoopCount">
+  	  	 				<simple>${bean:incBean?method=LoopCount(${header.SFRecords.size},${header.storyLimit})}</simple>
+  	  				 </setHeader>
+  	  				 <log message="StoryLoopCount  - ${header.StoryLoopCount}"/>
+	  	  	 	 	<loop>
+		  	  	 			<simple>${header.StoryLoopCount}</simple>
+		  	  	 			<process ref="listIteratorProcessor"/>
+		  	  	 			<!-- <setBody>
+								<simple>${bean:incBean?method=Range(${header.SFRecords},${header.storyStart},${header.storyLimit})}</simple>
+							</setBody>-->
+		  	  	 			<setHeader headerName="StoryIds">
+								<method ref="t2id" method="Convert"></method>
+				 			</setHeader>
+		  	  	 			 <log message="StoryIds ${header.StoryIds}"/>
+		  	  	 			 <enrich strategyRef="CheckExisting">
+						    	 <simple>storyCLM:Query?Query=[SalesForce_Id][in][${header.StoryIds}]&amp;tableId=${header.EntityTypeService.getTableId}</simple>
+						 	 </enrich>
+						 	 <log message="Enriched records ${body.size}"/>
+						 	 
+						 	 <to uri="storyCLM:Upsert?storyIdName=_id&amp;tableId=${header.EntityTypeService.getTableId}"/>
+				   	 		 <process ref="processStoryLog"/>
+		  	  	 	</loop>
+		  	  	 	
+		  	  	 	<!-- Псевдоусловная конструкция -->
+		  	  	 	   <setHeader  headerName="sObjectQuery">
+				  	    	<simple>${header.queryRecords.getNextRecordsUrl}</simple>
+				  	   </setHeader>
+				  	    <log message="sObjectQuery = ${header.sObjectQuery}"/>
+		  	  	 	<setHeader headerName="queryMoreLoopCount">
+		  	  	 		<simple>${bean:incBean?method=OneIfNotNull(${header.sObjectQuery})}</simple>
+		  	  	 	</setHeader>
+		  	  	 	
+		  	  	 	<!-- Если не конец цикла далее боди поменяется -->
+		  	  	 	<setBody><constant>EndLoop</constant></setBody>
+		  	  	 	  <log message="queryMoreLoopCount = queryMoreLoopCount"/>
+		  	  	 	<loop>
+		  	  	 		<simple>${header.queryMoreLoopCount}</simple>
+		  	  	 	
+				  	 
+				  	  
+				  	   
+				  	   <to uri = "salesforce:queryMore?sObjectQuery=InHeader&amp;sObjectClass=InHeader"/>
+				  	   <setHeader headerName="queryRecords"><simple>${body}</simple></setHeader>
+				      	</loop>      
+						
+				  
+				  
+		   	 	 </loop>
+		   	 	<log message ="storylog ${header.StoryLog}"/>
+		   	 	  	 <setBody>
+		   	 	 	<simple>${header.StoryLog}</simple>
+		   	 	 </setBody>
+		   	 	 
+			   	 <log message="Complete Service ${header.EntityTypeService.class.getName}"/>
+			   	 <log message="Fix replication Date: ${body.getDate} in table ${header.EntityTypeService.getLogTableId}"/>
+			   	 <to uri="storyCLM:Upsert?tableId=${header.EntityTypeService.getLogTableId}"/>
+			   	 <log message="Complete Service ${header.EntityTypeService.class.getName}"/>
+			   	 <bean beanType="ru.breffi.sf_integration.utils.PrintBean" method="PrintLn(Complete Service ${header.StoryEntityType.class.getName})"/>
+   	 </split>
+	</route>
+  </camelContext>
+
+</blueprint>
