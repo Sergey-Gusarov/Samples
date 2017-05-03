@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+       xsi:schemaLocation="
+         http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+         http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+         http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+ <cm:property-placeholder persistent-id="ru.breffi.biocad2story" update-strategy="reload"  >
+	<!--    <cm:default-properties>
+	            <cm:property name="cron" value="0/5 * * * * ?"/>
+	    </cm:default-properties>-->
+ </cm:property-placeholder>  
+ 
+
+   <bean id="replicator" class="ru.breffi.Biocad2StoryReplicator.Replicator">
+   <property name="sfconfig">
+      <bean class="ru.breffi.Biocad2StoryReplicator.SalesForceLoginConfig">
+        <property name="userName" value="${userName}"/>
+        <property name="password" value="${password}"/>
+      </bean>
+    </property>
+      <property name="storyConfig">
+      <bean class="ru.breffi.Biocad2StoryReplicator.StoryLoginConfig">
+        <property name="clientId" value="${clientId}"/>
+        <property name="clientSecret" value="${clientSecret}"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="printBodyProcess" class="ru.breffi.biocad2StoryCamel.TestBodyProcess"/>
+    
+<bean id="quartz" class="org.apache.camel.component.quartz.QuartzComponent"/>
+<reference-list id="typeServices" availability="optional" interface="ru.breffi.EntityTypeConverterServicePackage.PartnerTypeConverterService" />
+
+<camelContext id="blueprint-bean-context1" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="b2sreplication">
+      <from uri="quartz://breffiTimer?cron={{cron}}"/>
+      <!-- <from uri="timer:foo?period=1500000"/>-->
+      <log message="Cработало"/>
+      
+ 	  <setBody>
+   		 <simple>${ref:typeServices}</simple>
+   		
+          <!-- <method ref="serviceList" method="getServices"/>-->
+		 
+  	 </setBody>
+  <process ref="printBodyProcess" />  
+ 	 <split>
+  	   <simple>${body}</simple>
+ 	   <bean ref="replicator" method="Replicate(${body})"/>
+ 	 </split>
+ 	 </route>
+ </camelContext>
+ 
+ 
+   
+</blueprint>

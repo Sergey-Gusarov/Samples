@@ -1,0 +1,7 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+  <bean id="service" class="ru.breffi.entityTypeConverterImpl.companyConverter.service.Service"/>
+
+  <service ref="service" interface="ru.breffi.EntityTypeConverterServicePackage.EntityTypeConverterService"/>
+  
+</blueprint>

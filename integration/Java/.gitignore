@@ -65,5 +65,4 @@ local.properties
 # Maven
 log/
 target/*
-Replicatorbean/
 target/
