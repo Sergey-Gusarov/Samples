@@ -26,11 +26,9 @@ import com.sforce.ws.ConnectorConfig;
 
 import ru.breffi.EntityTypeConverterServicePackage.IStoryEntity;
 import  ru.breffi.EntityTypeConverterServicePackage.PartnerTypeConverterService;
-import ru.breffi.storyclmsdk.StoryCLMConnectorsGenerator;
-import ru.breffi.storyclmsdk.StoryCLMServiceConnector;
-import ru.breffi.storyclmsdk.StoryCLMServiceGeneric;
-import ru.breffi.storyclmsdk.Exceptions.AsyncResultException;
-import ru.breffi.storyclmsdk.Exceptions.AuthFaliException;
+import ru.breffi.storyclmsdk.*;
+import ru.breffi.storyclmsdk.Exceptions.*;
+
 public class Replicator {
 	  public SalesForceLoginConfig sfconfig;
 	  public StoryLoginConfig storyConfig;
