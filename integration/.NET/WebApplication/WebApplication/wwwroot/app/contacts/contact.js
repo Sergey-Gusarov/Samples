@@ -2,7 +2,7 @@
 class Contact {
     constructor(id, externalId, name, company, email, phone, interest) {
         this.Id = id;
-        this.ExternalId = externalId;
+        this._id = externalId;
         this.Name = name;
         this.Company = company;
         this.Email = email;

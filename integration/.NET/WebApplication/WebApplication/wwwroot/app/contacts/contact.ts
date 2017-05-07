@@ -3,7 +3,7 @@
 
     constructor(id: number, externalId: string, name: string, company: string, email: string, phone: string, interest: string) {
         this.Id = id;
-        this.ExternalId = externalId;
+        this._id = externalId;
         this.Name = name;
         this.Company = company;
         this.Email = email;
@@ -12,7 +12,7 @@
     }
 
     public Id: number;
-    public ExternalId: string;
+    public _id: string;
     public Name: string;
     public Company: string;
     public Email: string;
