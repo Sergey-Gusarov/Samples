@@ -52,14 +52,14 @@ export class ContactService {
         let res = response.json();
         let contacts: Contact[] = [];
         for (let i = 0; i < res.length; i++) {
-            contacts.push(new Contact(res[i].id, res[i].externalId, res[i].name, res[i].company, res[i].email, res[i].phone, res[i].interest));
+            contacts.push(new Contact(res[i].id, res[i]._id, res[i].name, res[i].company, res[i].email, res[i].phone, res[i].interest));
         }
         return contacts;
     }
 
     private extractContact(response: Response) {
         let res = response.json();
-        let contact = new Contact(res.id, res.externalId, res.name, res.company, res.email, res.phone, res.interest);
+        let contact = new Contact(res.id, res._id, res.name, res.company, res.email, res.phone, res.interest);
         return contact;
     }
 

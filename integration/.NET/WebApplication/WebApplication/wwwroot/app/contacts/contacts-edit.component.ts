@@ -135,7 +135,7 @@ export class ContactsEditComponent implements OnInit {
     }
 
     onSubmit() {
-        let con: Contact = new Contact(this.contact.Id, this.contact.ExternalId,
+        let con: Contact = new Contact(this.contact.Id, this.contact._id,
             this.contactForm.value["Name"],
             this.contactForm.value["Company"],
             this.contactForm.value["Email"],
