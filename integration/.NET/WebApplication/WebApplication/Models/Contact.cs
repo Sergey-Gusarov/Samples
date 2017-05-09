@@ -9,7 +9,6 @@ namespace WebApplication.Models
 {
     public class Contact
     {
-        
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int Id { get; set; }
 
