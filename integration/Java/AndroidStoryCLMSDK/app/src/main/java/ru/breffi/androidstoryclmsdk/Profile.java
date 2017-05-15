@@ -49,15 +49,6 @@ public class Profile {
     }
 
 
-    //ParceablE
-
-    public String[] ToStringArray(){
-        return new String[]{
-                _id,Name, Objects.toString(Age,""),format.format(Created), Gender.toString(), Objects.toString(Rating,"")
-        };
-    }
-
-
     public void ParseArray(String[] data){
         this._id = data[0];
         this.Name = data[1];
@@ -70,39 +61,6 @@ public class Profile {
         this.Rating = Double.parseDouble(data[5]);
     }
    public static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-/*
-    public Profile(Parcel in){
-        String[] data = new String[6];
-        in.readStringArray(data);
-        ParseArray(data);
-    }
 
-    public static final Creator<Profile> CREATOR = new Creator<Profile>() {
-        @Override
-        public Profile createFromParcel(Parcel in) {
-            return new Profile(in);
-        }
-
-        @Override
-        public Profile[] newArray(int size) {
-            return new Profile[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        String[] ar = this.ToStringArray();
-        dest.writeString(ar[0]);
-        dest.writeString(ar[1]);
-        dest.writeString(ar[2]);
-        dest.writeString(ar[3]);
-        dest.writeString(ar[4]);
-        dest.writeString(ar[5]);
-    }//*/
 }
 

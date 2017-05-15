@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AndroidStoryCLMSDK</string>
+    <string name="app_name">AndroidStoryCLMSDK Sample</string>
+    <string name="client_id">client_18</string>
+    <string name="client_secret">595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6</string>
 </resources>

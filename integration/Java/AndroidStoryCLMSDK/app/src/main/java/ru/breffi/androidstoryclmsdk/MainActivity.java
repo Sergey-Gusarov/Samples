@@ -1,8 +1,10 @@
 package ru.breffi.androidstoryclmsdk;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,10 +26,12 @@ import ru.breffi.storyclmsdk.AsyncResults.IAsyncResult;
 
 public class MainActivity extends AppCompatActivity  {
 
+
+
     static StoryCLMServiceGeneric<Profile> StoryCLMProfileService;
     public static StoryCLMServiceGeneric<Profile> getService(){
         if (StoryCLMProfileService==null){
-            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector("client_18", "595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6",null);
+            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(App.getContext().getResources().getString(R.string.client_id),App.getContext().getResources().getString(R.string.client_secret),null);
             StoryCLMProfileService = clientConnector.GetService(Profile.class, 23);
         }
         return StoryCLMProfileService;
