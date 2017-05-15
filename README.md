@@ -1,27 +1,31 @@
-# Примеры
+п»ї# РџСЂРёРјРµСЂС‹
 
-StoryCLM дает разработчику большую свободу при создании интерактивных презентаций (приложений), 
-а так же набор средств интеграции.
+StoryCLM РґР°РµС‚ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєСѓ Р±РѕР»СЊС€СѓСЋ СЃРІРѕР±РѕРґСѓ РїСЂРё СЃРѕР·РґР°РЅРёРё РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹С… РїСЂРµР·РµРЅС‚Р°С†РёР№ (РїСЂРёР»РѕР¶РµРЅРёР№), 
+Р° С‚Р°Рє Р¶Рµ РЅР°Р±РѕСЂ СЃСЂРµРґСЃС‚РІ РёРЅС‚РµРіСЂР°С†РёРё.
 
-В этом репозитории собраны примеры, описывающие различные подходы по созданию контента для StoryCLM и интеграцию с приложениями и сервисами.
+Р’ СЌС‚РѕРј СЂРµРїРѕР·РёС‚РѕСЂРёРё СЃРѕР±СЂР°РЅС‹ РїСЂРёРјРµСЂС‹, РѕРїРёСЃС‹РІР°СЋС‰РёРµ СЂР°Р·Р»РёС‡РЅС‹Рµ РїРѕРґС…РѕРґС‹ РїРѕ СЃРѕР·РґР°РЅРёСЋ РєРѕРЅС‚РµРЅС‚Р° РґР»СЏ StoryCLM Рё РёРЅС‚РµРіСЂР°С†РёСЋ СЃ РїСЂРёР»РѕР¶РµРЅРёСЏРјРё Рё СЃРµСЂРІРёСЃР°РјРё.
 
-Вы можете использовать эти примеры в Ваших проектах как отправную точку в создании презентаций для StoryCLM или изучать и 
-создавать на основе них свои решения.
+Р’С‹ РјРѕР¶РµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌС‚Рё РїСЂРёРјРµСЂС‹ РІ Р’Р°С€РёС… РїСЂРѕРµРєС‚Р°С… РєР°Рє РѕС‚РїСЂР°РІРЅСѓСЋ С‚РѕС‡РєСѓ РІ СЃРѕР·РґР°РЅРёРё РїСЂРµР·РµРЅС‚Р°С†РёР№ РґР»СЏ StoryCLM РёР»Рё РёР·СѓС‡Р°С‚СЊ Рё 
+СЃРѕР·РґР°РІР°С‚СЊ РЅР° РѕСЃРЅРѕРІРµ РЅРёС… СЃРІРѕРё СЂРµС€РµРЅРёСЏ.
 
-## Презентации
+## РџСЂРµР·РµРЅС‚Р°С†РёРё
 
-В каталоге "[presentations](https://github.com/storyclm/StoryCLM-Samples/tree/master/presentations)" собраны презентации-примеры, которые помогут
-понять принцип создания презентаций для StoryCLM.
+Р’ РєР°С‚Р°Р»РѕРіРµ "[presentations](https://github.com/storyclm/StoryCLM-Samples/tree/master/presentations)" СЃРѕР±СЂР°РЅС‹ РїСЂРµР·РµРЅС‚Р°С†РёРё-РїСЂРёРјРµСЂС‹:
+
+* [CLM](https://github.com/storyclm/Samples/tree/master/presentations/CLM)
+* [Form](https://github.com/storyclm/Samples/tree/master/presentations/Form)
+* [Neurology](https://github.com/storyclm/Samples/tree/master/presentations/Neurology)
+* [Preparation_X](https://github.com/storyclm/Samples/tree/master/presentations/Preparation_X)
 
 ## StoryCLM.JS
 
-[StoryCLM.js](https://github.com/storyclm/storyCLM.js) - это библиотека, предоставляющая доступ к системным функциям (API) платформы StoryCLM из презентаций (приложений).
+[StoryCLM.js](https://github.com/storyclm/storyCLM.js) - СЌС‚Рѕ Р±РёР±Р»РёРѕС‚РµРєР°, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰Р°СЏ РґРѕСЃС‚СѓРї Рє СЃРёСЃС‚РµРјРЅС‹Рј С„СѓРЅРєС†РёСЏРј (API) РїР»Р°С‚С„РѕСЂРјС‹ StoryCLM РёР· РїСЂРёР»РѕР¶РµРЅРёР№. РќРёР¶Рµ РїСЂРёРІРµРґРµРЅ СЃРїРёСЃРѕРє РїСЂРёР»РѕР¶РµРЅРёР№, РєРѕС‚РѕСЂРµ РґРµРјРѕРЅС‚СЃСЂРёСЂСѓСЋС‚ СЂР°Р±РѕС‚Сѓ СЃ API.
 
-В каталоге "[storyclm.js](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js)" находятся три приложения - примера. Загрузив их в StoryCLM, можно подробно изучить код и 
-детально разобраться в работе библиотеке на примерах:
+* [storyclm-js](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/storyclm-js) - РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹Р№ СЃРїСЂР°РІРѕС‡РЅРёРє РїРѕ РІСЃРµРј С„СѓРЅРєС†РёСЏРј Р±РёР±Р»РёРѕС‚РµРєРё СЃ РїРѕРґСЂРѕР±РЅС‹Рј РѕРїРёСЃР°РЅРёРµРј;
+* [tables](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/tables) - РїСЂРёР»РѕР¶РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РїРѕРєР°Р·С‹РІР°РµС‚ РЅР° СЂРµР°Р»СЊРЅРѕРј РїСЂРёРјРµСЂРµ СЂР°Р±РѕС‚Сѓ СЃ С‚Р°Р±Р»РёС†Р°РјРё. Р’ РїСЂРёРјРµСЂРµ РїСЂРѕРґРµРјРѕРЅСЃС‚СЂРёСЂРѕРІР°РЅР° РїРѕСЃС‚СЂР°РЅРёС‡РЅР°СЏ РІС‹Р±РѕСЂРєР° Рё CRUD РѕРїРµСЂР°С†РёРё.
+* [querybuilder](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/tablesquery) - РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р·Р°РїСЂРѕСЃРѕРІ [TablesQuery](https://github.com/storyclm/documentation/blob/master/TABLES_QUERY.md). РџСЂРёР»РѕР¶РµРЅРёРµ - СЌС‚Рѕ РІРёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р·Р°РїСЂРѕСЃРѕРІ. РљРѕРЅСЃС‚СЂСѓРёСЂСѓСЏ Рё РѕС‚РїСЂР°РІР»СЏСЏ Р·Р°РїСЂРѕСЃ, РјРѕР¶РЅРѕ РѕСЃРІРѕРёС‚СЊ СЂР°Р±РѕС‚Сѓ СЃ РІС‹Р±РѕСЂРєРѕР№ РґР°РЅРЅС‹С… РёР· С‚Р°Р±Р»РёС† РІ StoryCLM.
 
-* [storyclm-js](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/storyclm-js) - интерактивный справочник по всем функциям библиотеки с подробным описанием;
-* [tables](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/tables) - приложение, которое показывает на реальном примере работу с таблицами. В примере продемонстрирована постраничная выборка и CRUD операции.
-* [querybuilder](https://github.com/storyclm/StoryCLM-Samples/tree/master/storyclm.js/tablesquery) - конструктор запросов [TablesQuery](https://github.com/storyclm/documentation/blob/master/TABLES_QUERY.md). Приложение - это визуальный конструктор запросов. Конструируя и отправляя запрос, можно освоить работу с выборкой данных из таблиц в StoryCLM. 
+## РРЅС‚РµРіСЂР°С†РёСЏ
 
-
+* [РџСЂРёРјРµСЂ РёРЅС‚РµРіСЂР°С†РёРё StoryCLM Рё РїСЂРёР»РѕР¶РµРЅРёСЏ РЅР° ASP.NET Core РЅР° РѕСЃРЅРѕРІРµ StoryCLM Hooks](https://github.com/storyclm/Samples/tree/master/integration/.NET/WebApplication)
+* [РџСЂРёРјРµСЂ РёРЅС‚РµРіСЂР°С†РёРё StoryCLM Рё CRM SalesForce СЃ РїРѕРјРѕС‰СЊСЋ Apache Servicemix](https://github.com/storyclm/Samples/tree/master/integration/Java/Servicemix)

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +9,10 @@ namespace WebApplication.Models
 {
     public class Contact
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int Id { get; set; }
 
-        public string ExternalId { get; set; }
+        public string _id { get; set; }
 
         public string Name { get; set; }
 

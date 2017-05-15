@@ -52,13 +52,13 @@ let ContactService = class ContactService {
         let res = response.json();
         let contacts = [];
         for (let i = 0; i < res.length; i++) {
-            contacts.push(new index_1.Contact(res[i].id, res[i].externalId, res[i].name, res[i].company, res[i].email, res[i].phone, res[i].interest));
+            contacts.push(new index_1.Contact(res[i].id, res[i]._id, res[i].name, res[i].company, res[i].email, res[i].phone, res[i].interest));
         }
         return contacts;
     }
     extractContact(response) {
         let res = response.json();
-        let contact = new index_1.Contact(res.id, res.externalId, res.name, res.company, res.email, res.phone, res.interest);
+        let contact = new index_1.Contact(res.id, res._id, res.name, res.company, res.email, res.phone, res.interest);
         return contact;
     }
     handleError(error) {

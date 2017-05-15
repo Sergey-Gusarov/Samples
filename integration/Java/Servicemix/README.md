@@ -178,4 +178,7 @@ Connected apps
     companyTableId=25
     companyLogTableId=41
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75212d82f98e390824a163875e61a6c8a28407f2
