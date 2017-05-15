@@ -63,7 +63,7 @@ Apache Servicemix поддерживает сервис-ориентирован
 
 Для того чтобы добавить репликацию еще одной сущности необходимо реализовать для нее интерфейс [PartnerTypeConverterService]() и зарегистрировать в качестве сервиса. Примеры можно рассмотреть в проектах [PartnerEmployeeConverterService](), [PartnerCompanyConverterService]() и [PartnerTerritoryConverterService]().
 
-## Настройки интеграции
+## Настройка интеграции
 
 **Настройка Salesforce**
 
@@ -164,7 +164,7 @@ Connected apps
     userName=******
     password=******
 
-    #Аутентификационные данные SalesForce
+    #Аутентификационные данные StoryCLM
     clientId=********
     clientSecret=********
 
@@ -179,8 +179,3 @@ Connected apps
     companyLogTableId=41
 
 
-## Итоги
-Результатом проделанной работы стало надежное и гибкое решение синхронизации двух систем, позволяющее с легкостью изменять как частоту процессов синхронизации так и набор синхронизируемых сущностей.
-
-
-Сопутствующими продуктами стали библиотека доступа к StoryCLM REST API [StoryCLM Java SDK]() и компонент [Camel StoryCLM Component](). [StoryCLM Java SDK]()  позволяет легко интегрировать систему [StoryCLM](http://breffi.ru/ru/storyclm) c любым разрабатываемым приложением на Java (в т.ч. на платформе Android). [Camel StoryCLM Component]() предоставляет возможность использовать [StoryCLM](http://breffi.ru/ru/storyclm) при разработке интеграционных решений на базе фрэймворка [Apache Camel](), поддерживая идеологию [Шаблонов Интеграции Корпоративных приложений]().

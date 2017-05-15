@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="ru.breffi.androidstoryclmsdk.MainActivity"
+
+    >
+
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="29dp"
+        android:onClick="AddButtonOnClick"
+        android:text="Новый"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
+
+    <Button
+        android:id="@+id/RefreshButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:elevation="0dp"
+        android:enabled="true"
+        android:onClick="RefreshButtonClick"
+        android:text="Обновить"
+        app:layout_constraintLeft_toRightOf="@+id/AddButton"
+        tools:enabled="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/AddButton" />
+
+    <ProgressBar
+        android:id="@+id/loadingPanel"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="231dp"
+        android:indeterminate="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="354dp"
+        android:layout_height="499dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="-18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
