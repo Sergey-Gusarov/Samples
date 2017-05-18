@@ -4,12 +4,6 @@
   <artifactId>Salesforce2StoryReplicator</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-  	 <dependency> 
-        <groupId>ru.breffi</groupId>
-    	<artifactId>PartnerEmployeeConverterService</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    <scope>test</scope>
-    </dependency>
    
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     
@@ -46,6 +40,12 @@
        	<artifactId>slf4j-simple</artifactId>
        	<version>1.8.0-alpha1</version>
        	<scope>test</scope>
+       </dependency>
+       <dependency>
+       	<groupId>ru.breffi</groupId>
+       	<artifactId>PartnerTerritoryConverterService</artifactId>
+       	<version>0.0.1-SNAPSHOT</version>
+        <scope>test</scope>
        </dependency>
   </dependencies>
 </project>

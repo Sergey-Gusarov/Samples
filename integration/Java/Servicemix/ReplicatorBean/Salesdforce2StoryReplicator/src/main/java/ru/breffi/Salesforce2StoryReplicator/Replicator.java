@@ -46,7 +46,7 @@ public class Replicator {
 			  ConnectorConfig config = new ConnectorConfig();
 			  config.setUsername(sfconfig.UserName);
 			  config.setPassword(sfconfig.Password);
-			  config.setAuthEndpoint("https://login.salesforce.com/services/Soap/u/29.0");
+			  config.setAuthEndpoint(sfconfig.AuthEndpoint);
 			  connection = Connector.newConnection(config);
 		  }
 		  return connection;
@@ -159,7 +159,7 @@ public class Replicator {
 	  int removeDeleted(Date lastReplicationDate, Date thisReplicationDate, String sObjectType, String SFIdFieldName, StoryCLMServiceGeneric<IStoryEntity> storyService) throws ConnectionException, AuthFaliException, AsyncResultException{
 		
 		if (getDateDiff(lastReplicationDate, thisReplicationDate, TimeUnit.DAYS)>30){
-			lastReplicationDate = new Date((new Date()).getTime() - 30 * 24 * 3600 * 1000l );
+			lastReplicationDate = new Date((new Date()).getTime() - 29 * 24 * 3600 * 1000l );
 			logger.warn("************* "+sObjectType+" *************** дата последней репликации превышает 30 дней - возможна потеря информации об удаленных объектах!");
 		}
 		  Calendar startCal = new GregorianCalendar();

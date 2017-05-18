@@ -14,15 +14,16 @@
  </cm:property-placeholder>  
  
 
-   <bean id="replicator" class="ru.breffi.Biocad2StoryReplicator.Replicator">
+   <bean id="replicator" class="ru.breffi.Salesforce2StoryReplicator.Replicator">
    <property name="sfconfig">
-      <bean class="ru.breffi.Biocad2StoryReplicator.SalesForceLoginConfig">
+      <bean class="ru.breffi.Salesforce2StoryReplicator.SalesForceLoginConfig">
         <property name="userName" value="${userName}"/>
         <property name="password" value="${password}"/>
+        <property name="authEndpoint" value="${authEndpoint}"/>
       </bean>
     </property>
       <property name="storyConfig">
-      <bean class="ru.breffi.Biocad2StoryReplicator.StoryLoginConfig">
+      <bean class="ru.breffi.Salesforce2StoryReplicator.StoryLoginConfig">
         <property name="clientId" value="${clientId}"/>
         <property name="clientSecret" value="${clientSecret}"/>
       </bean>
@@ -37,14 +38,15 @@
     <route id="b2sreplication">
       <from uri="quartz://breffiTimer?cron={{cron}}"/>
       <!-- <from uri="timer:foo?period=1500000"/>-->
-      <log message="Cработало"/>
+      <log message="Start b2sreplication route by quartz (timer)"/>
       
  	  <setBody>
    		 <simple>${ref:typeServices}</simple>
    		
           <!-- <method ref="serviceList" method="getServices"/>-->
-		 
+		
   	 </setBody>
+  	  <log message="Finded services: ${body}"/>
   <process ref="printBodyProcess" />  
  	 <split>
   	   <simple>${body}</simple>
