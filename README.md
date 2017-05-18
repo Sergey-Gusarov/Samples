@@ -29,3 +29,4 @@ StoryCLM дает разработчику большую свободу при 
 
 * [Пример интеграции StoryCLM и приложения на ASP.NET Core на основе StoryCLM Hooks](https://github.com/storyclm/Samples/tree/master/integration/.NET/WebApplication)
 * [Пример интеграции StoryCLM и CRM SalesForce с помощью Apache Servicemix](https://github.com/storyclm/Samples/tree/master/integration/Java/Servicemix)
+* [Пример интеграции приложения на платформе Android с системой StoryCLM](https://github.com/storyclm/Samples/tree/master/integration/Java/AndroidStoryCLMSDK)
