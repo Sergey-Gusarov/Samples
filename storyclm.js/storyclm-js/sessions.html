@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="clm-swipe-next" content="">
+    <meta name="clm-swipe-previous" content="">
+    <meta name="clm" content="">
+    <title>Sessions</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/template.css" rel="stylesheet">
+    <style>
+        .list-group-item {
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <div class="row" style="margin:5px;">
+            <div class="col-md-3">
+                <a class="btn btn-default" style="width:100%;" href="index.html">Назад</a><br /><br />
+                <div class="list-group">
+                    <a href="#" id="Get" class="list-group-item">Get ()</a>
+                    <a href="#" id="GetById" class="list-group-item">GetById (id)</a>
+                    <a href="#" id="Confirm" class="list-group-item">Confirm (id)</a>
+                </div>
+            </div>
+            <div id="def" style="display:none;">
+                <div data-i="Get">
+                    <div class="request">
+<pre>
+{
+    "Command": "getsessions",
+    "Data": {}
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Sessions.Get(callback);</div>
+                    <div class="text">
+                        Получает список сессий для текущего пользователя.
+                    </div>
+                </div>
+            </div>
+            <div id="def" style="display:none;">
+                <div data-i="GetById">
+                    <div class="request">
+<pre>
+{
+    "Command": "getsessionbyid",
+    "Data": {
+        "id": "90C0499FF3A145BDBC83D2D5C4BEE6AD"
+    }
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Sessions.GetById(sessionId, callback);</div>
+                    <div class="text">
+                        Получает сессию по идентификатору.
+                    </div>
+                </div>
+            </div>
+            <div id="def" style="display:none;">
+                <div data-i="Confirm">
+                    <div class="request">
+<pre>
+{
+    "Command": "sessionconfirm",
+    "Data": {
+        "id": "90C0499FF3A145BDBC83D2D5C4BEE6AD"
+    }
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Sessions.Confirm(sessionId, callback);</div>
+                    <div class="text">
+                        Помечает сессию как обработанную.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <p class="text-primary">
+                    StoryCLM -> Sessions
+                </p>
+                <input type="text" id="signa" class="form-control">
+                <div class="jumbotron" id="text"></div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#response" aria-controls="response" role="tab" data-toggle="tab">Response</a></li>
+                    <li role="presentation"><a href="#request" aria-controls="profile" role="tab" data-toggle="tab">Request</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="response"></div>
+                    <div role="tabpanel" class="tab-pane" id="request"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/storyclm-1.7.0.js"></script>
+    <script>
+        $(function () {
+            $(".list-group a").on(clickEvent, function () {
+                $("#response").text("");
+                switch (this.id) {
+                    case "Get":
+                        {
+                            StoryCLM.Sessions.Get(function (message) {
+                                setJson("response", message);
+                            });
+                            loadDocData("Get");
+                            return false;
+                        }
+                    case "GetById":
+                        {
+                            StoryCLM.Sessions.GetById("90C0499FF3A145BDBC83D2D5C4BEE6AD", function (message) {
+                                setJson("response", message);
+                            });
+                            loadDocData("GetById");
+                            return false;
+                        }
+                    case "Confirm":
+                        {
+                            StoryCLM.Sessions.Confirm("90C0499FF3A145BDBC83D2D5C4BEE6AD", function (message) {
+                                setJson("response", message);
+                            });
+                            loadDocData("Confirm");
+                            return false;
+                        }
+                    default:
+                        {
+                            return false;
+                        }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
