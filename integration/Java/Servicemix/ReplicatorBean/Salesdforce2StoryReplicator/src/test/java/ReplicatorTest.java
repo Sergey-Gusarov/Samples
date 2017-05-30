@@ -20,7 +20,7 @@ import ru.breffi.storyclmsdk.Exceptions.AuthFaliException;
 public class ReplicatorTest extends TestCase
 {
 	static final String USERNAME = "vova.klyuev@breffi.ru";
-	static final String PASSWORD = "Qwe510091#mq2rBYRxEPtryhBtMOyqjpAd";
+	static final String PASSWORD = "08004FD8680441EFBA3FED245E95F692i6WOysylKFUMIzKtHFn6ymyn";
 	static final String AuthEndpoint = "https://login.salesforce.com/services/Soap/u/29.0";
 	static PartnerConnection connection;
 	
@@ -51,15 +51,15 @@ public class ReplicatorTest extends TestCase
     {
     	Replicator r = new Replicator();
 	  	r.storyConfig = new StoryLoginConfig();
-	  	r.storyConfig.ClientId="client_30";
-	  	r.storyConfig.ClientSecret = "495dd7fbfcc449dfb2d197ce8c10017686707b493f024a9d92466d8d6b0ba799";
+	  	r.storyConfig.ClientId="client_18";
+	  	r.storyConfig.ClientSecret = "595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6";
 	  	r.sfconfig = new SalesForceLoginConfig();
 	  	r.sfconfig.UserName = USERNAME;
 	  	r.sfconfig.Password = PASSWORD;
 	  	r.sfconfig.AuthEndpoint = AuthEndpoint;
 	  	Service s = new Service();
-	  	s.setLogTableId(51);
-	  	s.setTableId(53);
+	  	s.setLogTableId(42);
+	  	s.setTableId(24);
 	  	try{
 	  		r.Replicate(s);	
 	  	}

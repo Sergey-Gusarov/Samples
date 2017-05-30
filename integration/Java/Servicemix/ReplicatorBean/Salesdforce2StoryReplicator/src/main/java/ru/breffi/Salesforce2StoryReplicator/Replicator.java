@@ -77,10 +77,11 @@ public class Replicator {
 	    	
 	    	//Достаем запись из журнала
 	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
-	    	int count = slogService.Count().GetResult();
+	   // 	int count = slogService.Count().GetResult();
 	    	Date lastReplicationDate = new Date(0);
-	    	if (count!=0) lastReplicationDate = slogService.Find(count-1,1).GetResult().get(0).Date;
-	    	System.out.println("lastReplicationDate!" + lastReplicationDate);
+	    //	if (count!=0) lastReplicationDate = slogService.Find(null,"Date",1,count-1,1).GetResult().get(0).Date;
+	    	lastReplicationDate = slogService.Max("Date", null, Date.class).GetResult();
+	    //	System.out.println("lastReplicationDate!" + lastReplicationDate);
 	    	logger.info("Last Replication Date " + lastReplicationDate);
 	    	//String query = MessageFormat.format("SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",
 	    	String query = MessageFormat.format("SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",		
