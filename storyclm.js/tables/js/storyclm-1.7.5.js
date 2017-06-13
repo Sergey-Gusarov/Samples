@@ -1,5 +1,5 @@
 /*!
-* StoryCLM Library v1.7.0
+* StoryCLM Library v1.7.5
 * Copyright(c) 2017, Vladimir Klyuev, Breffi Inc. All rights reserved.
 * License: Licensed under The MIT License.
 */
@@ -369,12 +369,12 @@ StoryCLM.Sessions = (function () {
         });
     }
 
-    function _confirm(id, callback) {
-        if (typeof id === "undefined") {
+    function _update(session, callback) {
+        if (typeof session === "undefined") {
             StoryCLMparametersErrorMessge(callback);
             return;
         }
-        StoryCLMBridge.Invoke("sessionconfirm", { id: id }, function (data) {
+        StoryCLMBridge.Invoke("sessionupdate", session, function (data) {
             if (typeof callback === "function")
                 callback(new StoryCLMApiMessage(data));
         });
@@ -383,7 +383,7 @@ StoryCLM.Sessions = (function () {
     return {
         Get: _get,
         GetById: _getById,
-        Confirm: _confirm
+        Update: _update
     };
 })();
 
