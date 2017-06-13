@@ -77,11 +77,9 @@ public class Replicator {
 	    	
 	    	//Достаем запись из журнала
 	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
-	    	int count = slogService.Count().GetResult();
-	    	Date lastReplicationDate = new Date(0);
-	    	if (count!=0) lastReplicationDate = slogService.Find(count-1,1).GetResult().get(0).Date;
-	    	System.out.println("lastReplicationDate!" + lastReplicationDate);
-	    	logger.info("Last Replication Date " + lastReplicationDate);
+	    	Date lastReplicationDate = slogService.MaxOrDefault("Date", null, Date.class, new Date(0)).GetResult();
+	    //	System.out.println("lastReplicationDate!" + lastReplicationDate);
+ 	    	logger.info("Last Replication Date " + lastReplicationDate);
 	    	//String query = MessageFormat.format("SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",
 	    	String query = MessageFormat.format("SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",		
 	    			joinByComma(converterService.getSFQueryFields()), converterService.getSFTable(), getIsoDate(lastReplicationDate),getIsoDate(thisReplicationDate));
@@ -134,7 +132,15 @@ public class Replicator {
 	    	
 	    	slog.Deleted = removeDeleted(lastReplicationDate, thisReplicationDate, converterService.getSFTable(), converterService.getSFIdFieldName(), storyService);
 	    	logger.info("*****" + converterService.getStoryType().getSimpleName() + "***** " + "Insert log ");
-	    	slogService.Insert(slog).GetResult();
+	    	
+	    	StoryLog slogLast  =  slogService.LastOrDefault(null, "Date", 1,null).GetResult();
+	    	if (slogLast!=null && slogLast.equals(slog))
+	    		{
+	    		slog._id = slogLast._id;
+	    		slog.Attempts = slogLast.Attempts+1;
+	    		slogService.Update(slog).GetResult();
+	    		}
+	    	else slogService.Insert(slog).GetResult();
 	    	
 	    	logger.info("Finish replicate for StoryType: "+converterService.getStoryType().getSimpleName());
 	    

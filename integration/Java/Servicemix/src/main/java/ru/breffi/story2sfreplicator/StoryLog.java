@@ -1,4 +1,4 @@
-package ru.breffi.Salesforce2StoryReplicator;
+package ru.breffi.story2sfreplicator;
 import java.util.Date;
 
 
