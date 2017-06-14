@@ -1,5 +1,5 @@
 /*!
-* StoryCLM Library v1.7.5
+* StoryCLM Library v1.7.6
 * Copyright(c) 2017, Vladimir Klyuev, Breffi Inc. All rights reserved.
 * License: Licensed under The MIT License.
 */
@@ -215,8 +215,11 @@ StoryCLM.Presentation = (function () {
         });
     }
 
-    function _close(callback) {
-        StoryCLMBridge.Invoke("closePresentation", {});
+    function _close(mode) {
+        if (typeof mode === "undefined") mode = 0;
+        if (typeof mode !== "number") mode = 0;
+        if (mode < 0 || mode > 2) mode = 0;
+        StoryCLMBridge.Invoke("closePresentation", { mode: mode });
     }
 
     function _setComplete(callback) {
