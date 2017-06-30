@@ -30,6 +30,8 @@
                     <a href="#" id="Open2" class="list-group-item">Open (id,data)</a>
                     <a href="#" id="Open3" class="list-group-item">Open (id)</a>
                     <a href="#" id="Close" class="list-group-item">Close</a>
+                    <a href="#" id="Close1" class="list-group-item">Close (1)</a>
+                    <a href="#" id="Close2" class="list-group-item">Close (2)</a>
                     <a href="#" id="Complete" class="list-group-item">Complete</a>
                     <a href="#" id="GetInfo" class="list-group-item">GetInfo</a>
                     <a href="#" id="GetPreviousSlide" class="list-group-item">Get Previous Slide</a>
@@ -134,13 +136,51 @@
                         <pre>
 {
     "Command": "closePresentation",
-    "Data": {}
+    "Data": {
+        "mode": 0
+    }
 }
 </pre>
                     </div>
                     <div class="signa">StoryCLM.Presentation.Close();</div>
                     <div class="text">
-                        Закрывает текущую презентацию.
+                        Закрывает текущую презентацию. Отрабатывает ситуацию аналичную при закрытии через системный "крестик". 
+                    </div>
+                </div>
+            </div>
+            <div id="def" style="display:none;">
+                <div data-i="Close1">
+                    <div class="request">
+                        <pre>
+{
+    "Command": "closePresentation",
+    "Data": {
+        "mode": 1
+    }
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Presentation.Close(1);</div>
+                    <div class="text">
+                        Закрывает текущую презентацию. При закрытии не появляются системные окна подтверждения, но создается сессиия.
+                    </div>
+                </div>
+            </div>
+            <div id="def" style="display:none;">
+                <div data-i="Close2">
+                    <div class="request">
+                        <pre>
+{
+    "Command": "closePresentation",
+    "Data": {
+        "mode": 2
+    }
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Presentation.Close(2);</div>
+                    <div class="text">
+                        Закрывает текущую презентацию. При закрытии не появляются системные окна подтверждения, сессия не создается.
                     </div>
                 </div>
             </div>
@@ -363,7 +403,7 @@
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/storyclm-1.7.0.js"></script>
+    <script src="js/storyclm-1.7.6.js"></script>
     <script>
         $(function () {
             $(".list-group a").on(clickEvent, function () {
@@ -405,6 +445,18 @@
                         {
                             StoryCLM.Presentation.Close();
                             loadDocData("Close");
+                            return false;
+                        }
+                    case "Close1":
+                        {
+                            StoryCLM.Presentation.Close(1);
+                            loadDocData("Close1");
+                            return false;
+                        }
+                    case "Close2":
+                        {
+                            StoryCLM.Presentation.Close(2);
+                            loadDocData("Close2");
                             return false;
                         }
                     case "Complete":

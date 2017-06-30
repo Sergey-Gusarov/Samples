@@ -27,7 +27,7 @@
                 <div class="list-group">
                     <a href="#" id="Get" class="list-group-item">Get ()</a>
                     <a href="#" id="GetById" class="list-group-item">GetById (id)</a>
-                    <a href="#" id="Confirm" class="list-group-item">Confirm (id)</a>
+                    <a href="#" id="Update" class="list-group-item">Update (session)</a>
                 </div>
             </div>
             <div id="def" style="display:none;">
@@ -53,7 +53,7 @@
 {
     "Command": "getsessionbyid",
     "Data": {
-        "id": "90C0499FF3A145BDBC83D2D5C4BEE6AD"
+        "id": "AB7B3F4914FC413E914EE39214A31718"
     }
 }
 </pre>
@@ -65,20 +65,18 @@
                 </div>
             </div>
             <div id="def" style="display:none;">
-                <div data-i="Confirm">
+                <div data-i="Update">
                     <div class="request">
 <pre>
 {
-    "Command": "sessionconfirm",
-    "Data": {
-        "id": "90C0499FF3A145BDBC83D2D5C4BEE6AD"
-    }
+    "Command": "sessionconupdate",
+    "Data": {}
 }
 </pre>
                     </div>
-                    <div class="signa">StoryCLM.Sessions.Confirm(sessionId, callback);</div>
+                    <div class="signa">StoryCLM.Sessions.Update(session, callback);</div>
                     <div class="text">
-                        Помечает сессию как обработанную.
+                        Обновление.
                     </div>
                 </div>
             </div>
@@ -102,7 +100,7 @@
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/storyclm-1.7.0.js"></script>
+    <script src="js/storyclm-1.7.6.js"></script>
     <script>
         $(function () {
             $(".list-group a").on(clickEvent, function () {
@@ -118,18 +116,25 @@
                         }
                     case "GetById":
                         {
-                            StoryCLM.Sessions.GetById("90C0499FF3A145BDBC83D2D5C4BEE6AD", function (message) {
-                                setJson("response", message);
+                            StoryCLM.Sessions.Get(function (message) {
+                                StoryCLM.Sessions.GetById(message.data[0].id, function (m) {
+                                    setJson("response", m);
+                                }); 
                             });
                             loadDocData("GetById");
                             return false;
                         }
-                    case "Confirm":
+                    case "Update":
                         {
-                            StoryCLM.Sessions.Confirm("90C0499FF3A145BDBC83D2D5C4BEE6AD", function (message) {
-                                setJson("response", message);
+                            StoryCLM.Sessions.Get(function (message) {
+                                var o = message.data[0];
+                                o.visit = 1;
+                                StoryCLM.Sessions.Update(o, function (m) {
+                                    setJson("response", m);
+                                });
                             });
-                            loadDocData("Confirm");
+           
+                            loadDocData("Update");
                             return false;
                         }
                     default:
