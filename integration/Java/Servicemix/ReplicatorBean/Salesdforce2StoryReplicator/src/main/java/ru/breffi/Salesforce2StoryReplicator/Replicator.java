@@ -195,7 +195,7 @@ public class Replicator {
 	    	}
 		  if (storyIds.size()>0){
 			  logger.info("will delete from story size: " + storyIds.size());
-			  storyService.Delete(storyIds.toArray(new String[storyIds.size()])).GetResult();  
+			  storyService.Delete(storyIds).GetResult();  
 		  }
 		  return storyIds.size();
 	  }

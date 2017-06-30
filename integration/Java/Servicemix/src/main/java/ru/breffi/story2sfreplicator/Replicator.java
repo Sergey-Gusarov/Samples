@@ -243,6 +243,20 @@ public class Replicator {
 	      	for(Visit v:upsertedVisits){
 	      		upsertedSFVisits.add(createSobject(v));
 	      	}
+	      	
+	      	/******************/
+	    	String query1 = "SELECT Id, BF_Visits_SFEmployeeId__c FROM BF_Visits__c";
+	    	System.out.println("query" + query1);
+	    	logger.info("SOQL: " + query1);
+	    	QueryResult queryResults1 = getConnection().query(query1);
+	      	/************************/
+	      	
+	      	
+	      	
+	      	
+	      	
+	      	
+	      	
 	    	UpsertResult[] updatedResults = getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
 	    	
 	    	//»менно вставленные визиты вычисл€ем и обновл€ем в Story
