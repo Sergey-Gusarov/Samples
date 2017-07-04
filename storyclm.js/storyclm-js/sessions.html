@@ -28,6 +28,7 @@
                     <a href="#" id="Get" class="list-group-item">Get ()</a>
                     <a href="#" id="GetById" class="list-group-item">GetById (id)</a>
                     <a href="#" id="Update" class="list-group-item">Update (session)</a>
+                    <a href="#" id="DeleteById" class="list-group-item">DeleteById (id)</a>
                 </div>
             </div>
             <div id="def" style="display:none;">
@@ -80,6 +81,24 @@
                     </div>
                 </div>
             </div>
+            <div id="def" style="display:none;">
+                <div data-i="DeleteById">
+                    <div class="request">
+<pre>
+{
+    "Command": "deletesessionbyid",
+    "Data": {
+        "id": "AB7B3F4914FC413E914EE39214A31718"
+    }
+}
+</pre>
+                    </div>
+                    <div class="signa">StoryCLM.Sessions.DeleteById(id, callback);</div>
+                    <div class="text">
+                        Удаляет сессию по идентификатору. Возвращает удаленную сессию.
+                    </div>
+                </div>
+            </div>
             <div class="col-md-9">
                 <p class="text-primary">
                     StoryCLM -> Sessions
@@ -100,7 +119,7 @@
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/storyclm-1.7.6.js"></script>
+    <script src="js/storyclm-1.7.7.js"></script>
     <script>
         $(function () {
             $(".list-group a").on(clickEvent, function () {
@@ -135,6 +154,16 @@
                             });
            
                             loadDocData("Update");
+                            return false;
+                        }
+                    case "DeleteById":
+                        {
+                            StoryCLM.Sessions.Get(function (message) {
+                                StoryCLM.Sessions.DeleteById(message.data[0].id, function (m) {
+                                    setJson("response", m);
+                                });
+                            });
+                            loadDocData("DeleteById");
                             return false;
                         }
                     default:
