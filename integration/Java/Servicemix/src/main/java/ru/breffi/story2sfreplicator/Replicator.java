@@ -5,13 +5,14 @@ import java.text.DateFormat;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,8 @@ import com.sforce.soap.partner.sobject.SObject;
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
+import ru.breffi.story2sf.services.IConverterService;
+import ru.breffi.story2sf.services.visit.Visit;
 import ru.breffi.storyclmsdk.*;
 import ru.breffi.storyclmsdk.Exceptions.*;
 import ru.breffi.storyclmsdk.Models.ApiLog;
@@ -86,20 +89,27 @@ public class Replicator {
 		 for(Visit v:visits){
 			  ids.add(v._id);
 		  }
+		 
+ 		
+		 	//-------------------------------------------------- Жесткая связность на бизнес логику синхронизации визитов
+		   	setSFUserIDOnInserted(visits);
+		   	//--------------------------------------------------------
+
+		 
 			List<SObject> upsertedSFVisits = new ArrayList<SObject>(); 
 	      	for(Visit v:visits){
 	      		upsertedSFVisits.add(createSobject(v));
 	      	}
-	      	UpsertResult[] updatedResults = getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
+	      	List<UpsertResult> updatedResults = upsertToSF(upsertedSFVisits);// getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
 	    	List<Visit> insertedVisits = new ArrayList<Visit>();
 	    	List<SObject> failedVisits = new ArrayList<SObject>();
 	    	int updated = 0;
-	      	for(int i=0;i<updatedResults.length;i++){
+	      	for(int i=0;i<updatedResults.size();i++){
 	    		Visit v = visits.get(i);
-	    		if (updatedResults[i].isSuccess()){
-	    			if (updatedResults[i].getCreated())
+	    		if (updatedResults.get(i).isSuccess()){
+	    			if (updatedResults.get(i).getCreated())
 	    			{
-	    				v.SFId = updatedResults[i].getId();
+	    				v.SFId = updatedResults.get(i).getId();
 	    				insertedVisits.add(v);
 	    			}
 	    			else {
@@ -119,25 +129,23 @@ public class Replicator {
 	      	 for(SObject fv:failedVisits){
 	      		 fv.setId(null);
 	      	 }
-	      	updatedResults = getConnection().upsert("BF_Visits_StoryCLM_Id__c", failedVisits.toArray(new SObject[0]));
+	      	updatedResults = upsertToSF(failedVisits);// getConnection().upsert("BF_Visits_StoryCLM_Id__c", failedVisits.toArray(new SObject[0]));
 	      	 
-	      	for(int i=0;i<updatedResults.length;i++){
+	      	for(int i=0;i<updatedResults.size();i++){
 	    		Visit v = visits.get(i);
-	    		if (updatedResults[i].isSuccess()){
-	    				v.SFId = updatedResults[i].getId();
+	    		if (updatedResults.get(i).isSuccess()){
+	    				v.SFId = updatedResults.get(i).getId();
 	    				insertedVisits.add(v);
 	    			}
 	    			else {
 	    				slog.Failed = true;
 		    			slog.Note+="\r\nstoryId " + v._id + "\r\n";
-		    			for(com.sforce.soap.partner.Error er: updatedResults[i].getErrors())
+		    			for(com.sforce.soap.partner.Error er: updatedResults.get(i).getErrors())
 		    				slog.Note+= er.getMessage()+"\r\n";
 	    			}
 		    		
 	    		}
-		    		
-	    	
-	      	 
+		      	 
 	     	slog.Inserted = insertedVisits.size();
 	    	if (slog.Inserted>0)
 	    			storyService.UpdateMany(insertedVisits.toArray(new Visit[slog.Inserted])).GetResult();
@@ -199,7 +207,7 @@ public class Replicator {
 	      	ApiLog[] logs = null; 
 	      	List<String> ups_ids = new ArrayList<String>();
 	      	List<String> ins_ids = new ArrayList<String>();
-	      	List<String> re_ids = new ArrayList<String>();
+	      	List<String> remove_ids = new ArrayList<String>();
 	      	int skip=0;
 	      	while((logs = storyService.Log(lastReplicationDate, skip, 1000).GetResult()).length>0)
 	      	{
@@ -217,7 +225,7 @@ public class Replicator {
 						break;
 					case 2:
 					
-						re_ids.add(l.entityId);
+						remove_ids.add(l.entityId);
 						break;
 					default:
 						break;
@@ -240,40 +248,40 @@ public class Replicator {
 	      	
 
 	      	List<SObject> upsertedSFVisits = new ArrayList<SObject>(); 
+	      	
+	    	
+	    	//Вот тут мы должны найти пользователей в SF -------------------------- Жесткая связность -----------------------------
+	    	setSFUserIDOnInserted(upsertedVisits);
+	      	//------------------------------------------------------------------ Конец жесткой связности ----------------------------
+
+	      	
+	      	
+	      	
 	      	for(Visit v:upsertedVisits){
 	      		upsertedSFVisits.add(createSobject(v));
 	      	}
-	      	
-	      	/******************/
-	    	String query1 = "SELECT Id, BF_Visits_SFEmployeeId__c FROM BF_Visits__c";
-	    	System.out.println("query" + query1);
-	    	logger.info("SOQL: " + query1);
-	    	QueryResult queryResults1 = getConnection().query(query1);
-	      	/************************/
+	      		
 	      	
 	      	
 	      	
 	      	
-	      	
-	      	
-	      	
-	    	UpsertResult[] updatedResults = getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
+	    	List<UpsertResult> updatedResults =  upsertToSF(upsertedSFVisits);//getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
 	    	
 	    	//Именно вставленные визиты вычисляем и обновляем в Story
 	    	List<Visit> insertedVisits = new ArrayList<Visit>();
 	    	slog.Updated=0;
-	    	for(int i=0;i<updatedResults.length;i++){
+	    	for(int i=0;i<updatedResults.size();i++){
 	    		Visit v = upsertedVisits.get(i);
-	    		if (!updatedResults[i].isSuccess()){
+	    		if (!updatedResults.get(i).isSuccess()){
 	    			slog.Failed = true;
 	    			slog.Note+="\r\nstoryId " + v._id + "\r\n";
-	    			for(com.sforce.soap.partner.Error er: updatedResults[i].getErrors())
+	    			for(com.sforce.soap.partner.Error er: updatedResults.get(i).getErrors())
 	    				slog.Note+= er.getMessage()+"\r\n";
 	    		}
 	    		else
-	    			if(updatedResults[i].getCreated())
+	    			if(updatedResults.get(i).getCreated())
 		    		{
-		    			v.SFId = updatedResults[i].getId();
+		    			v.SFId = updatedResults.get(i).getId();
 		    			insertedVisits.add(v);
 		    		}
 		    		else {
@@ -281,13 +289,23 @@ public class Replicator {
 		    		}
 		    		
 	    	}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	// --------------------------------------------------------- ОБновляем в стори пользователей
 	    	slog.Inserted = insertedVisits.size();
 	    	if (slog.Inserted>0)
 	    			storyService.UpdateMany(insertedVisits.toArray(new Visit[slog.Inserted])).GetResult();
 	    	
-	    	if (re_ids.size()>0){
+	    	
+	    	
+	    	
+	    	//------------------------------------------------------------ Ищем чего нет в SF  и удаляем -------------------------------
+	    	if (remove_ids.size()>0){
 		    	//Находим элементы для удаления и в цикле по queryLocator удаляем их
-		      	String query = MessageFormat.format("SELECT Id FROM BF_Visits__c where BF_Visits_StoryCLM_Id__c in ({0}) ",joinByComma(re_ids));
+		      	String query = MessageFormat.format("SELECT Id FROM BF_Visits__c where BF_Visits_StoryCLM_Id__c in ({0}) ",joinByComma(remove_ids));
 		    	System.out.println("query" + query);
 		    	logger.info("SOQL: " + query);
 		    	QueryResult queryResults = getConnection().query(query);
@@ -366,9 +384,53 @@ public class Replicator {
 	      return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
 	  }
 	  
-	boolean checkHash(){
-		return false;
+	  void setSFUserIDOnInserted(List<Visit> insertedVisits) throws ConnectionException{
+		  if (insertedVisits.size()==0) return;
+			HashSet<String> emails  =  new HashSet<String>();
+	      	for(Visit v:insertedVisits){
+	      		emails.add(v.Username);
+	      	}
+	      	String bfuserSearchQuery = MessageFormat.format("SELECT Id,UB_Email__c FROM Users_BREFFI__c where UB_Email__c in ({0}) ",joinByComma(emails.toArray(new String[0])));
+	      	QueryResult bfqueryResults = getConnection().query(bfuserSearchQuery);
+	    	while(true){
+	    		logger.info("bfuserSearchQuery: " + bfuserSearchQuery);
+	    		logger.info("bfqueryResults party size " + bfqueryResults.getSize());
+		    	SObject[] sObjects = bfqueryResults.getRecords();
+		    	
+		    	for(SObject s:sObjects){
+		    		String email = (String) s.getField("UB_Email__c");
+		    		insertedVisits.stream()
+		    			.filter(x->x.Username.equals(email))
+		    			.forEachOrdered(x->x.SFUserId =s.getId());
+		    		
+		    	}
+		    	
+		    	String queryLocator = bfqueryResults.getQueryLocator();
+		    	if (queryLocator == null || queryLocator.isEmpty()) break;
+		    	
+		    	bfqueryResults = getConnection().queryMore(queryLocator);
+		      
+	    	}
+	  }
+	  private Calendar dateToCalendar(Date date) {
+
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			return calendar;
+
+		}
+
+	  
+	  List<UpsertResult> upsertToSF(List<SObject> visits) throws ConnectionException{
+		  List<UpsertResult> result = new ArrayList<UpsertResult>();
+		 for(int i=0;i<visits.size();i+=200){
+			 List<SObject> currentVisit = visits.subList(i, Math.min(i+200, visits.size()));
+			 result.addAll(Arrays.asList(getConnection().upsert("BF_Visits_StoryCLM_Id__c", currentVisit.toArray(new SObject[currentVisit.size()]))));
+		 }
+		 return result;
+		//return getConnection().upsert("BF_Visits_StoryCLM_Id__c", visits.toArray(new SObject[visits.size()]));
 	}
+	  
 	  
 	  SObject createSobject(Visit visit){
 		  SObject s = new SObject();
@@ -384,14 +446,14 @@ public class Replicator {
 		  s.addField("BF_Visits_UserId__c", visit.UserId);
 		  s.addField("BF_Visits_Address__c", visit.Address);
 		  
-		  s.addField("BF_Visits_Start__c", visit.Start);
-		  s.addField("BF_Visits_End__c", visit.End);
+		  s.addField("BF_Visits_Start__c", dateToCalendar(visit.Start));
+		  s.addField("BF_Visits_End__c", dateToCalendar(visit.End));
 		  s.addField("BF_Visits_Length__c", visit.Length);
 		  s.addField("BF_Visits_Longitude__c", visit.Longitude);
 		  s.addField("BF_Visits_Latitude__c", visit.Latitude);
 		  
 		  s.addField("BF_Visits_SFEmployeeId__c", visit.SFEmployeeId);
-		  s.addField("BF_Visits_SFUserId__c", visit.SFUserId);
+		  s.addField("BF_Visits_SFUser__c", visit.SFUserId);
 		  s.addField("BF_Visits_Territory__c", visit.SFTerritoryId);
 		  s.addField("BF_Visits_Company__c", visit.SFCompanyId);
 		  s.addField("BF_Visits_Username__c", visit.Username);
@@ -399,3 +461,4 @@ public class Replicator {
 		  return s;
 	  }
 }
+ 

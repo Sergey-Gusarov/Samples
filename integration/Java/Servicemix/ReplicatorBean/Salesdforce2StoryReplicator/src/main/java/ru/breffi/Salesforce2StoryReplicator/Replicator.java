@@ -36,9 +36,11 @@ public class Replicator {
 	 
 	  public void setSfconfig(SalesForceLoginConfig sFconfig){
 		  this.sfconfig = sFconfig;
+		  
 	  }
 	  public void setStoryConfig(StoryLoginConfig storyConfig){
 		  this.storyConfig = storyConfig;
+		  System.out.println(storyConfig.ClientId);
 	  }
 	  PartnerConnection connection;
 	  PartnerConnection getConnection() throws ConnectionException{

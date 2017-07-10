@@ -19,13 +19,13 @@ import ru.breffi.storyclmsdk.Exceptions.AuthFaliException;
  */
 public class ReplicatorTest extends TestCase
 {
-	static final String USERNAME = "vova.klyuev@breffi.ru";
+/*	static final String USERNAME = "vova.klyuev@breffi.ru";
 	static final String PASSWORD = "1724841126A545B191A64AC7BA8412062hJr9tvGTJYsCIKUEhHKzU5aJ";
 	static final String AuthEndpoint = "https://test.salesforce.com/services/Soap/u/29.0";
-	
-	/*static final String USERNAME = "vova.klyuev@breffi.ru";
+*/	
+	static final String USERNAME = "vova.klyuev@breffi.ru";
 	static final String PASSWORD = "08004FD8680441EFBA3FED245E95F692i6WOysylKFUMIzKtHFn6ymyn";
-	static final String AuthEndpoint = "https://login.salesforce.com/services/Soap/u/29.0";*/
+	static final String AuthEndpoint = "https://login.salesforce.com/services/Soap/u/29.0";
 	static PartnerConnection connection;
 	
 	
@@ -59,8 +59,8 @@ public class ReplicatorTest extends TestCase
 	  	r.storyConfig.ClientSecret = "595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6";*/
 	  	
 	  	
-	  	r.storyConfig.ClientId="client_30";
-	  	r.storyConfig.ClientSecret = "495dd7fbfcc449dfb2d197ce8c10017686707b493f024a9d92466d8d6b0ba799";
+	  	r.storyConfig.ClientId="client_30_1";
+	  	r.storyConfig.ClientSecret = "7537d7ca7df0468e95f1a8a96e77bc548bc48aa045c84ea2b84e857b4c5e678a";
 	  	
 	  	
 	  	r.sfconfig = new SalesForceLoginConfig();
