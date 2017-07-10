@@ -1,18 +1,12 @@
 package ru.breffi.story2sf.services.visit;
 
 import java.util.Date;
-
-public class Visit {
+import  ru.breffi.story2sf.services.StandartStoryEntity;
+public class Visit extends StandartStoryEntity {
 	 
-		  public String _id;
-	      public String SFId;
+		public String SessionId;
 	      
 	  
-	    
-	      public String SessionId;
-	      
-	  
-	    
 	      public Integer PresentationId;
 	      
 	  

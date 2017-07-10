@@ -6,7 +6,6 @@ import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -27,7 +26,8 @@ import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
 import ru.breffi.story2sf.services.IConverterService;
-import ru.breffi.story2sf.services.visit.Visit;
+import ru.breffi.story2sf.services.IStoryEntity;
+//import ru.breffi.story2sf.services.visit.Visit;
 import ru.breffi.storyclmsdk.*;
 import ru.breffi.storyclmsdk.Exceptions.*;
 import ru.breffi.storyclmsdk.Models.ApiLog;
@@ -37,8 +37,8 @@ public class Replicator {
 	  public SalesForceLoginConfig sfconfig;
 	  public StoryLoginConfig storyConfig;
 	  
-	  public int logTableId = 73;
-	  public int tableId = 64;
+	//  public int logTableId = 73;
+	//  public int tableId = 64;
 	  final Logger logger = LoggerFactory.getLogger(Replicator.class);
 	 
 	  public void setSfconfig(SalesForceLoginConfig sFconfig){
@@ -76,48 +76,49 @@ public class Replicator {
 	  }
 	  
 	  
-	  public void FullReplicate() throws AuthFaliException, AsyncResultException, ConnectionException{
+	  public void FullReplicate(IConverterService converterService) throws AuthFaliException, AsyncResultException, ConnectionException{
 		 Date thisReplicationDate = new Date();
 		 StoryLog slog = new StoryLog();
 		 slog.Note = "Полная репликация из-за несовпадения по количеству элементов";
 		 slog.Date = thisReplicationDate;
-		 StoryCLMServiceGeneric<Visit> storyService = clientConnector.GetService(Visit.class, tableId);
+		 StoryCLMServiceGeneric<IStoryEntity> storyService = clientConnector.GetService(converterService.getStoryType(), converterService.getTableId());
 		 
 		 
-		 List<Visit> visits = storyService.FindAll(null, 50).GetResult();
+		 List<IStoryEntity> storyEntities = storyService.FindAll(null, 50).GetResult();
 		 List<String> ids = new ArrayList<String>();
-		 for(Visit v:visits){
-			  ids.add(v._id);
+		 for(IStoryEntity v:storyEntities){
+			  ids.add(v.getStoryId());
 		  }
 		 
  		
 		 	//-------------------------------------------------- Жесткая связность на бизнес логику синхронизации визитов
-		   	setSFUserIDOnInserted(visits);
+		  // 	setSFUserIDOnInserted(visits);
 		   	//--------------------------------------------------------
 
 		 
-			List<SObject> upsertedSFVisits = new ArrayList<SObject>(); 
-	      	for(Visit v:visits){
-	      		upsertedSFVisits.add(createSobject(v));
+			List<SObject> upsertedSFEntities = new ArrayList<SObject>(); 
+	      	for(IStoryEntity v:storyEntities){
+	      	//	upsertedSFVisits.add(createSobject(v));
+	      		upsertedSFEntities.add(converterService.ConvertToSF(v));
 	      	}
-	      	List<UpsertResult> updatedResults = upsertToSF(upsertedSFVisits);// getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
-	    	List<Visit> insertedVisits = new ArrayList<Visit>();
-	    	List<SObject> failedVisits = new ArrayList<SObject>();
+	      	List<UpsertResult> updatedResults = upsertToSF(upsertedSFEntities, converterService.getStoryIdNameInSF());// getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
+	    	List<IStoryEntity> insertedStoryEntities = new ArrayList<IStoryEntity>();
+	    	List<SObject> failedSFEntities = new ArrayList<SObject>();
 	    	int updated = 0;
 	      	for(int i=0;i<updatedResults.size();i++){
-	    		Visit v = visits.get(i);
+	      		IStoryEntity v = storyEntities.get(i);
 	    		if (updatedResults.get(i).isSuccess()){
 	    			if (updatedResults.get(i).getCreated())
 	    			{
-	    				v.SFId = updatedResults.get(i).getId();
-	    				insertedVisits.add(v);
+	    				v.setSalesForceId(updatedResults.get(i).getId());
+	    				insertedStoryEntities.add(v);
 	    			}
 	    			else {
 	    				updated++;
 	    			}
 	    		}
 	    		else{
-	    			failedVisits.add(upsertedSFVisits.get(i));
+	    			failedSFEntities.add(upsertedSFEntities.get(i));
 	    		}
 		    		
 	    	}
@@ -126,33 +127,35 @@ public class Replicator {
 	      	 
 	      
 	      	 //Попробуем вставить failedVisits, для этого очистим SFId
-	      	 for(SObject fv:failedVisits){
+	      	 for(SObject fv:failedSFEntities){
 	      		 fv.setId(null);
 	      	 }
-	      	updatedResults = upsertToSF(failedVisits);// getConnection().upsert("BF_Visits_StoryCLM_Id__c", failedVisits.toArray(new SObject[0]));
+	      	updatedResults = upsertToSF(failedSFEntities, converterService.getStoryIdNameInSF());// getConnection().upsert("BF_Visits_StoryCLM_Id__c", failedVisits.toArray(new SObject[0]));
 	      	 
 	      	for(int i=0;i<updatedResults.size();i++){
-	    		Visit v = visits.get(i);
+	    		IStoryEntity v = storyEntities.get(i);
 	    		if (updatedResults.get(i).isSuccess()){
-	    				v.SFId = updatedResults.get(i).getId();
-	    				insertedVisits.add(v);
+	    				v.setSalesForceId(updatedResults.get(i).getId());
+	    				insertedStoryEntities.add(v);
 	    			}
 	    			else {
 	    				slog.Failed = true;
-		    			slog.Note+="\r\nstoryId " + v._id + "\r\n";
+		    			slog.Note+="\r\nstoryId " + v.getStoryId() + "\r\n";
 		    			for(com.sforce.soap.partner.Error er: updatedResults.get(i).getErrors())
 		    				slog.Note+= er.getMessage()+"\r\n";
 	    			}
 		    		
 	    		}
 		      	 
-	     	slog.Inserted = insertedVisits.size();
+	     	slog.Inserted = insertedStoryEntities.size();
 	    	if (slog.Inserted>0)
-	    			storyService.UpdateMany(insertedVisits.toArray(new Visit[slog.Inserted])).GetResult();
+	    			storyService.UpdateMany(insertedStoryEntities.toArray(new IStoryEntity[0])).GetResult();
 	  	
 	    	
 		 	//Находим элементы которых нет в Story и в цикле по queryLocator удаляем их
-	      	String query = MessageFormat.format("SELECT Id FROM BF_Visits__c" + ((ids.size()>0)? " where BF_Visits_StoryCLM_Id__c not in ({0}) ":""),joinByComma(ids));
+	      	String query = 
+	      			MessageFormat.format(
+	      					"SELECT Id FROM " + converterService.getSFTable()+ " " + ((ids.size()>0)? " where " + converterService.getStoryIdNameInSF() + " not in ({0}) ":""),joinByComma(ids));
 	  
 	    		
 	    	System.out.println("query" + query);
@@ -170,7 +173,7 @@ public class Replicator {
 		    		removedSFIds.add(s.getId());
 		    		deleted++;
 		    	}
-		    	getConnection().delete(removedSFIds.toArray(new String[removedSFIds.size()]));
+		    	deleteFromSF(removedSFIds);
 		    	
 		    	
 		    	String queryLocator = queryResults.getQueryLocator();
@@ -182,20 +185,20 @@ public class Replicator {
 	    	
 	    	slog.Deleted = deleted;
 	    	
-	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, logTableId);
+	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
 	    	slogService.Insert(slog).GetResult();
 	  }
 	  
 	  
-	  public void Replicate() throws AsyncResultException, ConnectionException, AuthFaliException
+	  public void Replicate(IConverterService converterService) throws AsyncResultException, ConnectionException, AuthFaliException
 	  {
-		  logger.info("Start replicate for StoryType: " + Visit.class.getSimpleName());
+		  logger.info("Start replicate for StoryType: " +  converterService.getStoryType().getSimpleName());
 		  	Date thisReplicationDate = new Date();
 			StoryLog slog = new StoryLog();
 	    	slog.Date = thisReplicationDate;
 	    	
 	    	//Достаем запись из журнала
-	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, logTableId);
+	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
 	   
 	    	Date lastReplicationDate = new Date(0);
 	    	
@@ -203,7 +206,7 @@ public class Replicator {
 	      	logger.info("Last Replication Date " + lastReplicationDate);
 	    	
 	      	
-	      	StoryCLMServiceGeneric<Visit> storyService = clientConnector.GetService(Visit.class, tableId);
+	      	StoryCLMServiceGeneric<IStoryEntity> storyService = clientConnector.GetService(converterService.getStoryType(), converterService.getTableId());
 	      	ApiLog[] logs = null; 
 	      	List<String> ups_ids = new ArrayList<String>();
 	      	List<String> ins_ids = new ArrayList<String>();
@@ -224,7 +227,6 @@ public class Replicator {
 						ups_ids.add(l.entityId);
 						break;
 					case 2:
-					
 						remove_ids.add(l.entityId);
 						break;
 					default:
@@ -240,48 +242,48 @@ public class Replicator {
 	    	
 	    	
 	    	
-	      	List<Visit> upsertedVisits = new ArrayList<Visit>();
+	      	List<IStoryEntity> upsertedStoryEntities = new ArrayList<IStoryEntity>();
 	      	for(;ii+5<ups_ids.size();ii+=5){
-	      		upsertedVisits.addAll(storyService.Find(ups_ids.subList(ii, ii+5).toArray(new String[0])).GetResult());
+	      		upsertedStoryEntities.addAll(storyService.Find(ups_ids.subList(ii, ii+5).toArray(new String[0])).GetResult());
 	      	}
-	      	upsertedVisits.addAll(storyService.Find(ups_ids.subList(ii, ups_ids.size()).toArray(new String[0])).GetResult());
+	      	upsertedStoryEntities.addAll(storyService.Find(ups_ids.subList(ii, ups_ids.size()).toArray(new String[0])).GetResult());
 	      	
 
-	      	List<SObject> upsertedSFVisits = new ArrayList<SObject>(); 
+	      	List<SObject> upsertedSFEntities = new ArrayList<SObject>(); 
 	      	
 	    	
 	    	//Вот тут мы должны найти пользователей в SF -------------------------- Жесткая связность -----------------------------
-	    	setSFUserIDOnInserted(upsertedVisits);
+	    //	setSFUserIDOnInserted(upsertedVisits);
 	      	//------------------------------------------------------------------ Конец жесткой связности ----------------------------
 
 	      	
 	      	
 	      	
-	      	for(Visit v:upsertedVisits){
-	      		upsertedSFVisits.add(createSobject(v));
+	      	for(IStoryEntity v:upsertedStoryEntities){
+	      		upsertedSFEntities.add(converterService.ConvertToSF(v));
 	      	}
 	      		
 	      	
 	      	
 	      	
 	      	
-	    	List<UpsertResult> updatedResults =  upsertToSF(upsertedSFVisits);//getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
+	    	List<UpsertResult> updatedResults =  upsertToSF(upsertedSFEntities, converterService.getStoryIdNameInSF());//getConnection().upsert("BF_Visits_StoryCLM_Id__c", upsertedSFVisits.toArray(new SObject[upsertedSFVisits.size()]));
 	    	
 	    	//Именно вставленные визиты вычисляем и обновляем в Story
-	    	List<Visit> insertedVisits = new ArrayList<Visit>();
+	    	List<IStoryEntity> insertedVisits = new ArrayList<IStoryEntity>();
 	    	slog.Updated=0;
 	    	for(int i=0;i<updatedResults.size();i++){
-	    		Visit v = upsertedVisits.get(i);
+	    		IStoryEntity v = upsertedStoryEntities.get(i);
 	    		if (!updatedResults.get(i).isSuccess()){
 	    			slog.Failed = true;
-	    			slog.Note+="\r\nstoryId " + v._id + "\r\n";
+	    			slog.Note+="\r\nstoryId " + v.getStoryId() + "\r\n";
 	    			for(com.sforce.soap.partner.Error er: updatedResults.get(i).getErrors())
 	    				slog.Note+= er.getMessage()+"\r\n";
 	    		}
 	    		else
 	    			if(updatedResults.get(i).getCreated())
 		    		{
-		    			v.SFId = updatedResults.get(i).getId();
+		    			v.setSalesForceId(updatedResults.get(i).getId());
 		    			insertedVisits.add(v);
 		    		}
 		    		else {
@@ -297,7 +299,7 @@ public class Replicator {
 	    	// --------------------------------------------------------- ОБновляем в стори пользователей
 	    	slog.Inserted = insertedVisits.size();
 	    	if (slog.Inserted>0)
-	    			storyService.UpdateMany(insertedVisits.toArray(new Visit[slog.Inserted])).GetResult();
+	    			storyService.UpdateMany(insertedVisits.toArray(new IStoryEntity[slog.Inserted])).GetResult();
 	    	
 	    	
 	    	
@@ -305,7 +307,8 @@ public class Replicator {
 	    	//------------------------------------------------------------ Ищем чего нет в SF  и удаляем -------------------------------
 	    	if (remove_ids.size()>0){
 		    	//Находим элементы для удаления и в цикле по queryLocator удаляем их
-		      	String query = MessageFormat.format("SELECT Id FROM BF_Visits__c where BF_Visits_StoryCLM_Id__c in ({0}) ",joinByComma(remove_ids));
+		      	//String query = MessageFormat.format("SELECT Id FROM BF_Visits__c where BF_Visits_StoryCLM_Id__c in ({0}) ",joinByComma(remove_ids));
+		      	String query = MessageFormat.format("SELECT Id FROM "+ converterService.getSFTable()+ " where "+ converterService.getStoryIdNameInSF()+ " in ({0}) ",joinByComma(remove_ids));
 		    	System.out.println("query" + query);
 		    	logger.info("SOQL: " + query);
 		    	QueryResult queryResults = getConnection().query(query);
@@ -322,7 +325,7 @@ public class Replicator {
 			    		removedSFIds.add(s.getId());
 			    		deleted++;
 			    	}
-			    	getConnection().delete(removedSFIds.toArray(new String[removedSFIds.size()]));
+			    	deleteFromSF(removedSFIds);
 			    	
 			    	
 			    	String queryLocator = queryResults.getQueryLocator();
@@ -336,14 +339,15 @@ public class Replicator {
 	    	
 	    	//Проверяем хэши 2-х копий на соответствие  
 	    	long storyCount  = storyService.Count().GetResult();
-	    	SObject sfcount =getConnection().query("Select Count(id) cnt from BF_Visits__c").getRecords()[0];
+	    	//SObject sfcount =getConnection().query("Select Count(id) cnt from BF_Visits__c").getRecords()[0];
+	    	SObject sfcount =getConnection().query("Select Count(id) cnt from "+ converterService.getSFTable()).getRecords()[0];
 	    	if (storyCount!=(Integer)sfcount.getField("cnt")) {
-	    		String message ="Visits:No concurrent counts ins tables " + storyCount + " and SF: " + (Integer)sfcount.getField("cnt") ; 
+	    		String message = converterService.getSFTable() +  ":No concurrent counts ins tables " + storyCount + " and SF: " + (Integer)sfcount.getField("cnt") ; 
 	    		logger.warn(message);
 	    		slog.Note+="\r\n" + message + "\r\n FullReplicate";
 	    		slogService.Insert(slog).GetResult();
 	    		
-	    		FullReplicate();
+	    		FullReplicate(converterService);
 	    		
 	    	}
 	    	else{
@@ -358,7 +362,7 @@ public class Replicator {
 	    	}
 	    	
 	    	
-	    	logger.info("Finish replicate for StoryType: Visits");
+	    	logger.info("Finish replicate for StoryType: " + converterService.getStoryType().getSimpleName());
 	    
 	  	}
 	  	  
@@ -384,10 +388,10 @@ public class Replicator {
 	      return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
 	  }
 	  
-	  void setSFUserIDOnInserted(List<Visit> insertedVisits) throws ConnectionException{
+	/*  void setSFUserIDOnInserted(List<IStoryEntity> insertedVisits) throws ConnectionException{
 		  if (insertedVisits.size()==0) return;
 			HashSet<String> emails  =  new HashSet<String>();
-	      	for(Visit v:insertedVisits){
+	      	for(IStoryEntity v:insertedVisits){
 	      		emails.add(v.Username);
 	      	}
 	      	String bfuserSearchQuery = MessageFormat.format("SELECT Id,UB_Email__c FROM Users_BREFFI__c where UB_Email__c in ({0}) ",joinByComma(emails.toArray(new String[0])));
@@ -411,27 +415,30 @@ public class Replicator {
 		    	bfqueryResults = getConnection().queryMore(queryLocator);
 		      
 	    	}
-	  }
-	  private Calendar dateToCalendar(Date date) {
-
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(date);
-			return calendar;
-
-		}
+	  }*/
+	
 
 	  
-	  List<UpsertResult> upsertToSF(List<SObject> visits) throws ConnectionException{
+	  List<UpsertResult> upsertToSF(List<SObject> sfEntities, String externalIdFieldName) throws ConnectionException{
 		  List<UpsertResult> result = new ArrayList<UpsertResult>();
-		 for(int i=0;i<visits.size();i+=200){
-			 List<SObject> currentVisit = visits.subList(i, Math.min(i+200, visits.size()));
-			 result.addAll(Arrays.asList(getConnection().upsert("BF_Visits_StoryCLM_Id__c", currentVisit.toArray(new SObject[currentVisit.size()]))));
+		 for(int i=0;i<sfEntities.size();i+=200){
+			 List<SObject> currentVisit = sfEntities.subList(i, Math.min(i+200, sfEntities.size()));
+			 //result.addAll(Arrays.asList(getConnection().upsert("BF_Visits_StoryCLM_Id__c", currentVisit.toArray(new SObject[currentVisit.size()]))));
+			 result.addAll(Arrays.asList(getConnection().upsert(externalIdFieldName, currentVisit.toArray(new SObject[currentVisit.size()]))));
 		 }
 		 return result;
 		//return getConnection().upsert("BF_Visits_StoryCLM_Id__c", visits.toArray(new SObject[visits.size()]));
 	}
 	  
+	 
+	 void deleteFromSF(List<String> removingSFId) throws ConnectionException{
+			 for(int i=0;i<removingSFId.size();i+=200){
+				 List<String> removingPart = removingSFId.subList(i, Math.min(i+200, removingSFId.size()));
+					 getConnection().delete(removingPart.toArray(new String[removingPart.size()]));
+			 }
+	 }
 	  
+	/*  
 	  SObject createSobject(Visit visit){
 		  SObject s = new SObject();
 		  s.setType("BF_Visits__c");
@@ -459,6 +466,6 @@ public class Replicator {
 		  s.addField("BF_Visits_Username__c", visit.Username);
 		  s.addField("BF_Visits_StoryCLM_Id__c", visit._id);
 		  return s;
-	  }
+	  }*/
 }
  

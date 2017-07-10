@@ -4,10 +4,19 @@ import com.sforce.soap.partner.sobject.SObject;
 
 public interface IConverterService {
 	Class<? extends IStoryEntity> getStoryType();
-	IStoryEntity ConvertToStory(SObject sf);
-	int getTableId();
-	String[] getSFQueryFields();
+	SObject ConvertToSF(IStoryEntity sf);
+	
+	
+	/**
+	 * Возвращает название поля в SF, хранящее идентификатор Story
+	 * @return
+	 */
+	String getStoryIdNameInSF();
+	
+	//String[] getSFQueryFields();
 	String getSFTable();
+	
 	int getLogTableId();
-	String getSFIdFieldName();
+	int getTableId();
+	//String getSFIdFieldName();
 }
