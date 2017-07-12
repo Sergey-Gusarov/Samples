@@ -8,6 +8,8 @@ import com.sforce.ws.ConnectionException;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import ru.breffi.story2sf.services.IConverterService;
+import ru.breffi.story2sf.services.breffiuser.BreffiUserConverterService;
 import ru.breffi.story2sf.services.visit.VisitConverterService;
 import ru.breffi.story2sfreplicator.Replicator;
 import ru.breffi.story2sfreplicator.SalesForceLoginConfig;
@@ -70,7 +72,8 @@ public class ReplicatorTest extends TestCase
 	  	r.sfconfig.UserName = "vova.klyuev@breffi.ru";
 		r.sfconfig.Password = "1724841126A545B191A64AC7BA8412062hJr9tvGTJYsCIKUEhHKzU5aJ";
 		r.sfconfig.AuthEndpoint = "https://test.salesforce.com/services/Soap/u/29.0";
-		VisitConverterService visitService = new VisitConverterService(77, 78);
+		//VisitConverterService visitService = new VisitConverterService(77, 78);
+		IConverterService visitService = new BreffiUserConverterService(84, 85);
 		
 	  		
 	
