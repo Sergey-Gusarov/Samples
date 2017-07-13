@@ -8,7 +8,7 @@ import ru.breffi.story2sf.services.StandartConverterService;
 public class BreffiUserConverterService extends StandartConverterService{
 
 	public BreffiUserConverterService(int tableId, int logTableId) {
-		super(tableId, logTableId, "Users_BREFFI__c", "Id");
+		super(tableId, logTableId, "Users_BREFFI__c", "UB_StoryCLM_Id__c");
 	}
 	
 	@Override
@@ -24,6 +24,7 @@ public class BreffiUserConverterService extends StandartConverterService{
 		  BreffiUser user = (BreffiUser) sf;
 		  s.setType("Users_BREFFI__c");
 		  s.setId(user.SFId);
+		  s.addField("UB_StoryCLM_Id__c", user._id);
 		  s.addField("BF_Dismissed__c", user.Active);
 		  s.addField("UB_Name__c", user.Name);
 		  s.addField("UB_MiddleName__c", user.PatronymicName);

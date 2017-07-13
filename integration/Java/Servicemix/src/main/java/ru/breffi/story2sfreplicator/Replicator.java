@@ -202,7 +202,7 @@ public class Replicator {
 	   
 	    	Date lastReplicationDate = new Date(0);
 	    	
-	    	lastReplicationDate = slogService.Count().GetResult()>0? slogService.Max("Date", null, Date.class).GetResult():new Date(0);
+	    	lastReplicationDate = slogService.CountByQuery("[Failed][eq][False]").GetResult()>0? slogService.Max("Date", "[Failed][eq][False]", Date.class).GetResult():new Date(0);
 	      	logger.info("Last Replication Date " + lastReplicationDate);
 	    	
 	      	
@@ -272,6 +272,7 @@ public class Replicator {
 	    	//Именно вставленные визиты вычисляем и обновляем в Story
 	    	List<IStoryEntity> insertedVisits = new ArrayList<IStoryEntity>();
 	    	slog.Updated=0;
+	    	
 	    	for(int i=0;i<updatedResults.size();i++){
 	    		IStoryEntity v = upsertedStoryEntities.get(i);
 	    		if (!updatedResults.get(i).isSuccess()){
@@ -337,29 +338,34 @@ public class Replicator {
 	    		slog.Deleted = deleted;
 	    	}
 	    	
-	    	//Проверяем хэши 2-х копий на соответствие  
-	    	long storyCount  = storyService.Count().GetResult();
-	    	//SObject sfcount =getConnection().query("Select Count(id) cnt from BF_Visits__c").getRecords()[0];
-	    	SObject sfcount =getConnection().query("Select Count(id) cnt from "+ converterService.getSFTable()).getRecords()[0];
-	    	if (storyCount!=(Integer)sfcount.getField("cnt")) {
-	    		String message = converterService.getSFTable() +  ":No concurrent counts ins tables " + storyCount + " and SF: " + (Integer)sfcount.getField("cnt") ; 
-	    		logger.warn(message);
-	    		slog.Note+="\r\n" + message + "\r\n FullReplicate";
-	    		slogService.Insert(slog).GetResult();
-	    		
-	    		FullReplicate(converterService);
-	    		
+	    	if (!slog.Failed){
+		    	//Проверяем хэши 2-х копий на соответствие  
+		    	long storyCount  = storyService.Count().GetResult();
+		    	//SObject sfcount =getConnection().query("Select Count(id) cnt from BF_Visits__c").getRecords()[0];
+		    	SObject sfcount =getConnection().query("Select Count(id) cnt from "+ converterService.getSFTable()).getRecords()[0];
+		    	if (storyCount!=(Integer)sfcount.getField("cnt")) {
+		    		String message = converterService.getSFTable() +  ":No concurrent counts ins tables " + storyCount + " and SF: " + (Integer)sfcount.getField("cnt") ; 
+		    		logger.warn(message);
+		    		slog.Note+="\r\n" + message + "\r\n FullReplicate";
+		    		slogService.Insert(slog).GetResult();
+		    		
+		    		FullReplicate(converterService);
+		    		logger.info("Finish fullreplicate for StoryType: " + converterService.getStoryType().getSimpleName());
+		    		return;
+		    	}
 	    	}
-	    	else{
-	    		StoryLog slogLast  =  slogService.LastOrDefault(null, "Date", 1,null).GetResult();
-		    	if (slogLast!=null && slogLast.equals(slog))
-		    		{
-		    		slog._id = slogLast._id;
-		    		slog.Attempts = slogLast.Attempts+1;
-		    		slogService.Update(slog).GetResult();
-		    		}
-		    	else slogService.Insert(slog).GetResult();
-	    	}
+	    	
+	    	
+	    	
+    		StoryLog slogLast  =  slogService.LastOrDefault(null, "Date", 1,null).GetResult();
+	    	if (slogLast!=null && slogLast.equals(slog))
+	    		{
+	    		slog._id = slogLast._id;
+	    		slog.Attempts = slogLast.Attempts+1;
+	    		slogService.Update(slog).GetResult();
+	    		}
+	    	else slogService.Insert(slog).GetResult();
+	    	
 	    	
 	    	
 	    	logger.info("Finish replicate for StoryType: " + converterService.getStoryType().getSimpleName());
