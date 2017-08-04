@@ -40,7 +40,7 @@ public class Replicator {
 	  }
 	  public void setStoryConfig(StoryLoginConfig storyConfig){
 		  this.storyConfig = storyConfig;
-		  System.out.println(storyConfig.ClientId);
+		//  System.out.println(storyConfig.ClientId);
 	  }
 	  PartnerConnection connection;
 	  PartnerConnection getConnection() throws ConnectionException{
@@ -57,7 +57,7 @@ public class Replicator {
 	  StoryCLMServiceConnector clientConnector;
 	  StoryCLMServiceConnector getStoryConnector(){
 		  if (clientConnector==null){
-			  clientConnector = StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null);
+			  clientConnector = StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null, null, null);
 		  }
 		  return clientConnector;
 	  }
@@ -78,7 +78,7 @@ public class Replicator {
 	    	slog.Date = thisReplicationDate;
 	    	
 	    	//Достаем запись из журнала
-	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
+	    	StoryCLMTableService<StoryLog> slogService = getStoryConnector().GetTableService(StoryLog.class, converterService.getLogTableId());
 	    	Date lastReplicationDate = slogService.MaxOrDefault("Date", null, Date.class, new Date(0)).GetResult();
 	    //	System.out.println("lastReplicationDate!" + lastReplicationDate);
  	    	logger.info("Last Replication Date " + lastReplicationDate);
@@ -91,7 +91,7 @@ public class Replicator {
 	    	
 	    	System.out.println("queryResults size " + queryResults.getSize());
 	    	//int totalSize = queryResults.getSize();
-	    	StoryCLMServiceGeneric<IStoryEntity> storyService = clientConnector.GetService(converterService.getStoryType(), converterService.getTableId());
+	    	StoryCLMTableService<IStoryEntity> storyService = clientConnector.GetTableService(converterService.getStoryType(), converterService.getTableId());
 	    	while(true){
 	    		logger.info("queryResults party size " + queryResults.getSize());
 		    	SObject[] sObjects = queryResults.getRecords();
@@ -164,7 +164,7 @@ public class Replicator {
 	      return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
 	  }
 	  
-	  int removeDeleted(Date lastReplicationDate, Date thisReplicationDate, String sObjectType, String SFIdFieldName, StoryCLMServiceGeneric<IStoryEntity> storyService) throws ConnectionException, AuthFaliException, AsyncResultException{
+	  int removeDeleted(Date lastReplicationDate, Date thisReplicationDate, String sObjectType, String SFIdFieldName, StoryCLMTableService<IStoryEntity> storyService) throws ConnectionException, AuthFaliException, AsyncResultException{
 		
 		if (getDateDiff(lastReplicationDate, thisReplicationDate, TimeUnit.DAYS)>30){
 			lastReplicationDate = new Date((new Date()).getTime() - 29 * 24 * 3600 * 1000l );
@@ -203,7 +203,7 @@ public class Replicator {
 	  }
 	  
 	  
-	  void upsertStoryEntities(List<IStoryEntity> objects, StoryCLMServiceGeneric<IStoryEntity> storyService, StoryLog slog) throws AsyncResultException, AuthFaliException{
+	  void upsertStoryEntities(List<IStoryEntity> objects, StoryCLMTableService<IStoryEntity> storyService, StoryLog slog) throws AsyncResultException, AuthFaliException{
 		
 			List<IStoryEntity> updated = new ArrayList<IStoryEntity>();
 			List<IStoryEntity> inserted = new ArrayList<IStoryEntity>();

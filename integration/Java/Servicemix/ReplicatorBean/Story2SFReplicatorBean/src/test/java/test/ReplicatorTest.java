@@ -66,8 +66,8 @@ public class ReplicatorTest extends TestCase
 	  	//Test
 		
 	  	
-	  	r.storyConfig.ClientId="client_18_5";
-	  	r.storyConfig.ClientSecret = "858bae5dae734410b61013fa3d64bd8fd55c93bb4e80416d9eed35c7399f3da6";
+	  	r.storyConfig.ClientId="client_18_6";
+	  	r.storyConfig.ClientSecret = "8e30ddbce1aa4558b4daf9286f0d59bc809bffef731a43dbbd96a28475c533f7";
 	  	
 	  	r.sfconfig.UserName = "vova.klyuev@breffi.ru";
 		r.sfconfig.Password = "1724841126A545B191A64AC7BA8412062hJr9tvGTJYsCIKUEhHKzU5aJ";

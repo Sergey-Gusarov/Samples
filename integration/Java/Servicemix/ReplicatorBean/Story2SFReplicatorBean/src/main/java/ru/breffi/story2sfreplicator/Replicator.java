@@ -62,7 +62,7 @@ public class Replicator {
 	  StoryCLMServiceConnector clientConnector;
 	  StoryCLMServiceConnector getStoryConnector(){
 		  if (clientConnector==null){
-			  clientConnector = StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null);
+			  clientConnector = StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null, null, null);
 		  }
 		  return clientConnector;
 	  }
@@ -81,7 +81,7 @@ public class Replicator {
 		 StoryLog slog = new StoryLog();
 		 slog.Note = "Полная репликация из-за несовпадения по количеству элементов";
 		 slog.Date = thisReplicationDate;
-		 StoryCLMServiceGeneric<IStoryEntity> storyService = clientConnector.GetService(converterService.getStoryType(), converterService.getTableId());
+		 StoryCLMTableService<IStoryEntity> storyService = clientConnector.GetTableService(converterService.getStoryType(), converterService.getTableId());
 		 
 		 
 		 List<IStoryEntity> storyEntities = storyService.FindAll(null, 50).GetResult();
@@ -185,7 +185,7 @@ public class Replicator {
 	    	
 	    	slog.Deleted = deleted;
 	    	
-	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
+	    	StoryCLMTableService<StoryLog> slogService = getStoryConnector().GetTableService(StoryLog.class, converterService.getLogTableId());
 	    	slogService.Insert(slog).GetResult();
 	  }
 	  
@@ -198,7 +198,7 @@ public class Replicator {
 	    	slog.Date = thisReplicationDate;
 	    	
 	    	//Достаем запись из журнала
-	    	StoryCLMServiceGeneric<StoryLog> slogService = getStoryConnector().GetService(StoryLog.class, converterService.getLogTableId());
+	    	StoryCLMTableService<StoryLog> slogService = getStoryConnector().GetTableService(StoryLog.class, converterService.getLogTableId());
 	   
 	    	Date lastReplicationDate = new Date(0);
 	    	
@@ -206,7 +206,7 @@ public class Replicator {
 	      	logger.info("Last Replication Date " + lastReplicationDate);
 	    	
 	      	
-	      	StoryCLMServiceGeneric<IStoryEntity> storyService = clientConnector.GetService(converterService.getStoryType(), converterService.getTableId());
+	      	StoryCLMTableService<IStoryEntity> storyService = clientConnector.GetTableService(converterService.getStoryType(), converterService.getTableId());
 	      	ApiLog[] logs = null; 
 	      	List<String> ups_ids = new ArrayList<String>();
 	      	List<String> ins_ids = new ArrayList<String>();
