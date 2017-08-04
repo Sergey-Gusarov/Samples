@@ -3361,7 +3361,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: #6acad6;
   text-align: center;
-  background-color: ;
+  /*background-color: ;*/
   border: 1px solid #6acad6;
   border-radius: 0;
 }
@@ -4313,7 +4313,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
-  color: : #fff;
+  color: #fff;
   line-height: 1;
   vertical-align: baseline;
   white-space: nowrap;
@@ -4753,8 +4753,8 @@ a.list-group-item-danger.active:focus {
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
-  border-top-right-radius: -1;
-  border-top-left-radius: -1;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -4772,8 +4772,8 @@ a.list-group-item-danger.active:focus {
   padding: 10px 15px;
   background-color: #f5f5f5;
   border-top: 1px solid #dddddd;
-  border-bottom-right-radius: -1;
-  border-bottom-left-radius: -1;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .panel > .list-group {
   margin-bottom: 0;
@@ -4789,12 +4789,12 @@ a.list-group-item-danger.active:focus {
   border-bottom: 0;
 }
 .panel > .list-group:first-child .list-group-item:first-child {
-  border-top-right-radius: -1;
-  border-top-left-radius: -1;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 .panel > .list-group:last-child .list-group-item:last-child {
-  border-bottom-right-radius: -1;
-  border-bottom-left-radius: -1;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
@@ -4811,7 +4811,7 @@ a.list-group-item-danger.active:focus {
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {
-  border-top-left-radius: -1;
+  border-top-left-radius: 0;
 }
 .panel > .table:first-child > thead:first-child > tr:first-child td:last-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,
@@ -4821,7 +4821,7 @@ a.list-group-item-danger.active:focus {
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {
-  border-top-right-radius: -1;
+  border-top-right-radius: 0;
 }
 .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,
@@ -4831,7 +4831,7 @@ a.list-group-item-danger.active:focus {
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {
-  border-bottom-left-radius: -1;
+  border-bottom-left-radius: 0;
 }
 .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,
@@ -4841,7 +4841,7 @@ a.list-group-item-danger.active:focus {
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {
-  border-bottom-right-radius: -1;
+  border-bottom-right-radius: 0;
 }
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {

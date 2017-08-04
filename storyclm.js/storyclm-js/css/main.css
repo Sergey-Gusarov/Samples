@@ -45,8 +45,8 @@ blockquote {
 
 
 body {
-    height: 1024px;
-    height: 768px;
+    /*height: 1024px;*/
+    /*height: 768px;*/
     margin: 0;
     padding: 0;
 }
@@ -56,8 +56,9 @@ body {
     top: 0px;
     position: relative;
     margin: 0 auto;
-    width: 1024px;
-    
+    width: 100%;
+    /*width: 1024px;*/
+
     overflow:hidden;
 }
 
