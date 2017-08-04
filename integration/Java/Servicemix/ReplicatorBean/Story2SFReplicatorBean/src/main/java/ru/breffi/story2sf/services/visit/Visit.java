@@ -1,26 +1,20 @@
-package ru.breffi.story2sfreplicator;
+package ru.breffi.story2sf.services.visit;
 
 import java.util.Date;
-
-public class Visit {
+import  ru.breffi.story2sf.services.StandartStoryEntity;
+public class Visit extends StandartStoryEntity {
 	 
-		  public String _id;
-	      public String SFId;
+		public String SessionId;
+	      
+	  
+	      public Integer PresentationId;
 	      
 	  
 	    
-	      public String SessionId;
-	      
-	  
-	    
-	      public int PresentationId;
-	      
-	  
-	    
-	      public boolean CheckIn;
+	      public Boolean CheckIn;
 	
 	    
-	      public boolean Confirmed;
+	      public Boolean Confirmed;
 
 	  
 	    
@@ -36,11 +30,11 @@ public class Visit {
 	      
 	  
 	    
-	      public double Latitude;
+	      public Double Latitude;
 
 	  
 	    
-	      public double Longitude;
+	      public Double Longitude;
 	    
 	  
 	    
@@ -54,15 +48,15 @@ public class Visit {
 	      public Date End;
 
 	    
-	      public int Length;
+	      public Integer Length;
 	      
 	  
 	    
-	      public int Slides;
+	      public Integer Slides;
 	      
 	  
 	    
-	      public int Offset;
+	      public Integer Offset;
 	      
 	  
 	    

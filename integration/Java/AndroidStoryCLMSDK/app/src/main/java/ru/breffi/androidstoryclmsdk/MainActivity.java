@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-    static StoryCLMServiceGeneric<Profile> StoryCLMProfileService;
-    public static StoryCLMServiceGeneric<Profile> getService(){
+    static StoryCLMTableService<Profile> StoryCLMProfileService;
+    public static StoryCLMTableService<Profile> getService(){
         if (StoryCLMProfileService==null){
-            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(App.getContext().getResources().getString(R.string.client_id),App.getContext().getResources().getString(R.string.client_secret),null);
-            StoryCLMProfileService = clientConnector.GetService(Profile.class, 23);
+            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(App.getContext().getResources().getString(R.string.client_id),App.getContext().getResources().getString(R.string.client_secret),null,null,null);
+            StoryCLMProfileService = clientConnector.GetTableService(Profile.class, 23);
         }
         return StoryCLMProfileService;
     }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity  {
 
             findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
 
-            final IAsyncResult sizeresult = getService().Find(0, 100);
+            final IAsyncResult sizeresult = getService().FindAll(null,50);
             sizeresult.OnResult(new OnResultCallback() {
                 @Override
                 public void OnSuccess(Object o) {

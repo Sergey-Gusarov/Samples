@@ -1,5 +1,5 @@
 ## Пример интеграции приложения на платформе Android с системой StoryCLM
-В данном каталоге представлен пример мобильного приложения на платформе Android, реализующего доступ к REST API StoryCLM. Для интеграции используется библиотека [StoryCLM Java SDK](https://github.com/storyclm/Java-SDK).
+В данном каталоге представлен пример мобильного приложения на платформе Android, реализующего доступ к REST API StoryCLM. Для интеграции используется библиотека [StoryCLM Java SDK](https://github.com/storyclm/Java-SDK). По данной ссылке описано подключение библиотеки.
 
 Приложение представлено двумя страницами (activity). Главная страница отображает список профилей, хранящихся в таблице StoryCLM. Для просмотра детальной информации необходимо выбрать профиль из списка или нажать кнопку "Новый" для создания нового объекта.
 
@@ -19,7 +19,7 @@
 
 Для работы с таблицей необходимо получить типизированный сервис, указав идентификатор таблицы и тип объектов, с которыми будет манипулировать сервис (в примере данный тип представлен классом Profile).
 
-    StoryCLMProfileService = clientConnector.GetService(Profile.class, 23);
+    StoryCLMProfileService = clientConnector.GetTableService(Profile.class, 23);
 
 Далее все операции над объектами (получение, вставка, обновление и удаление)  таблицы осуществляются с помощью полученного сервиса. 
 
@@ -28,7 +28,7 @@
 
 
 
-       final IAsyncResult sizeresult = getService().Find(0, 100);
+       final IAsyncResult sizeresult = getService().FindAll(null,50);
                 sizeresult.OnResult(new OnResultCallback() {
                     @Override
                     public void OnSuccess(Object o) {

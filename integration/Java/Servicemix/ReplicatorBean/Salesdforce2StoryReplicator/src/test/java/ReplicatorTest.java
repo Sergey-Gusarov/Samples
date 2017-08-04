@@ -51,8 +51,8 @@ public class ReplicatorTest extends TestCase
     {
     	Replicator r = new Replicator();
 	  	r.storyConfig = new StoryLoginConfig();
-	  	r.storyConfig.ClientId="client_18";
-	  	r.storyConfig.ClientSecret = "595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6";
+	  	r.storyConfig.ClientId="client_18_6";
+	  	r.storyConfig.ClientSecret = "8e30ddbce1aa4558b4daf9286f0d59bc809bffef731a43dbbd96a28475c533f7";
 	  	r.sfconfig = new SalesForceLoginConfig();
 	  	r.sfconfig.UserName = USERNAME;
 	  	r.sfconfig.Password = PASSWORD;
