@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import ru.breffi.storyclmsdk.TypeAdapters.CustomDateTypeAdapter;
+//import ru.breffi.storyclmsdk.TypeAdapters.CustomDateTypeAdapter;
 
 //import com.google.gson.internal.bind.DateTypeAdapter;
 
@@ -41,7 +41,7 @@ public class Profile {
     /// <summary>
     /// Дата регистрации
     /// </summary>
-    @JsonAdapter(CustomDateTypeAdapter.class)
+  //  @JsonAdapter(CustomDateTypeAdapter.class)
     public Date Created ;
 
     public Profile(){
