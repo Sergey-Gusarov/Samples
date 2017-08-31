@@ -28,6 +28,7 @@ import ru.breffi.EntityTypeConverterServicePackage.IStoryEntity;
 import  ru.breffi.EntityTypeConverterServicePackage.PartnerTypeConverterService;
 import ru.breffi.storyclmsdk.*;
 import ru.breffi.storyclmsdk.Exceptions.*;
+import ru.breffi.storyclmsdk.connectors.StoryCLMServiceConnector;
 
 public class Replicator {
 	  public SalesForceLoginConfig sfconfig;
@@ -57,7 +58,7 @@ public class Replicator {
 	  StoryCLMServiceConnector clientConnector;
 	  StoryCLMServiceConnector getStoryConnector(){
 		  if (clientConnector==null){
-			  clientConnector = StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null, null, null);
+			  clientConnector = StoryCLMConnectorsGenerator.CreateStoryCLMServiceConnector(storyConfig.ClientId, storyConfig.ClientSecret , null, null, null);
 		  }
 		  return clientConnector;
 	  }

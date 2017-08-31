@@ -1,8 +1,6 @@
 package test;
 
 
-
-import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.ws.ConnectionException;
 
 import junit.framework.Test;
@@ -10,7 +8,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import ru.breffi.story2sf.services.IConverterService;
 import ru.breffi.story2sf.services.breffiuser.BreffiUserConverterService;
-import ru.breffi.story2sf.services.visit.VisitConverterService;
 import ru.breffi.story2sfreplicator.Replicator;
 import ru.breffi.story2sfreplicator.SalesForceLoginConfig;
 import ru.breffi.story2sfreplicator.StoryLoginConfig;
@@ -44,8 +41,9 @@ public class ReplicatorTest extends TestCase
 
     /**
      * Rigourous Test :-)
+     * @throws ConnectionException 
      */
-    public void testApp()
+    public void testApp() throws ConnectionException
     {
     	Replicator r = new Replicator();
 	  	r.storyConfig = new StoryLoginConfig();

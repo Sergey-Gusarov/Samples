@@ -16,8 +16,13 @@ public class StoryLog {
 	public int Inserted;
 	public int Deleted;
 	public boolean Failed = false;
-	public String Note;
+	public String Note = "";
 	public long Attempts;
+	
+	public void AddNote(String newNote){
+		Note+=Note.isEmpty()?"":"\r\n";
+		Note+=newNote;
+	}
 	
 	@Override
 	public boolean equals(Object slog){
