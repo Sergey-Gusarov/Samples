@@ -31,7 +31,7 @@ public class StoryLog {
 				this.Updated == other.Updated &&
 				this.Inserted == other.Inserted &&
 				this.Deleted == other.Deleted &&
-				this.Note == other.Note &&
+				this.Note.equals(other.Note) &&
 				this.Failed == other.Failed ;
 	}
 }

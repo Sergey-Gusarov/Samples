@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import ru.breffi.story2sf.services.IConverterService;
 import ru.breffi.story2sf.services.breffiuser.BreffiUserConverterService;
+import ru.breffi.story2sf.services.visit.VisitConverterService;
 import ru.breffi.story2sfreplicator.Replicator;
 import ru.breffi.story2sfreplicator.SalesForceLoginConfig;
 import ru.breffi.story2sfreplicator.StoryLoginConfig;
@@ -50,28 +51,30 @@ public class ReplicatorTest extends TestCase
 	  	r.sfconfig = new  SalesForceLoginConfig();
 	  	//Production
 	  	
-	  /*		
-	    r.storyConfig.ClientId="client_30_1";
-	  	r.storyConfig.ClientSecret = "7537d7ca7df0468e95f1a8a96e77bc548bc48aa045c84ea2b84e857b4c5e678a";
+	  		
+		r.storyConfig.ClientId="client_30_3";
+	  	r.storyConfig.ClientSecret = "1cd778d7252f477fa7db75ecdd3affbe2f67f1bfa9d64a74baf36ff29c5781bf";
 	  	
 		r.sfconfig.UserName = "vova.klyuev@breffi.ru";
 		r.sfconfig.Password = "08004FD8680441EFBA3FED245E95F692i6WOysylKFUMIzKtHFn6ymyn";
 		r.sfconfig.AuthEndpoint = "https://login.salesforce.com/services/Soap/u/29.0";
 		VisitConverterService visitService = new VisitConverterService(64, 73);
-		*/
+		
 		
 		
 	  	//Test
 		
 	  	
-	  	r.storyConfig.ClientId="client_18_6";
+	/*  	r.storyConfig.ClientId="client_18_6";
 	  	r.storyConfig.ClientSecret = "8e30ddbce1aa4558b4daf9286f0d59bc809bffef731a43dbbd96a28475c533f7";
 	  	
 	  	r.sfconfig.UserName = "vova.klyuev@breffi.ru";
 		r.sfconfig.Password = "1724841126A545B191A64AC7BA8412062hJr9tvGTJYsCIKUEhHKzU5aJ";
 		r.sfconfig.AuthEndpoint = "https://test.salesforce.com/services/Soap/u/29.0";
+		*/
+		
 		//VisitConverterService visitService = new VisitConverterService(77, 78);
-		IConverterService visitService = new BreffiUserConverterService(84, 85);
+		//IConverterService visitService = new BreffiUserConverterService(84, 85);
 		
 	  		
 	
