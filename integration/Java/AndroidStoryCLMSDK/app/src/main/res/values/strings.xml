@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AndroidStoryCLMSDK Sample</string>
-    <string name="client_id">client_18</string>
-    <string name="client_secret">595a2fb724604e51a1f9e43b808c76c915c2e0f74e8840b384218a0e354f6de6</string>
+    <string name="client_id">client_1_5</string>
+    <string name="client_secret">54bfffdf6187400a9a1602dd375fd9d6229c390f1b6f4d4f94efcbd0813e39bc</string>
+    <string name="auth_url">https://staging-auth.storyclm.com/</string>
+    <string name="api_url">https://staging-api.storyclm.com/v1/</string>
 </resources>

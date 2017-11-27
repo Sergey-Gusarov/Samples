@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
+import ru.breffi.storyclmsdk.AsyncResults.FluentCallResult;
 import ru.breffi.storyclmsdk.AsyncResults.IAsyncResult;
 import ru.breffi.storyclmsdk.Exceptions.AsyncResultException;
 import ru.breffi.storyclmsdk.Exceptions.AuthFaliException;
@@ -38,14 +39,14 @@ public class DetailsActivity extends AppCompatActivity {
         SimpleDateFormat format = Profile.format;
 
         ((EditText)findViewById(R.id.editName)).setText(getIntent().getStringExtra("Name"));
-        ((EditText)findViewById(R.id.editAge)).setText(Objects.toString(getIntent().getLongExtra("Age",0)));
+       // ((EditText)findViewById(R.id.editAge)).setText(Objects.toString(getIntent().getLongExtra("Age",0)));
 
         created = (Date)getIntent().getSerializableExtra("Created");
         if (created!=null) ((TextView)findViewById(R.id.dateView)).setText(format.format(created));
         ((RadioButton)findViewById(R.id.radioFemale)).setChecked(!getIntent().getBooleanExtra("Gender",true));
         ((RadioButton)findViewById(R.id.radioMale)).setChecked(getIntent().getBooleanExtra("Gender",true));
 
-        ((EditText)findViewById(R.id.editRating)).setText(Objects.toString(getIntent().getDoubleExtra("Rating",0),""));
+       // ((EditText)findViewById(R.id.editRating)).setText(Objects.toString(getIntent().getDoubleExtra("Rating",0),""));
         _id =  getIntent().getStringExtra("_id");
 
 
@@ -58,7 +59,7 @@ public class DetailsActivity extends AppCompatActivity {
                 ((EditText)findViewById(R.id.editName)).getText().toString(),
                 ((EditText)findViewById(R.id.editAge)).getText().toString(),
                 ((TextView)findViewById(R.id.dateView)).getText().toString(),
-                Objects.toString(((RadioButton)findViewById(R.id.radioMale)).isChecked()),
+                Boolean.toString(((RadioButton)findViewById(R.id.radioMale)).isChecked()),
                 ((EditText)findViewById(R.id.editRating)).getText().toString(),
         };
         p.ParseArray(par);
@@ -68,14 +69,10 @@ public class DetailsActivity extends AppCompatActivity {
     public void saveButtonClick(View target) throws AsyncResultException, AuthFaliException {
         ((Button)findViewById(R.id.saveButton)).setEnabled(false);
         IAsyncResult r;
-        if (insert){
-             r =  MainActivity.getService().Insert(constructProfile());
-
-        }
-        else{
-             r =  MainActivity.getService().Update(constructProfile());
-
-         }
+        if (insert)
+             r =  FluentCallResult.AtFirst(MainActivity.getService()).Then(s->s.Insert(constructProfile()));
+        else
+             r =  FluentCallResult.AtFirst(MainActivity.getService()).Then(s->s.Update(constructProfile()));
        //finish();
          r.OnResult(new OnResultCallback() {
             @Override
@@ -95,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     }
 
-    void dateSelect(View view){
+    public void dateSelect(View view){
         ru.breffi.androidstoryclmsdk.DatePicker datePicker = new ru.breffi.androidstoryclmsdk.DatePicker(created, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -107,25 +104,25 @@ public class DetailsActivity extends AppCompatActivity {
 
     }
 
-    void CancelClick(View view){
+    public void CancelClick(View view){
         finish();
     }
 
-    void DeleteClick(View view){
+    public void DeleteClick(View view){
         ((Button)findViewById(R.id.deleteButton)).setEnabled(false);
-        IAsyncResult r =  MainActivity.getService().Delete(_id);
-        r.OnResult(new OnResultCallback() {
-            @Override
+        IAsyncResult r = null;
+        FluentCallResult
+                .AtFirst(MainActivity.getService())
+                .Then(s->s.Delete(_id))
+                .OnResult(new OnResultCallback() {
+                    @Override
+                    public void OnSuccess(Object o) {finish();}
 
-            public void OnSuccess(Object o) {
-                finish();
-            }
-
-            @Override
-            public void OnFail(Throwable throwable) {
-                ((Button)findViewById(R.id.deleteButton)).setEnabled(true);
-                Toast.makeText(getBaseContext(), "Ошибка сети. Повторите операцию. ", Toast.LENGTH_LONG).show();
-            }
+                    @Override
+                    public void OnFail(Throwable throwable) {
+                        ((Button)findViewById(R.id.deleteButton)).setEnabled(true);
+                        Toast.makeText(getBaseContext(), "Ошибка сети. Повторите операцию. ", Toast.LENGTH_LONG).show();
+                    }
         });//*/
     }
 

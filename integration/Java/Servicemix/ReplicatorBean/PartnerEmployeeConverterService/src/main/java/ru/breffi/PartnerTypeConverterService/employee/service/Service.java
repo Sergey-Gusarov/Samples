@@ -5,18 +5,18 @@ import com.sforce.soap.partner.sobject.SObject;
 
 import ru.breffi.EntityTypeConverterServicePackage.IStoryEntity;
 import ru.breffi.EntityTypeConverterServicePackage.PartnerAbstarctTypeConverterService;
-import ru.breffi.partnerEmployeeConverterService.employee.dto.StoryEmployee;
+import ru.breffi.partnerEmployeeConverterService.employee.dto.Employee;
 
 public class Service extends PartnerAbstarctTypeConverterService{
 
 
 	public Class<? extends IStoryEntity> getStoryType() {
 		//TODO Auto-generated method stub
-		return StoryEmployee.class;
+		return Employee.class;
 	}
 
 	public IStoryEntity ConvertToStory(SObject sfe) {
-		StoryEmployee ste = new StoryEmployee();
+		Employee ste = new Employee();
 		ste.KeyClient = Boolean.parseBoolean((String)sfe.getField("BF_Emloyee_KC__c"));
 		ste.Category =  (String)sfe.getField("BF_Emloyee_category__c");
 	//	ste.Company_SalesForce_Id = (String)sfe.getField("BF_Emloyee_company__c");

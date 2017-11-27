@@ -11,11 +11,11 @@ public class Service extends PartnerAbstarctTypeConverterService{
 
 	public Class<? extends IStoryEntity> getStoryType() {
 		//TODO Auto-generated method stub
-		return StoryWorkPlace.class;
+		return WorkPlace.class;
 	}
 
 	public IStoryEntity ConvertToStory(SObject sfe) {
-		StoryWorkPlace ste = new StoryWorkPlace();
+		WorkPlace ste = new WorkPlace();
 		ste.Employee_SalesForce_Id =  (String)sfe.getField("BF_PlaceofWork_Employee__c");
 		ste.Company_SalesForce_Id = (String)sfe.getField("BF_PlaceofWork_Company__c");
 		ste.Position = (String)sfe.getField("BF_PlaceofWork_position__c");

@@ -2,7 +2,7 @@ package ru.breffi.partnerEmployeeConverterService.employee.dto;
 
 import ru.breffi.EntityTypeConverterServicePackage.StandartStoryEntity;
 
-public class StoryEmployee extends StandartStoryEntity { 
+public class Employee extends StandartStoryEntity { 
 		     public String Name;  
 		     public String Patronymic;  
 		     public String Surname;

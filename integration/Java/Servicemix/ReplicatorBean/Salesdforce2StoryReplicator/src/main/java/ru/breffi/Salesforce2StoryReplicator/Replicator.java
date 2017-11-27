@@ -8,7 +8,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,10 +23,13 @@ import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
 import ru.breffi.EntityTypeConverterServicePackage.IStoryEntity;
+import ru.breffi.EntityTypeConverterServicePackage.NamedTableConverterService;
 import ru.breffi.EntityTypeConverterServicePackage.PartnerTypeConverterService;
 import ru.breffi.storyclmsdk.*;
 import ru.breffi.storyclmsdk.Exceptions.*;
 import ru.breffi.storyclmsdk.connectors.StoryCLMServiceConnector;
+
+
 
 public class Replicator {
 	public SalesForceLoginConfig sfconfig;
@@ -75,50 +77,95 @@ public class Replicator {
 		}
 		return clientConnector;
 	}
-
-	public void Replicate(PartnerTypeConverterService converterService)
-			throws AsyncResultException, ConnectionException, AuthFaliException {
+	public void Replicate(PartnerTypeConverterService converterService) throws AsyncResultException, ConnectionException, AuthFaliException {
+		Replicate(new NamedTableConverterServiceAdapter(converterService)); 
+		
+	}
+	public void Replicate(NamedTableConverterService converterService) throws AsyncResultException, ConnectionException, AuthFaliException {
+	//	NamedTableConverterServiceAdapter service = new NamedTableConverterServiceAdapter(converterService);
 		logger.info("Start replicate for StoryType: " + converterService.getStoryType().getSimpleName());
 
 		// Проверим соответствие двух систем по количеству записей
 		Integer sfcountall =  getPartnerConnectionUtils().GetCount(converterService.getSFTable());
 			 
-		StoryCLMTableService<StoryLog> slogService = getStoryConnector().GetTableService(StoryLog.class,
-				converterService.getLogTableId());
-		StoryCLMTableService<IStoryEntity> storyService = clientConnector
-				.GetTableService(converterService.getStoryType(), converterService.getTableId());
+		StoryCLMTableService<StoryLog> slogService = getStoryConnector()
+				.<StoryLog>GetTableService(StoryLog.class, converterService.getLogTableName()).GetResult();
+		StoryCLMTableService<IStoryEntity> storyService = getStoryConnector()
+				.<IStoryEntity>GetTableService(converterService.getStoryType(), converterService.getTableName()).GetResult();
+		StoryCLMTableService<StoryLock> storyLockService = getStoryConnector()
+				.<StoryLock>GetTableService(StoryLock.class, converterService.getLockTableName()).GetResult();
 		Date thisReplicationDate = new Date();
 		StoryLog slog = new StoryLog();
 		slog.Date = thisReplicationDate;
 
 		Boolean fullReplicateNeed = false;
-
+		StoryLog slogLast = null;
+		StoryLock lock = null; 
 		try {
 
+			
 			// Достаем запись из журнала
-			Date lastReplicationDate = slogService.MaxOrDefault("Date", null, Date.class, new Date(0)).GetResult();
+			slogLast = slogService.LastOrDefault(null, "Date", 1, null).GetResult();
+			
+			//Проверяем не заблокирован ли ресурс на репликацию
+			lock = storyLockService.LastOrDefault(null, "Created", 1, null).GetResult();
+			if (lock!=null && lock.Lock && Utils.GetDateDiff(lock.Updated, thisReplicationDate,TimeUnit.HOURS)<1)
+			{
+				logger.warn("Stop replicate for locked StoryType: " + converterService.getStoryType().getSimpleName());
+				slog.AddNote("Репликация заблокирована другим процессом");
+				slog.Failed = true;
+				checkAndUpdateLog(slogLast, slog, slogService);
+				return;
+			}
+			else
+			{
+				
+				{//работа с локом
+					if (lock!=null && Utils.GetDateDiff(lock.Updated, thisReplicationDate,TimeUnit.HOURS)>=1)
+						slog.AddNote("Timeout for previous replication. Lock was reseted.");
+					if (lock == null) 
+					{
+						lock = new StoryLock();
+						lock.Updated= thisReplicationDate;
+						lock.Lock = true;
+						lock = storyLockService.Insert(lock).GetResult();
+					}
+					else
+					{
+						lock.Updated= thisReplicationDate;
+						lock.Lock = true;
+						storyLockService.Update(lock).GetResult();
+					}
 
-			logger.info("Last Replication Date " + lastReplicationDate);
-
-			// Запрашиваем, что изменилось в SF
-			String query = MessageFormat.format(
-					"SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",
-					String.join(", ",converterService.getSFQueryFields()), converterService.getSFTable(),
-					Utils.GetIsoDate(lastReplicationDate), Utils.GetIsoDate(thisReplicationDate));
-			logger.info("SOQL: " + query);
-			// По данному запросу переносим sobjects в стори
-			fromsftostory(query, converterService, slog, storyService);
-
-			// В методе удаленные из SF записи удаляются из story
-			slog.Deleted = removeDeleted(lastReplicationDate, thisReplicationDate, converterService.getSFTable(),
-				converterService.getSFIdFieldName(), storyService);
-			logger.info("*****" + converterService.getStoryType().getSimpleName() + "***** " + "Insert log ");
-
-			long storyCount = storyService.Count().GetResult();
-			fullReplicateNeed = storyCount != sfcountall;
-			if (fullReplicateNeed) {
-				slog.AddNote(":Не совпадает количество записей в таблице " + storyCount + " и SF: " + sfcountall);
-				slog.AddNote("Требуется полная репликация.");
+				}
+				
+				
+				StoryLog lastSuccessLog = slogService.LastOrDefault("[Failed][ne][True]", "Date", 1, null).GetResult();
+				Date lastReplicationDate = lastSuccessLog != null? lastSuccessLog.Date:new Date(0);
+				//slogService.MaxOrDefault("Date", null, Date.class, new Date(0)).GetResult();
+	
+				logger.info("Last Replication Date " + lastReplicationDate);
+	
+				// Запрашиваем, что изменилось в SF
+				String query = MessageFormat.format(
+						"SELECT {0} FROM {1} where LastModifiedDate > {2} and LastModifiedDate <= {3} ",
+						String.join(", ",converterService.getSFQueryFields()), converterService.getSFTable(),
+						Utils.GetIsoDate(lastReplicationDate), Utils.GetIsoDate(thisReplicationDate));
+				logger.info("SOQL: " + query);
+				// По данному запросу переносим sobjects в стори
+				fromsftostory(query, converterService, slog, storyService);
+	
+				// В методе удаленные из SF записи удаляются из story
+				slog.Deleted = removeDeleted(lastReplicationDate, thisReplicationDate, converterService.getSFTable(),
+					converterService.getSFIdFieldName(), storyService);
+				logger.info("*****" + converterService.getStoryType().getSimpleName() + "***** " + "Insert log ");
+	
+				long storyCount = storyService.Count().GetResult();
+				fullReplicateNeed = storyCount != sfcountall;
+				if (fullReplicateNeed) {
+					slog.AddNote(":Не совпадает количество записей в таблице " + storyCount + " и SF: " + sfcountall);
+					slog.AddNote("Требуется полная репликация.");
+				}
 			}
 		}
 		// Перехватываем все исключения и пытаемся запихнуть сообщение в лог
@@ -127,26 +174,31 @@ public class Replicator {
 			slog.Failed = true;
 			slog.AddNote("Exception happens");
 			slog.AddNote(Utils.JoinStackTrace(e));
-		} finally {
-			StoryLog slogLast = slogService.LastOrDefault(null, "Date", 1, null).GetResult();
-			if (slogLast != null && slogLast.equals(slog)) {
-				slog._id = slogLast._id;
-				slog.Attempts = slogLast.Attempts + 1;
-				slogService.Update(slog).GetResult();
-			} else
-				slogService.Insert(slog).GetResult();
-			logger.info("Finish replicate for StoryType: " + converterService.getStoryType().getSimpleName());
-		}
+		} 
+
+		checkAndUpdateLog(slogLast, slog,slogService);
+		logger.info("Finish standart replicate for StoryType: " + converterService.getStoryType().getSimpleName());
 
 		
-
 		if (!slog.Failed && fullReplicateNeed) {
 			FullReplicate(converterService);
 			logger.info("Finish fullreplicate for StoryType: " + converterService.getStoryType().getSimpleName());
-			return;
 		}
+		
+		lock.Updated = new Date();
+		lock.Lock = false;
+		storyLockService.Update(lock).GetResult();
 	}
 
+	
+	void checkAndUpdateLog(StoryLog last, StoryLog now, StoryCLMTableService<StoryLog> slogService) throws AuthFaliException, AsyncResultException{
+		if (last != null && last.equals(now)) {
+			now._id = last._id;
+			now.Attempts = last.Attempts + 1;
+			slogService.Update(now).GetResult();
+		} else
+			slogService.Insert(now).GetResult();
+	}
 	/**
 	 * 1. ВСе объекты SF обновляем в стори 
 	 * 2. Далее все объекты стори провеярем на наличие в SF, чего нет удаляем в стори
@@ -154,7 +206,7 @@ public class Replicator {
 	 * @throws AuthFaliException
 	 * @throws AsyncResultException
 	 */
-	private void FullReplicate(PartnerTypeConverterService converterService) throws AuthFaliException, AsyncResultException {
+	private void FullReplicate(NamedTableConverterService converterService) throws AuthFaliException, AsyncResultException {
 		Date thisReplicationDate = new Date();
 		StoryLog slog = new StoryLog();
 		logger.info("Полная репликация из-за несовпадения по количеству элементов");
@@ -164,7 +216,7 @@ public class Replicator {
 		try {
 
 			StoryCLMTableService<IStoryEntity> storyService = clientConnector
-					.GetTableService(converterService.getStoryType(), converterService.getTableId());
+					.<IStoryEntity>GetTableService(converterService.getStoryType(), converterService.getTableName()).GetResult();
 			
 			// Запрашиваем, все что есть в SF
 			String query = MessageFormat.format("SELECT {0} FROM {1} ",
@@ -189,8 +241,8 @@ public class Replicator {
 			slog.AddNote("Exception happens");
 			slog.AddNote(Utils.JoinStackTrace(e));
 		} finally {
-			StoryCLMTableService<StoryLog> slogService = getStoryConnector().GetTableService(StoryLog.class,
-					converterService.getLogTableId());
+			StoryCLMTableService<StoryLog> slogService = getStoryConnector().<StoryLog>GetTableService(StoryLog.class,
+					converterService.getLogTableName()).GetResult();
 			slogService.Insert(slog).GetResult();
 		}
 
@@ -210,7 +262,7 @@ public class Replicator {
 	 */
 	List<IStoryEntity> fromsftostory(
 			String query, 
-			PartnerTypeConverterService converterService,
+			NamedTableConverterService converterService,
 			StoryLog slog, 
 			StoryCLMTableService<IStoryEntity> storyService)
 					throws AuthFaliException, AsyncResultException, ConnectionException 
@@ -223,7 +275,7 @@ public class Replicator {
 
 	List<IStoryEntity> fromsftostory(
 			List<SObject> sObjects, 
-			PartnerTypeConverterService converterService,
+			NamedTableConverterService converterService,
 			StoryLog slog, 
 			StoryCLMTableService<IStoryEntity> storyService)			
 					throws AuthFaliException, AsyncResultException, ConnectionException {
@@ -245,33 +297,6 @@ public class Replicator {
 				})
 				.collect(Collectors.toList());
 		
-		
-		/*List<IStoryEntity> tempStoryObjects = new ArrayList<IStoryEntity>();
-		String SFIds = "";
-		// В Story запрос (query) передается в строке http, поэтому приходится
-		// его делить
-		for (int i = 0; i < sObjects.size(); i++) {
-			tempStoryObjects.add(converterService.ConvertToStory(sObjects.get(i)));
-			SFIds += ",\"" + sObjects.get(i).getId() + "\"";
-			if ((tempStoryObjects.size() % 20 == 0) || (i + 1 == sObjects.size())) {
-				SFIds = SFIds.substring(1, SFIds.length());
-
-				String storyQuery = MessageFormat.format("[{0}][in][{1}]", converterService.getSFIdFieldName(), SFIds);
-				logger.info("storyQuery: " + storyQuery);
-				List<IStoryEntity> entities = storyService.FindAllSync(storyQuery);
-				logger.info("response size: " + entities.size());
-				for (IStoryEntity story : entities)
-					for (IStoryEntity sf : tempStoryObjects)
-						if (sf.getSalesForceId().equals(story.getSalesForceId())) {
-							sf.setStoryId(story.getStoryId());
-							break;
-						}
-				storyObjects.addAll(tempStoryObjects);
-				tempStoryObjects.clear();
-				SFIds = "";
-			}
-		}*/
-
 		upsertStoryEntities(storyObjects, storyService, slog);
 		return storyObjects;
 

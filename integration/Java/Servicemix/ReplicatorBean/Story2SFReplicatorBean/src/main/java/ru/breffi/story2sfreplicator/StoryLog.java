@@ -18,6 +18,8 @@ public class StoryLog {
 	public boolean Failed = false;
 	public String Note = "";
 	public long Attempts;
+	public boolean Busy;
+	
 	
 	public void AddNote(String newNote){
 		Note+=Note.isEmpty()?"":"\r\n";

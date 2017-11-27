@@ -1,11 +1,6 @@
 package ru.breffi.androidstoryclmsdk;
 
-import android.app.AlertDialog;
-import android.app.Application;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,19 +17,34 @@ import java.util.List;
 import ru.breffi.storyclmsdk.*;
 
 import ru.breffi.storyclmsdk.AsyncResults.IAsyncResult;
-
+import ru.breffi.storyclmsdk.AsyncResults.FluentCallResult;
+import ru.breffi.storyclmsdk.AsyncResults.ValueAsyncResult;
+import ru.breffi.storyclmsdk.Exceptions.AsyncResultException;
+import ru.breffi.storyclmsdk.Exceptions.AuthFaliException;
+import ru.breffi.storyclmsdk.connectors.StoryCLMServiceConnector;
 
 public class MainActivity extends AppCompatActivity  {
 
-
-
     static StoryCLMTableService<Profile> StoryCLMProfileService;
-    public static StoryCLMTableService<Profile> getService(){
+    public static  IAsyncResult<StoryCLMTableService<Profile>> getService()  {
+
         if (StoryCLMProfileService==null){
-            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.GetStoryCLMServiceConnector(App.getContext().getResources().getString(R.string.client_id),App.getContext().getResources().getString(R.string.client_secret),null,null,null);
-            StoryCLMProfileService = clientConnector.GetTableService(Profile.class, 23);
+            StoryCLMServiceConnector clientConnector =  StoryCLMConnectorsGenerator.CreateStoryCLMServiceConnector(
+                    App.getContext().getResources().getString(R.string.client_id),
+                    App.getContext().getResources().getString(R.string.client_secret),
+                    null,
+                    null,
+                    null,
+                    App.getContext().getResources().getString(R.string.auth_url),
+                    App.getContext().getResources().getString(R.string.api_url)
+                    );
+            StoryCLMProfileService = clientConnector.<Profile>GetTableService(Profile.class,56);
+       /*    return
+                    FluentCallResult
+                    .AtFirst(clientConnector.<Profile>GetTableService(Profile.class,"Profile"))
+                    .ThenResult(service->MainActivity.StoryCLMProfileService = service);*/
         }
-        return StoryCLMProfileService;
+        return new ValueAsyncResult<>(StoryCLMProfileService);
     }
     TextView tvDisplay;
     MainActivity _this=this;
@@ -104,7 +114,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onResume();
        Refresh();
     }
-    void RefreshButtonClick(View view){
+    public void RefreshButtonClick(View view){
         Refresh();
     }
     public void Refresh(){
@@ -115,7 +125,9 @@ public class MainActivity extends AppCompatActivity  {
 
             findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
 
-            final IAsyncResult sizeresult = getService().FindAll(null,50);
+            final IAsyncResult sizeresult = FluentCallResult
+                    .AtFirst(getService())
+                    .Then(service-> service.FindAll(null,50));
             sizeresult.OnResult(new OnResultCallback() {
                 @Override
                 public void OnSuccess(Object o) {
@@ -137,7 +149,7 @@ public class MainActivity extends AppCompatActivity  {
             ex.printStackTrace();
         }
     }
-    void AddButtonOnClick(View view){
+    public void AddButtonOnClick(View view){
         Profile p = new Profile();
         sendMessage(p, true);
     }

@@ -28,9 +28,9 @@ tools:context="ru.breffi.androidstoryclmsdk.MainActivity"
         android:enabled="true"
         android:onClick="RefreshButtonClick"
         android:text="Обновить"
+        app:layout_constraintBaseline_toBaselineOf="@+id/AddButton"
         app:layout_constraintLeft_toRightOf="@+id/AddButton"
-        tools:enabled="false"
-        app:layout_constraintBaseline_toBaselineOf="@+id/AddButton" />
+        tools:enabled="false" />
 
     <ListView
         android:id="@+id/listview"

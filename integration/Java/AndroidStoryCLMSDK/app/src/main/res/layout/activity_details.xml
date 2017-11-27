@@ -24,27 +24,25 @@
         android:layout_width="216dp"
         android:layout_height="42dp"
         android:layout_marginLeft="153dp"
-        android:layout_marginStart="153dp"
 
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="11"
+        android:text="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName"
-        tools:text="11" />
+        tools:text="0" />
 
     <EditText
         android:id="@+id/editRating"
         android:layout_width="213dp"
         android:layout_height="42dp"
         android:layout_marginLeft="152dp"
-        android:layout_marginStart="153dp"
         android:layout_marginTop="23dp"
         android:ems="10"
 
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         tools:layout_constraintTop_creator="1" />
@@ -133,7 +131,7 @@
         android:lineSpacingExtra="8sp"
         android:onClick="dateSelect"
         android:text="Установить дату"
-        android:textAlignment="textStart"
+
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAge" />
