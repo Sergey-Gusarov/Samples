@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity  {
                     App.getContext().getResources().getString(R.string.auth_url),
                     App.getContext().getResources().getString(R.string.api_url)
                     );
-            StoryCLMProfileService = clientConnector.<Profile>GetTableService(Profile.class,56);
-       /*    return
+            //StoryCLMProfileService = clientConnector.<Profile>GetTableService(Profile.class,56);
+           return
                     FluentCallResult
                     .AtFirst(clientConnector.<Profile>GetTableService(Profile.class,"Profile"))
-                    .ThenResult(service->MainActivity.StoryCLMProfileService = service);*/
+                    .ThenResult(service->MainActivity.StoryCLMProfileService = service);
         }
         return new ValueAsyncResult<>(StoryCLMProfileService);
     }

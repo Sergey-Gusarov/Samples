@@ -114,16 +114,15 @@ public class DetailsActivity extends AppCompatActivity {
         FluentCallResult
                 .AtFirst(MainActivity.getService())
                 .Then(s->s.Delete(_id))
-                .OnResult(new OnResultCallback() {
-                    @Override
-                    public void OnSuccess(Object o) {finish();}
+                .OnFail(throwable-> {
+                    ((Button)findViewById(R.id.deleteButton)).setEnabled(true);
+                    Toast.makeText(getBaseContext(), "Ошибка сети. Повторите операцию. ", Toast.LENGTH_LONG).show();
+                })
+                .OnSuccess((v)->finish());
 
-                    @Override
-                    public void OnFail(Throwable throwable) {
-                        ((Button)findViewById(R.id.deleteButton)).setEnabled(true);
-                        Toast.makeText(getBaseContext(), "Ошибка сети. Повторите операцию. ", Toast.LENGTH_LONG).show();
-                    }
-        });//*/
+
+
+
     }
 
 }
