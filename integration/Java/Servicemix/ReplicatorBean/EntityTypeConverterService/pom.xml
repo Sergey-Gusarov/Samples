@@ -15,7 +15,7 @@
  <dependency>
       <groupId>com.force.api</groupId>
       <artifactId>force-wsc</artifactId>
-      <version>40.0.0</version>
+      <version>40.1.1</version>
       
     </dependency>
      <dependency>
